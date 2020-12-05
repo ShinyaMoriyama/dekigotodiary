@@ -1,0 +1,17 @@
+{% extends 'base_login.html' %}
+
+{% block page_content %}
+<div class="container">
+    <div class="form-signin">
+        <button class="google sns-btn" onclick="window.location='{{ url_for('google.login') }}';">
+            <i class="fab fa-google"></i> Login with Google
+        </button>
+        <button class="twitter sns-btn" onclick="window.location='{{ url_for('twitter.login') }}';">
+            <i class="fab fa-twitter"></i> Login with Twitter
+        </button>
+        <button class="fb sns-btn" onclick="window.location='{{ url_for('google.login') }}';">
+            <i class="fab fa-facebook-f"></i> Login with Twitter
+        </button>
+    </div>
+</div>
+{% endblock %}

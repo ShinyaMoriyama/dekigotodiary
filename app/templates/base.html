@@ -1,0 +1,55 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block head %}
+{{ super() }}
+<!-- BootStrap -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='theme.css') }}">
+<!-- FontAwesome -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='signin.css') }}">
+<script src="https://kit.fontawesome.com/272a1c6b44.js" crossorigin="anonymous"></script>
+<!-- FullCalendar -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css">
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      eventClick: function(info) {
+        var eventObj = info.event;
+
+        if (eventObj.url) {
+          alert(
+            'Clicked ' + eventObj.title + '.\n' +
+            'Will open ' + eventObj.url + ' in a new tab'
+          );
+
+        //   window.open(eventObj.url);
+          window.location.href = eventObj.url;
+
+        //   info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
+        } else {
+          alert('Clicked ' + eventObj.title);
+        }
+      },
+      events: {{ event_list|safe }}
+
+      // events: [
+      //   {
+      //     title: 'simple event 8 dsafhaskfasdfak;jiiiijiijdsafdfadfd',
+      //     start: '2020-12-02',
+      //     url: '/edit/8'
+      //   },
+      //   {
+      //     title: 'event with URL',
+      //     url: 'https://www.google.com/',
+      //     start: '2020-12-05'
+      //   }
+      // ]
+    });
+    calendar.render();
+  });
+
+</script>
+{% endblock %}
