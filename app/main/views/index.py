@@ -1,5 +1,5 @@
 from oauthlib.oauth2.rfc6749.errors import InvalidGrantError, TokenExpiredError
-from flask import render_template, redirect, url_for, current_app, session
+from flask import render_template, redirect, url_for, current_app, session, request
 from flask_dance.contrib.google import google
 from flask_dance.contrib.twitter import twitter
 from flask_login import current_user, login_user, logout_user
@@ -13,33 +13,6 @@ from pprint import pprint
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-
-    print('session :', session)
-    if google.authorized:
-        # workaround by https://github.com/singingwolfboy/flask-dance/issues/35
-        try:
-            account_info = google.get('/oauth2/v1/userinfo')
-        except (InvalidGrantError, TokenExpiredError) as e:
-            return redirect(url_for("google.login"))
-        print('account_info', account_info)
-        # del current_app.blueprints['google'].token["access_token"]
-        print('token: ', current_app.blueprints['google'])
-        if account_info.ok:
-            account_info_json = account_info.json()
-            print('email: ', account_info_json['email'])
-            print('account_info: ', account_info_json)
-            print('access_token: ', current_app.blueprints['google'].token["access_token"])
-    elif twitter.authorized:
-        account_info = twitter.get("account/verify_credentials.json")
-        print('account_info', account_info)
-        if account_info.ok:
-            account_info_json = account_info.json()
-            print('screen_name: ', account_info_json['screen_name'])
-            print('account_info: ', account_info_json)
-            print('oauth_token: ', current_app.blueprints['twitter'].token['oauth_token'])
-    else:
-        return redirect(url_for('.login'))
-
     diary_list = Diary.query.all()
     event_list = create_events(diary_list)
     
@@ -64,6 +37,7 @@ def logout():
 
     if google.authorized:
         token = current_app.blueprints['google'].token["access_token"]
+        print('session before deleting :', session)
         resp = google.post(
             "https://accounts.google.com/o/oauth2/revoke",
             params={"token": token},
@@ -73,6 +47,7 @@ def logout():
         print('session after deleting :', session)
     elif twitter.authorized:
         token = current_app.blueprints['twitter'].token['oauth_token']
+        print('session before deleting :', session)
         resp = twitter.post(
             "https://api.twitter.com/1.1/oauth/invalidate_token",
             params={"token": token},
@@ -156,6 +131,9 @@ from flask_dance.consumer import oauth_authorized
 
 @oauth_authorized.connect
 def logged_in(blueprint, token):
+    '''
+    triggered after logging in with SNS via OAuth
+    '''
     print('@@@@logged_in@@@@: ', blueprint.name.capitalize())
     print('@@@@token@@@@: ', token)
     if google.authorized:
@@ -168,19 +146,49 @@ def logged_in(blueprint, token):
             account_info_json = account_info.json()
             print('@@@@email: ', account_info_json['email'])
             print('@@@@account_info: ', account_info_json)
-            print('@@@@access_token: ', current_app.blueprints['google'].token)
+            print('@@@@access_token: ', current_app.blueprints['google'].token) # can not get .token["access_token"] at the time
     elif twitter.authorized:
         account_info = twitter.get("account/verify_credentials.json")
         if account_info.ok:
             account_info_json = account_info.json()
             print('@@@@screen_name: ', account_info_json['screen_name'])
             print('@@@@account_info: ', account_info_json)
-            print('@@@@oauth_token: ', current_app.blueprints['twitter'].token)
+            print('@@@@oauth_token: ', current_app.blueprints['twitter'].token) # can not get .token['oauth_token'] at the time
     user = User.query.filter_by(account_id=account_info_json['id']).first()
+    print('######account_info: ', type(account_info_json))
     if user is None:
-        user_add = User(account_id=account_info_json['id'])
+        user_add = User(
+            account_id=account_info_json['id'],
+            account_info=account_info_json,
+            last_login=datetime.now())
         db.session.add(user_add)
         db.session.commit()
-        login_user(user_add, remember=False)
+        login_user(user_add, remember=True)
     else:
-        login_user(user, remember=False)
+        user.account_info=account_info_json
+        user.last_login=datetime.now()
+        db.session.commit()
+        login_user(user, remember=True)
+
+@main.before_app_request
+def before_request():
+    '''
+    triggered before executing all view functions
+    '''
+    print('@@@@request.endpoint@@@@: ', request.endpoint)
+    print('@@@@session@@@@: ', session)
+    # print('@@@@app_context: ', current_app._get_current_object().__dict__)
+    if request.endpoint in [
+        'static',
+        'main.login',
+        'main.logout',
+        'google.login',
+        'twitter.login',
+        'google.authorized',
+        'twitter.authorized',
+        ]:
+        return
+    if current_user.is_authenticated:
+    # if google.authorized or twitter.authorized:
+        return
+    return redirect(url_for('main.login'))
