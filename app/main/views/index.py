@@ -38,11 +38,15 @@ def logout():
     if google.authorized:
         token = current_app.blueprints['google'].token["access_token"]
         print('session before deleting :', session)
-        resp = google.post(
-            "https://accounts.google.com/o/oauth2/revoke",
-            params={"token": token},
-            headers={"Content-Type": "application/x-www-form-urlencoded"}
-        )
+        # workaround by https://github.com/singingwolfboy/flask-dance/issues/35
+        try:
+            resp = google.post(
+                "https://accounts.google.com/o/oauth2/revoke",
+                params={"token": token},
+                headers={"Content-Type": "application/x-www-form-urlencoded"}
+            )
+        except (InvalidGrantError, TokenExpiredError) as e:
+            return redirect(url_for("google.login"))
         del session['google_oauth_token']
         print('session after deleting :', session)
     elif twitter.authorized:
@@ -159,13 +163,13 @@ def logged_in(blueprint, token):
     if user is None:
         user_add = User(
             account_id=account_info_json['id'],
-            account_info=account_info_json,
+            account_info=str(account_info_json),
             last_login=datetime.now())
         db.session.add(user_add)
         db.session.commit()
         login_user(user_add, remember=True)
     else:
-        user.account_info=account_info_json
+        user.account_info=str(account_info_json)
         user.last_login=datetime.now()
         db.session.commit()
         login_user(user, remember=True)
@@ -180,6 +184,7 @@ def before_request():
     # print('@@@@app_context: ', current_app._get_current_object().__dict__)
     if request.endpoint in [
         'static',
+        'main.index',
         'main.login',
         'main.logout',
         'google.login',
