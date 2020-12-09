@@ -13,31 +13,29 @@ from pprint import pprint
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    diary_list = Diary.query.all()
-    event_list = create_events(diary_list)
-    
-    print('current_user.is_authenticated: ', current_user.is_authenticated)
-    print('current_user.is_anonymous: ', current_user.is_anonymous)
-    print('current_user.get_id: ', current_user.get_id)
-    print('current_user.is_active: ', current_user.is_active)
-    print('session :', session)
-    return render_template(
-        'index.html',
-        event_list=event_list,
-    )
+    current_app.logger.info('current_user.is_authenticated= %s', current_user.is_authenticated)
+    current_app.logger.info('current_user.is_anonymous= %s', current_user.is_anonymous)
+    current_app.logger.info('current_user.get_id= %s', current_user.get_id)
+    current_app.logger.info('current_user.is_active= %s', current_user.is_active)
+    current_app.logger.info('current_user.is_authenticated= %s', current_user.is_authenticated)
+    current_app.logger.info('session= %s', session)
+    if current_user.is_authenticated:
+        diary_list = Diary.query.all()
+        event_list = create_events(diary_list)
+        return render_template('index.html', event_list=event_list,)
+    else:
+        return render_template('anonymous.html')
 
 @main.route('/login', methods=['GET'])
 def login():
-    return render_template(
-        'login.html',
-    )
+    return render_template('login.html')
 
 @main.route('/logout', methods=['GET', 'POST'])
 def logout():
 
     if google.authorized:
         token = current_app.blueprints['google'].token["access_token"]
-        print('session before deleting :', session)
+        current_app.logger.info('session before deleting= %s', session)
         # workaround by https://github.com/singingwolfboy/flask-dance/issues/35
         try:
             resp = google.post(
@@ -48,30 +46,29 @@ def logout():
         except (InvalidGrantError, TokenExpiredError) as e:
             return redirect(url_for("google.login"))
         del session['google_oauth_token']
-        print('session after deleting :', session)
+        current_app.logger.info('session after deleting[google]= %s', session)
     elif twitter.authorized:
         token = current_app.blueprints['twitter'].token['oauth_token']
-        print('session before deleting :', session)
+        current_app.logger.info('session before deleting= %s', session)
         resp = twitter.post(
             "https://api.twitter.com/1.1/oauth/invalidate_token",
             params={"token": token},
         )
         del session['twitter_oauth_token']
-        print('session after deleting twitter token:', session)
+        current_app.logger.info('session after deleting[twitter]= %s', session)
     
     logout_user()
     
-    return render_template(
-        'login.html',
-    )
+    return redirect(url_for('.index'))
 
 @main.route('/edit', methods=['GET', 'POST'])
 def edit():
-    print('current_user: ', current_user)
-    print('current_user.is_authenticated: ', current_user.is_authenticated)
-    print('current_user.is_anonymous: ', current_user.is_anonymous)
-    print('current_user.get_id: ', current_user.get_id)
-    print('current_user.is_active: ', current_user.is_active)
+    current_app.logger.info('current_user.is_authenticated= %s', current_user.is_authenticated)
+    current_app.logger.info('current_user.is_anonymous= %s', current_user.is_anonymous)
+    current_app.logger.info('current_user.get_id= %s', current_user.get_id)
+    current_app.logger.info('current_user.is_active= %s', current_user.is_active)
+    current_app.logger.info('current_user.is_authenticated= %s', current_user.is_authenticated)
+    current_app.logger.info('session= %s', session)
         
     form = EditForm()
     if form.is_submitted():
@@ -138,8 +135,9 @@ def logged_in(blueprint, token):
     '''
     triggered after logging in with SNS via OAuth
     '''
-    print('@@@@logged_in@@@@: ', blueprint.name.capitalize())
-    print('@@@@token@@@@: ', token)
+    current_app.logger.info('blueprint.name.capitalize()= %s', blueprint.name.capitalize())
+    current_app.logger.info('token= %s', token)
+    
     if google.authorized:
         # workaround by https://github.com/singingwolfboy/flask-dance/issues/35
         try:
@@ -148,18 +146,17 @@ def logged_in(blueprint, token):
             return redirect(url_for("google.login"))
         if account_info.ok:
             account_info_json = account_info.json()
-            print('@@@@email: ', account_info_json['email'])
-            print('@@@@account_info: ', account_info_json)
-            print('@@@@access_token: ', current_app.blueprints['google'].token) # can not get .token["access_token"] at the time
+            current_app.logger.info('email= %s', account_info_json['email'])
+            current_app.logger.info('account_info= %s', account_info_json)
+            current_app.logger.info('access_token= %s', current_app.blueprints['google'].token)  # can not get .token["access_token"] at the time
     elif twitter.authorized:
         account_info = twitter.get("account/verify_credentials.json")
         if account_info.ok:
             account_info_json = account_info.json()
-            print('@@@@screen_name: ', account_info_json['screen_name'])
-            print('@@@@account_info: ', account_info_json)
-            print('@@@@oauth_token: ', current_app.blueprints['twitter'].token) # can not get .token['oauth_token'] at the time
+            current_app.logger.info('screen_name= %s', account_info_json['screen_name'])
+            current_app.logger.info('account_info= %s', account_info_json)
+            current_app.logger.info('oauth_token= %s', current_app.blueprints['twitter'].token) # can not get .token['oauth_token'] at the time
     user = User.query.filter_by(account_id=account_info_json['id']).first()
-    print('######account_info: ', type(account_info_json))
     if user is None:
         user_add = User(
             account_id=account_info_json['id'],
@@ -179,9 +176,7 @@ def before_request():
     '''
     triggered before executing all view functions
     '''
-    print('@@@@request.endpoint@@@@: ', request.endpoint)
-    print('@@@@session@@@@: ', session)
-    # print('@@@@app_context: ', current_app._get_current_object().__dict__)
+    current_app.logger.info('request.endpoint= %s', request.endpoint)
     if request.endpoint in [
         'static',
         'main.index',

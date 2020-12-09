@@ -1,5 +1,44 @@
-{% extends 'base_dashboard.html' %}
+{% extends 'base.html' %}
 
-{% block page_content %}
-<div id='calendar'></div>
+{% block head %}
+{{ super() }}
+<!-- BootStrap -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='theme.css') }}">
+<!-- FullCalendar -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css">
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      eventClick: function(info) {
+        var eventObj = info.event;
+
+        if (eventObj.url) {
+          alert(
+            'Clicked ' + eventObj.title + '.\n' +
+            'Will open ' + eventObj.url + ' in a new tab'
+          );
+
+          window.location.href = eventObj.url;
+
+        } else {
+          alert('Clicked ' + eventObj.title);
+        }
+      },
+      events: {{ event_list|safe }}
+
+    });
+    calendar.render();
+  });
+
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div id='calendar'></div>
+</div>
 {% endblock %}

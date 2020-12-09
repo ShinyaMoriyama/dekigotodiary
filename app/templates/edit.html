@@ -1,10 +1,13 @@
-{% extends 'base_dashboard.html' %}
+{% extends 'base.html' %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block page_header %}Edit diary{% endblock %}
-
-{% block page_content %}
-<div>
-    {{ wtf.quick_form(form)}}
+{% block content %}
+<div class="container">
+    <div class="page-heeder">
+        <h3>Edit calendar</h3>
+    </div>
+    <div>
+        {{ wtf.quick_form(form)}}
+    </div>
 </div>
 {% endblock %}
