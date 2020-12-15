@@ -1,10 +1,14 @@
+import json
+import plotly
+import pandas as pd
+import numpy as np
 from oauthlib.oauth2.rfc6749.errors import InvalidGrantError, TokenExpiredError
 from flask import render_template, redirect, url_for, current_app, session, request
 from flask_dance.contrib.google import google
 from flask_dance.contrib.twitter import twitter
 from flask_login import current_user, login_user, logout_user
-
 from datetime import datetime
+from sqlalchemy.dialects import mysql
 from ..forms.forms import EditForm
 from .. import main
 from ...models import Diary, User
@@ -74,7 +78,10 @@ def edit():
     if form.is_submitted():
         date = form.date.data
         note = form.note.data
-        diary = Diary(date=date, note=note)
+        diary = Diary(
+            date=date,
+            note=note,
+            user=current_user._get_current_object())
 
         db.session.add(diary)
         db.session.commit()
@@ -107,6 +114,46 @@ def edit_id(id):
         form = form,
     )
 
+@main.route('/plot', methods=['GET'])
+def plot():
+    query = Diary.query.filter(Diary.id >= 1)
+    df = pd.read_sql(query.statement, db.engine)
+
+    df['date'] = pd.to_datetime(df['date'])
+    df = df.set_index(df['date'])
+    df = df.drop(columns=['date', 'id', 'user_id']).resample(rule='MS').count()
+
+    graphs = [
+        dict(
+            data=[
+                dict(
+                    x=df.index,
+                    # x=ts,
+                    y=df.note,
+                    type='bar',
+                )
+            ],
+            layout=dict(
+                title='Entries by month',
+                xaxis=dict(
+                    dtick='M1',
+                ),
+            ),
+        )
+    ]
+
+    # Add "ids" to each of the graphs to pass up to the client
+    # for templating
+    ids = ['graph-{}'.format(i) for i, _ in enumerate(graphs)]
+
+    # Convert the figures to JSON
+    # PlotlyJSONEncoder appropriately converts pandas, datetime, etc
+    # objects to their JSON equivalents
+    graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
+
+    return render_template('plot.html',
+                           ids=ids,
+                           graphJSON=graphJSON)
 
 def row2dict(row):
     '''

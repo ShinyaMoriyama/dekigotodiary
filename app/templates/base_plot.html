@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="page_header">
+        <h3>{% block page_header %}{% endblock %}</h3>
+    </div>
+    <!-- Plotly -->
+    {% for id in ids %}
+        <h3>{{id}}</h3>
+        <div id="{{id}}"></div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<!-- Plotly -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<script type="text/javascript">
+
+    var graphs = {{graphJSON | safe}};
+    var ids = {{ids | safe}};
+
+    for(var i in graphs) {
+        Plotly.plot(ids[i], // the ID of the div, created above
+                    graphs[i].data,
+                    graphs[i].layout || {});
+    }
+
+</script>
+{% endblock %}

@@ -6,13 +6,15 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jumbotron.css') }}">
 {% endblock %}
 
+{% block title %}Review your life for future improvement | Dekigoto{% endblock %}
+
 
 {% block content %}
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <h1>Review your life with diary</h1>
+        <p>Dekigoto is a cloud based diary service which automaticaly generates categorized summary charts as feedback for your future improvement. You can write in any devices via Google Chrome without any installing softwares.</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
     </div>
 </div>
@@ -21,18 +23,24 @@
     <!-- Example row of columns -->
     <div class="row">
         <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <h2>Cloud based service</h2>
+            <p>Dekigoto is a cloud based diary service. You can sign in with your SNS accounts so that you do not need to remember specific username and password. Only with SNS accounts, you can write whenever in any devices.</p>
             <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <h2>Categorized diaries</h2>
+            <p>Diaries in Dekigoto consist of several categories. This categorized approach has the purpose that you can easily continue taking diaries as your habit.</p>
+            <ul>
+                <li>Free diary</li>
+                <li>Sleep diary</li>
+                <li>Drinking Diary</li>
+                <li>Reading Diary</li>
+            </ul>
             <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <h2>Visualization</h2>
+            <p>Dekigoto automaticaly creates summary charts based on the categorized diaries which you provided. From these charts, you can see trends of your habits and may get feedback to improve your life.</p>
             <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
     </div>
