@@ -9,6 +9,7 @@ class Config:
     GOOGLE_CLIENT_SECRET = os.environ.get('GOOGLE_CLIENT_SECRET')
     TWITTER_API_KEY = os.environ.get('TWITTER_API_KEY')
     TWITTER_API_SECRET = os.environ.get('TWITTER_API_SECRET')
+    SSL_REDIRECT = False
 
     @staticmethod
     def init_app(app):
@@ -26,16 +27,31 @@ class TestingConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or \
         'sqlite://'
 
-
-class ProductionConfig(Config):
+class HerokuConfig(Config):
+    SSL_REDIRECT = True if os.environ.get('DYNO') else False
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 
+    @classmethod
+    def init_app(cls, app):
+        Config.init_app(app)
+
+        # handle reverse proxy server headers
+        # from werkzeug.contrib.fixers import ProxyFix
+        from werkzeug.middleware.proxy_fix import ProxyFix
+        app.wsgi_app = ProxyFix(app.wsgi_app)
+
+        # log to stderr
+        import logging
+        from logging import StreamHandler
+        file_handler = StreamHandler()
+        file_handler.setLevel(logging.INFO)
+        app.logger.addHandler(file_handler)
 
 config = {
     'development': DevelopmentConfig,
     'testing': TestingConfig,
-    'production': ProductionConfig,
+    'heroku': HerokuConfig,
 
     'default': DevelopmentConfig
 }

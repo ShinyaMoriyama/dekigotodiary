@@ -7,5 +7,5 @@ __pycache__
 # Virtual environment
 venv
 
-# Environment variables
-env.sh
+# Environment variables also used by heroku local command
+.env

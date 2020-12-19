@@ -24,7 +24,7 @@ def index():
     current_app.logger.info('current_user.is_authenticated= %s', current_user.is_authenticated)
     current_app.logger.info('session= %s', session)
     if current_user.is_authenticated:
-        diary_list = Diary.query.all()
+        diary_list = Diary.query.filter_by(user=current_user._get_current_object()).all()
         event_list = create_events(diary_list)
         return render_template('index.html', event_list=event_list,)
     else:
@@ -116,7 +116,7 @@ def edit_id(id):
 
 @main.route('/plot', methods=['GET'])
 def plot():
-    query = Diary.query.filter(Diary.id >= 1)
+    query = Diary.query.filter_by(user=current_user._get_current_object())
     df = pd.read_sql(query.statement, db.engine)
 
     df['date'] = pd.to_datetime(df['date'])
@@ -203,7 +203,7 @@ def logged_in(blueprint, token):
             current_app.logger.info('screen_name= %s', account_info_json['screen_name'])
             current_app.logger.info('account_info= %s', account_info_json)
             current_app.logger.info('oauth_token= %s', current_app.blueprints['twitter'].token) # can not get .token['oauth_token'] at the time
-    user = User.query.filter_by(account_id=account_info_json['id']).first()
+    user = User.query.filter_by(account_id=str(account_info_json['id'])).first()
     if user is None:
         user_add = User(
             account_id=account_info_json['id'],
