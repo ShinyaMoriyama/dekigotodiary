@@ -1,0 +1,49 @@
+import pandas as pd
+import json
+import plotly
+from flask import render_template
+from flask_login import current_user
+from ... import main
+from .... import db
+from ....models import Category, Diary
+
+@main.route('/plot_drink', methods=['GET'])
+def plot_drink():
+    query = Diary.query.filter_by(user=current_user._get_current_object(), category=Category.DRINK)
+    df = pd.read_sql(query.statement, db.engine)
+
+    df['date'] = pd.to_datetime(df['date'])
+    df = df.set_index(df['date'])
+    df = df.drop(columns=['date', 'id', 'user_id']).resample(rule='MS').count()
+
+    graphs = [
+        dict(
+            data=[
+                dict(
+                    x=df.index,
+                    # x=ts,
+                    y=df.note,
+                    type='bar',
+                )
+            ],
+            layout=dict(
+                title='Entries by month',
+                xaxis=dict(
+                    dtick='M1',
+                ),
+            ),
+        )
+    ]
+
+    # Add "ids" to each of the graphs to pass up to the client
+    # for templating
+    ids = ['graph-{}'.format(i) for i, _ in enumerate(graphs)]
+
+    # Convert the figures to JSON
+    # PlotlyJSONEncoder appropriately converts pandas, datetime, etc
+    # objects to their JSON equivalents
+    graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
+
+    return render_template('plot/plot_drink.html',
+                           ids=ids,
+                           graphJSON=graphJSON)

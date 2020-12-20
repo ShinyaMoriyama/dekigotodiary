@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
+{% block head %}
+{{ super() }}
+<!-- BootStrap -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jumbotron.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="page_header">
@@ -7,7 +13,6 @@
     </div>
     <!-- Plotly -->
     {% for id in ids %}
-        <h3>{{id}}</h3>
         <div id="{{id}}"></div>
     {% endfor %}
 </div>

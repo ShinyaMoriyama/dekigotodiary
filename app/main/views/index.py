@@ -1,19 +1,13 @@
-import json
-import plotly
-import pandas as pd
-import numpy as np
+from config import Config
+import datetime
 from oauthlib.oauth2.rfc6749.errors import InvalidGrantError, TokenExpiredError
 from flask import render_template, redirect, url_for, current_app, session, request
 from flask_dance.contrib.google import google
 from flask_dance.contrib.twitter import twitter
 from flask_login import current_user, login_user, logout_user
-from datetime import datetime
-from sqlalchemy.dialects import mysql
-from ..forms.forms import EditForm
 from .. import main
-from ...models import Diary, User
+from ...models import Category, Diary, User
 from ... import db
-from pprint import pprint
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
@@ -23,8 +17,13 @@ def index():
     current_app.logger.info('current_user.is_active= %s', current_user.is_active)
     current_app.logger.info('current_user.is_authenticated= %s', current_user.is_authenticated)
     current_app.logger.info('session= %s', session)
+    view = request.args.get('view')
     if current_user.is_authenticated:
-        diary_list = Diary.query.filter_by(user=current_user._get_current_object()).all()
+        if view:
+            cate = getattr(Category, view)
+            diary_list = Diary.query.filter_by(user=current_user._get_current_object(), category=cate).all()
+        else:
+            diary_list = Diary.query.filter_by(user=current_user._get_current_object()).all()
         event_list = create_events(diary_list)
         return render_template('index.html', event_list=event_list,)
     else:
@@ -65,96 +64,6 @@ def logout():
     
     return redirect(url_for('.index'))
 
-@main.route('/edit', methods=['GET', 'POST'])
-def edit():
-    current_app.logger.info('current_user.is_authenticated= %s', current_user.is_authenticated)
-    current_app.logger.info('current_user.is_anonymous= %s', current_user.is_anonymous)
-    current_app.logger.info('current_user.get_id= %s', current_user.get_id)
-    current_app.logger.info('current_user.is_active= %s', current_user.is_active)
-    current_app.logger.info('current_user.is_authenticated= %s', current_user.is_authenticated)
-    current_app.logger.info('session= %s', session)
-        
-    form = EditForm()
-    if form.is_submitted():
-        date = form.date.data
-        note = form.note.data
-        diary = Diary(
-            date=date,
-            note=note,
-            user=current_user._get_current_object())
-
-        db.session.add(diary)
-        db.session.commit()
-
-        return redirect(url_for('.index'))
-
-    return render_template(
-        'edit.html',
-        form = form,
-    )
-
-@main.route('/edit/<id>', methods=['GET', 'POST'])
-def edit_id(id):
-    form = EditForm()
-
-    data = Diary.query.get(id)
-
-    if form.is_submitted():
-        data.date = form.date.data
-        data.note = form.note.data
-        db.session.commit()
-
-        return redirect(url_for('.index'))
-
-    form.date.data = data.date
-    form.note.data = data.note
-
-    return render_template(
-        'edit.html',
-        form = form,
-    )
-
-@main.route('/plot', methods=['GET'])
-def plot():
-    query = Diary.query.filter_by(user=current_user._get_current_object())
-    df = pd.read_sql(query.statement, db.engine)
-
-    df['date'] = pd.to_datetime(df['date'])
-    df = df.set_index(df['date'])
-    df = df.drop(columns=['date', 'id', 'user_id']).resample(rule='MS').count()
-
-    graphs = [
-        dict(
-            data=[
-                dict(
-                    x=df.index,
-                    # x=ts,
-                    y=df.note,
-                    type='bar',
-                )
-            ],
-            layout=dict(
-                title='Entries by month',
-                xaxis=dict(
-                    dtick='M1',
-                ),
-            ),
-        )
-    ]
-
-    # Add "ids" to each of the graphs to pass up to the client
-    # for templating
-    ids = ['graph-{}'.format(i) for i, _ in enumerate(graphs)]
-
-    # Convert the figures to JSON
-    # PlotlyJSONEncoder appropriately converts pandas, datetime, etc
-    # objects to their JSON equivalents
-    graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
-
-    return render_template('plot.html',
-                           ids=ids,
-                           graphJSON=graphJSON)
-
 def row2dict(row):
     '''
     from Stackoverflow for future reference
@@ -170,9 +79,26 @@ def create_events(diary_list):
 
 def diary2event(diary):
     d = {}
-    d['title'] = diary.note
     d['start'] = diary.date.strftime('%Y-%m-%d')
-    d['url'] = 'edit/' + str(diary.id)
+    if diary.category == Category.FREE:
+        d['title'] = diary.note
+        d['url'] = 'diary_free_edit/' + str(diary.id)
+        d['backgroundColor'] = Config.BC_FREE
+    if diary.category == Category.SLEEP:
+        if diary.sleep_condition == 0:
+            d['title'] = 'OK'
+        else:
+            d['title'] = 'NG'
+        d['url'] = 'diary_sleep_edit/' + str(diary.id)
+        d['backgroundColor'] = Config.BC_SLEEP
+    if diary.category == Category.DRINK:
+        d['title'] = str(diary.amt_of_drink)
+        d['url'] = 'diary_drink_edit/' + str(diary.id)
+        d['backgroundColor'] = Config.BC_DRINK
+    if diary.category == Category.READ:
+        d['title'] = diary.book_title
+        d['url'] = 'diary_read_edit/' + str(diary.id)
+        d['backgroundColor'] = Config.BC_READ
     return d
 
 from flask_dance.consumer import oauth_authorized
@@ -208,13 +134,13 @@ def logged_in(blueprint, token):
         user_add = User(
             account_id=account_info_json['id'],
             account_info=str(account_info_json),
-            last_login=datetime.now())
+            last_login=datetime.datetime.now())
         db.session.add(user_add)
         db.session.commit()
         login_user(user_add, remember=True)
     else:
         user.account_info=str(account_info_json)
-        user.last_login=datetime.now()
+        user.last_login=datetime.datetime.now()
         db.session.commit()
         login_user(user, remember=True)
 

@@ -1,11 +1,30 @@
 from flask_login import UserMixin
 from . import db, login_manager
 
+class Category:
+    FREE = 1
+    SLEEP = 2
+    DRINK = 3
+    READ = 4
+
+class SleepCondition:
+    OK = 0
+    NG = 1
+
 class Diary(db.Model):
     __tablename__ = 'Diary'
     id = db.Column(db.Integer, primary_key=True)
+    category = db.Column(db.Integer)
     date = db.Column(db.Date)
     note = db.Column(db.Text)
+    start = db.Column(db.DateTime)
+    end = db.Column(db.DateTime)
+    sleep_time = db.Column(db.Interval)
+    sleep_condition = db.Column(db.Integer)
+    amt_of_drink = db.Column(db.Integer)
+    book_title = db.Column(db.String(256))
+    book_url = db.Column(db.String(1024))
+    book_img_src = db.Column(db.String(1024))
     user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
 
 class Provider:

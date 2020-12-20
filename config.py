@@ -10,6 +10,10 @@ class Config:
     TWITTER_API_KEY = os.environ.get('TWITTER_API_KEY')
     TWITTER_API_SECRET = os.environ.get('TWITTER_API_SECRET')
     SSL_REDIRECT = False
+    BC_FREE = 'Tomato'
+    BC_SLEEP = 'SeaGreen'
+    BC_DRINK = 'MediumOrchid'
+    BC_READ = 'RoyalBlue'
 
     @staticmethod
     def init_app(app):

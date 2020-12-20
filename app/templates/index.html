@@ -3,7 +3,7 @@
 {% block head %}
 {{ super() }}
 <!-- BootStrap -->
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='theme.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jumbotron.css') }}">
 <!-- FullCalendar -->
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css">
@@ -39,6 +39,9 @@
 
 {% block content %}
 <div class="container">
+    <div class="page-heeder">
+      <br>
+    </div>
     <div id='calendar'></div>
 </div>
 {% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base_diary.html' %}
+
+{% block page_header %}Choose to Edit{% endblock %}
+
+{% block page_content %}
+<form action="" method="post" novalidate>
+    <div>
+        {{ form.hidden_tag()}}
+        <div class="row">
+            <div class="col-md-4">{{ wtf.form_field(form.category, onchange="this.form.submit()") }}</div>
+        </div>
+    </div>    
+</form>
+{% endblock %}
