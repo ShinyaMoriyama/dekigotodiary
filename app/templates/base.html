@@ -1,6 +1,21 @@
 {% extends 'bootstrap/base.html' %}
 {% import "bootstrap/wtf.html" as wtf %}
 
+{% block title %}Review your life for future improvement | Dekigoto{% endblock %}
+
+{% block head %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LWLMFDG0JY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LWLMFDG0JY');
+</script>
+{{ super() }}
+{% endblock %}
+
 {% block navbar %}
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -45,7 +60,7 @@
                     </ul>
                 </li>
             </ul>
-            {% endif %}s
+            {% endif %}
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('.logout') }}">Logout</a></li>                    
