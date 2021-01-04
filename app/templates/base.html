@@ -3,6 +3,13 @@
 
 {% block title %}Review your life for future improvement | Dekigoto{% endblock %}
 
+{% block metas %}
+{{ super() }}
+<meta name="description" content="Dekigoto is a cloud based diary service which automaticaly generates categorized summary charts as feedback for your future improvement." />
+<meta property="og:title" content="Dekigoto"/>
+<meta property="og:description" content="Cloud based personal journal and diary." />
+{% endblock %}
+
 {% block head %}
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LWLMFDG0JY"></script>
