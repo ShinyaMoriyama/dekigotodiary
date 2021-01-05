@@ -32,3 +32,50 @@ heroku maintenance:off
 heroku logs
 heroku logs -t
 ```
+
+# Useful commands and reference pages
+
+### Check SSL redirect
+```
+http https://dekigoto.herokuapp.com
+http http://dekigoto.herokuapp.com
+curl -I https://dekigoto.herokuapp.com
+curl -I http://dekigoto.herokuapp.com
+```
+If access via "http", request header includes "location" which indicates that SSL redirect works well.
+
+## Localization and internationalization
+
+[The Flask Mega-Tutorial Part XIII: I18n and L10n](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xiii-i18n-and-l10n)
+
+For the first time
+- create .mo file
+```
+cd mydiary
+flask translate init ja
+```
+  make sure to create /app/translations/ja/LC_MESSAGES/messages.po
+
+- edit `msgstr` in /app/translations/ja/LC_MESSAGES/messages.po
+
+- compile
+```
+flask translate compile
+```
+  make sure to create /app/translations/ja/LC_MESSAGES/messages.mo
+
+For the second time or later
+- update .mo file
+```
+cd mydiary
+flask translate update
+```
+  make sure to update /app/translations/ja/LC_MESSAGES/messages.po
+
+- edit `msgstr` in /app/translations/ja/LC_MESSAGES/messages.po
+
+- compile
+```
+flask translate compile
+```
+  make sure to update /app/translations/ja/LC_MESSAGES/messages.mo

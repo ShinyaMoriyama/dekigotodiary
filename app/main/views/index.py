@@ -5,6 +5,8 @@ from flask import render_template, redirect, url_for, current_app, session, requ
 from flask_dance.contrib.google import google
 from flask_dance.contrib.twitter import twitter
 from flask_login import current_user, login_user, logout_user
+from flask import g
+from flask_babel import get_locale
 from .. import main
 from ...models import Category, Diary, User
 from ... import db
@@ -25,6 +27,9 @@ def index():
         else:
             diary_list = Diary.query.filter_by(user=current_user._get_current_object()).all()
         event_list = create_events(diary_list)
+
+        g.locale = str(get_locale()) # for fullcalendar using
+
         return render_template('index.html', event_list=event_list,)
     else:
         return render_template('anonymous.html')

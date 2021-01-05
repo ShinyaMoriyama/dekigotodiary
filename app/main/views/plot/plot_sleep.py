@@ -3,6 +3,7 @@ import json
 import plotly
 from flask import render_template
 from flask_login import current_user
+from flask_babel import _, lazy_gettext as _l
 from ... import main
 from .... import db
 from ....models import Category, Diary
@@ -27,7 +28,7 @@ def plot_sleep():
                 )
             ],
             layout=dict(
-                title='Entries by month',
+                title=_('Entries by month'),
                 xaxis=dict(
                     dtick='M1',
                 ),

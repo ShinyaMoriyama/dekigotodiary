@@ -14,7 +14,8 @@ class Config:
     BC_SLEEP = 'SeaGreen'
     BC_DRINK = 'MediumOrchid'
     BC_READ = 'RoyalBlue'
-
+    LANGUAGES = ['en', 'ja']
+    
     @staticmethod
     def init_app(app):
         pass

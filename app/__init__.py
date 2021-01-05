@@ -4,7 +4,6 @@ from flask_dance.contrib.google import make_google_blueprint
 from flask_dance.contrib.twitter import make_twitter_blueprint
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-from flask import url_for
 from config import config
 
 db = SQLAlchemy()
@@ -54,5 +53,3 @@ def create_app(config_name):
 
     return app
 
-
-    

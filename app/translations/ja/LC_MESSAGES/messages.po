@@ -1,0 +1,228 @@
+# Japanese translations for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-01-07 08:28+0900\n"
+"PO-Revision-Date: 2021-01-06 06:07+0900\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: app/main/forms/forms.py:8
+msgid "Category"
+msgstr "カテゴリ"
+
+#: app/main/forms/forms.py:9 app/templates/base.html:45
+#: app/templates/base.html:54 app/templates/base.html:63
+msgid "Free Diary"
+msgstr "フリー日記"
+
+#: app/main/forms/forms.py:9 app/templates/base.html:46
+#: app/templates/base.html:55 app/templates/base.html:64
+msgid "Sleep Diary"
+msgstr "睡眠日記"
+
+#: app/main/forms/forms.py:9 app/templates/anonymous.html:33
+#: app/templates/base.html:47 app/templates/base.html:56
+#: app/templates/base.html:65
+msgid "Drinking Diary"
+msgstr "飲酒日記"
+
+#: app/main/forms/forms.py:9 app/templates/anonymous.html:34
+#: app/templates/base.html:48 app/templates/base.html:57
+#: app/templates/base.html:66
+msgid "Reading Diary"
+msgstr "読書日記"
+
+#: app/main/forms/forms.py:10 app/main/forms/forms.py:15
+#: app/main/forms/forms.py:23 app/main/forms/forms.py:30
+#: app/main/forms/forms.py:40
+msgid "Submit"
+msgstr "登録"
+
+#: app/main/forms/forms.py:13 app/main/forms/forms.py:27
+#: app/main/forms/forms.py:34
+msgid "Date"
+msgstr "日付"
+
+#: app/main/forms/forms.py:14 app/main/forms/forms.py:22
+#: app/main/forms/forms.py:29 app/main/forms/forms.py:39
+msgid "Note"
+msgstr "記述"
+
+#: app/main/forms/forms.py:16 app/main/forms/forms.py:24
+#: app/main/forms/forms.py:31 app/main/forms/forms.py:41
+#: app/templates/_delete_diary.html:2
+msgid "Delete"
+msgstr "削除"
+
+#: app/main/forms/forms.py:19
+msgid "Start"
+msgstr "開始"
+
+#: app/main/forms/forms.py:20
+msgid "End"
+msgstr "終了"
+
+#: app/main/forms/forms.py:21
+msgid "Sleep Condition"
+msgstr "睡眠の質"
+
+#: app/main/forms/forms.py:28
+msgid "The amount of pure alcohol (g)"
+msgstr "純アルコール量 (g)"
+
+#: app/main/forms/forms.py:36
+msgid "Get Title"
+msgstr "タイトル取得"
+
+#: app/main/forms/forms.py:37
+msgid "Title"
+msgstr "タイトル"
+
+#: app/main/views/plot/plot_drink.py:31 app/main/views/plot/plot_free.py:31
+#: app/main/views/plot/plot_read.py:31 app/main/views/plot/plot_sleep.py:31
+msgid "Entries by month"
+msgstr "月ごとの登録数"
+
+#: app/templates/_delete_diary.html:11
+msgid "Delete diary"
+msgstr "日記を削除します"
+
+#: app/templates/_delete_diary.html:14
+msgid "Are you sure to delete the entry?"
+msgstr "本当に削除しますか?"
+
+#: app/templates/anonymous.html:13
+msgid "Review your life with diary"
+msgstr "日記で生活を見直ししましょう"
+
+#: app/templates/anonymous.html:14
+msgid ""
+"Dekigoto is a cloud based diary service which automaticaly generates "
+"categorized summary charts as feedback for your future improvement. You "
+"can write in any devices via Google Chrome without any installing "
+"softwares."
+msgstr ""
+"Dekigoto "
+"はクラウドベースの日記サービスです。日記から自動でグラフを作成することで、生活向上のためのフィードバックが得られます。日記を書くのにアプリのインストールは不要です。Google"
+" Chromeがあればどのデバイスからも作成が可能です。"
+
+#: app/templates/anonymous.html:23
+msgid "Cloud based service"
+msgstr "クラウドベースのサービス"
+
+#: app/templates/anonymous.html:24
+msgid ""
+"Dekigoto is a cloud based diary service. You can sign in with your SNS "
+"accounts so that you do not need to remember specific username and "
+"password. Only with SNS accounts, you can write whenever in any devices."
+msgstr ""
+"Dekigoto "
+"はクラウドベースの日記サービスです。SNSのアカウントでログインできるため、煩わしいユーザー情報登録は不要でどのデバイスからも利用できます。"
+
+#: app/templates/anonymous.html:28
+msgid "Categorized diaries"
+msgstr "カテゴリ分けの日記"
+
+#: app/templates/anonymous.html:29
+msgid ""
+"Diaries in Dekigoto consist of several categories. This categorized "
+"approach has the purpose that you can easily continue taking diaries as "
+"your habit."
+msgstr "Dekigoto の日記はいくつかのカテゴリに分かれます。カテゴリ分けにより日記を書くことがより継続しやすくなるはずです。"
+
+#: app/templates/anonymous.html:31 app/templates/plot/plot_free.html:3
+msgid "Free diary"
+msgstr "フリー日記"
+
+#: app/templates/anonymous.html:32 app/templates/plot/plot_sleep.html:3
+msgid "Sleep diary"
+msgstr "睡眠日記"
+
+#: app/templates/anonymous.html:39
+msgid "Visualization"
+msgstr "グラフによる可視化"
+
+#: app/templates/anonymous.html:40
+msgid ""
+"Dekigoto automaticaly creates summary charts based on the categorized "
+"diaries which you provided. From these charts, you can see trends of your"
+" habits and may get feedback to improve your life."
+msgstr "Dekigoto は自動でカテゴリごとのグラフを作成します。グラフであなたの行動の傾向を把握し、生活向上のためのヒントとしましょう。"
+
+#: app/templates/base.html:42
+msgid "View"
+msgstr "ビュー"
+
+#: app/templates/base.html:44
+msgid "All"
+msgstr "すべて"
+
+#: app/templates/base.html:52
+msgid "Entry"
+msgstr "登録"
+
+#: app/templates/base.html:61
+msgid "Plot"
+msgstr "グラフ"
+
+#: app/templates/base.html:73
+msgid "Logout"
+msgstr "ログアウト"
+
+#: app/templates/base.html:75
+msgid "Login"
+msgstr "ログイン"
+
+#: app/templates/login.html:15
+msgid "Login with Google"
+msgstr "Googleアカウントでログインする"
+
+#: app/templates/login.html:18
+msgid "Login with Twitter"
+msgstr "Twitterアカウントでログインする"
+
+#: app/templates/diary/diary_drink_edit.html:3
+msgid "Edit Drinking Diary"
+msgstr "飲酒日記を登録します"
+
+#: app/templates/diary/diary_free_edit.html:3
+msgid "Edit Free Diary"
+msgstr "フリー日記を登録します"
+
+#: app/templates/diary/diary_read_edit.html:3
+msgid "Edit Reading Diary"
+msgstr "読書日記を登録します"
+
+#: app/templates/diary/diary_sleep_edit.html:3
+msgid "Edit Sleep Diary"
+msgstr "睡眠日記を登録します"
+
+#: app/templates/plot/plot_drink.html:3
+msgid "Drinking diary"
+msgstr "飲酒日記"
+
+#: app/templates/plot/plot_read.html:3
+msgid "Reading diary"
+msgstr "読書日記"
+
+#~ msgid "URL"
+#~ msgstr ""
+
+#~ msgid "Choose to Edit"
+#~ msgstr ""
+
+#~ msgid "%d/%m/%Y"
+#~ msgstr "%Y-%m-%d"
+

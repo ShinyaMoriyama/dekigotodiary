@@ -39,40 +39,40 @@
             {% if current_user.is_authenticated %}
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">View</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ _('View') }}</a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('.index') }}">All</a></li>
-                        <li><a href="{{ url_for('.index', view='FREE') }}">Free Diary</a></li>
-                        <li><a href="{{ url_for('.index', view='SLEEP') }}">Sleep Diary</a></li>
-                        <li><a href="{{ url_for('.index', view='DRINK') }}">Drinking Diary</a></li>
-                        <li><a href="{{ url_for('.index', view='READ') }}">Reading Diary</a></li>
+                        <li><a href="{{ url_for('.index') }}">{{ _('All') }}</a></li>
+                        <li><a href="{{ url_for('.index', view='FREE') }}">{{ _('Free Diary') }}</a></li>
+                        <li><a href="{{ url_for('.index', view='SLEEP') }}">{{ _('Sleep Diary') }}</a></li>
+                        <li><a href="{{ url_for('.index', view='DRINK') }}">{{ _('Drinking Diary') }}</a></li>
+                        <li><a href="{{ url_for('.index', view='READ') }}">{{ _('Reading Diary') }}</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Entry</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ _('Entry') }}</a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('.diary_free_new') }}">Free Diary</a></li>
-                        <li><a href="{{ url_for('.diary_sleep_new') }}">Sleep Diary</a></li>
-                        <li><a href="{{ url_for('.diary_drink_new') }}">Drinking Diary</a></li>
-                        <li><a href="{{ url_for('.diary_read_new') }}">Reading Diary</a></li>
+                        <li><a href="{{ url_for('.diary_free_new') }}">{{ _('Free Diary') }}</a></li>
+                        <li><a href="{{ url_for('.diary_sleep_new') }}">{{ _('Sleep Diary') }}</a></li>
+                        <li><a href="{{ url_for('.diary_drink_new') }}">{{ _('Drinking Diary') }}</a></li>
+                        <li><a href="{{ url_for('.diary_read_new') }}">{{ _('Reading Diary') }}</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Plot</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ _('Plot') }}</a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('.plot_free') }}">Free Diary</a></li>
-                        <li><a href="{{ url_for('.plot_sleep') }}">Sleep Diary</a></li>
-                        <li><a href="{{ url_for('.plot_drink') }}">Drinking Diary</a></li>
-                        <li><a href="{{ url_for('.plot_read') }}">Reading Diary</a></li>
+                        <li><a href="{{ url_for('.plot_free') }}">{{ _('Free Diary') }}</a></li>
+                        <li><a href="{{ url_for('.plot_sleep') }}">{{ _('Sleep Diary') }}</a></li>
+                        <li><a href="{{ url_for('.plot_drink') }}">{{ _('Drinking Diary') }}</a></li>
+                        <li><a href="{{ url_for('.plot_read') }}">{{ _('Reading Diary') }}</a></li>
                     </ul>
                 </li>
             </ul>
             {% endif %}
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
-                    <li><a href="{{ url_for('.logout') }}">Logout</a></li>                    
+                    <li><a href="{{ url_for('.logout') }}">{{ _('Logout') }}</a></li>                    
                 {% else %}
-                    <li><a href="{{ url_for('.login') }}">Login</a></li>
+                    <li><a href="{{ url_for('.login') }}">{{ _('Login') }}</a></li>
                 {% endif %}
             </ul>
         </div>
