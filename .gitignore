@@ -9,3 +9,6 @@ venv
 
 # Environment variables also used by heroku local command
 .env
+
+# DS file
+.DS_Store
