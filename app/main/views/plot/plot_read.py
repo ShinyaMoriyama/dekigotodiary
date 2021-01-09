@@ -32,6 +32,9 @@ def plot_read():
                 xaxis=dict(
                     dtick='M1',
                 ),
+                yaxis=dict(
+                    dtick='1',
+                ),
             ),
         )
     ]

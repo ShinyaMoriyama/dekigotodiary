@@ -28,8 +28,6 @@ def index():
             diary_list = Diary.query.filter_by(user=current_user._get_current_object()).all()
         event_list = create_events(diary_list)
 
-        g.locale = str(get_locale()) # for fullcalendar using
-
         return render_template('index.html', event_list=event_list,)
     else:
         return render_template('anonymous.html')
@@ -149,12 +147,19 @@ def logged_in(blueprint, token):
         db.session.commit()
         login_user(user, remember=True)
 
+@main.route('/usage', methods=['GET'])
+def usage():
+    return render_template('usage.html')
+
 @main.before_app_request
 def before_request():
     '''
     triggered before executing all view functions
     '''
     current_app.logger.info('request.endpoint= %s', request.endpoint)
+    
+    g.locale = str(get_locale())
+
     if request.endpoint in [
         'static',
         'main.index',
@@ -164,6 +169,7 @@ def before_request():
         'twitter.login',
         'google.authorized',
         'twitter.authorized',
+        'main.usage',
         ]:
         return
     if current_user.is_authenticated:

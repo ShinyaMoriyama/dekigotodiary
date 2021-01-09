@@ -8,9 +8,7 @@
 
 {% block content %}
 <div class="container">
-    <div class="page_header">
-        <h3>{% block page_header %}{% endblock %}</h3>
-    </div>
+    <h3>{% block page_header %}{% endblock %}</h3>
     <!-- Plotly -->
     {% for id in ids %}
         <div id="{{id}}"></div>
@@ -22,6 +20,8 @@
 {{ super() }}
 <!-- Plotly -->
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-locale-ja-latest.js"></script>
+<script>Plotly.setPlotConfig({locale: '{{ g.locale }}'})</script>
 
 <script type="text/javascript">
 

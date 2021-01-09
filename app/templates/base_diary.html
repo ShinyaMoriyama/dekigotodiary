@@ -14,9 +14,7 @@
         {{ message }}
     </div>
     {% endfor %}
-    <div class="page-heeder">
-        <h3>{% block page_header %}{% endblock %}</h3>
-    </div>
+    <h3>{% block page_header %}{% endblock %}</h3>
     {% block page_content %}
     {% endblock  %}
 </div>

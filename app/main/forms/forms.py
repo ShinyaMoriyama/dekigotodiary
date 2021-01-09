@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, TextAreaField, SelectField, IntegerField, StringField, HiddenField
 from wtforms.fields.html5 import DateField, DateTimeLocalField, URLField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, NumberRange
 from flask_babel import _, lazy_gettext as _l
 
 class DiaryCommonForm(FlaskForm):
@@ -25,7 +25,7 @@ class SleepDiaryForm(FlaskForm):
 
 class DrinkDiaryForm(FlaskForm):
     date = DateField(_l('Date'), format='%Y-%m-%d', validators=[DataRequired()])
-    amt_of_drink = IntegerField(_l('The amount of pure alcohol (g)'), validators=[DataRequired()])
+    amt_of_drink = IntegerField(_l('The amount of pure alcohol (g)'), validators=[NumberRange(min=0, max=999)])
     note = TextAreaField(_l('Note'))
     submit = SubmitField(_l('Submit'))
     delete = SubmitField(_l('Delete'))

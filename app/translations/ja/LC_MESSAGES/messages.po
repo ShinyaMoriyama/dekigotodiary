@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-07 08:28+0900\n"
+"POT-Creation-Date: 2021-01-09 13:11+0900\n"
 "PO-Revision-Date: 2021-01-06 06:07+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -103,11 +103,11 @@ msgstr "日記を削除します"
 msgid "Are you sure to delete the entry?"
 msgstr "本当に削除しますか?"
 
-#: app/templates/anonymous.html:13
+#: app/templates/anonymous.html:13 app/templates/usage.html:11
 msgid "Review your life with diary"
-msgstr "日記で生活を見直ししましょう"
+msgstr "日記で生活を見直しましょう"
 
-#: app/templates/anonymous.html:14
+#: app/templates/anonymous.html:14 app/templates/usage.html:12
 msgid ""
 "Dekigoto is a cloud based diary service which automaticaly generates "
 "categorized summary charts as feedback for your future improvement. You "
@@ -115,8 +115,8 @@ msgid ""
 "softwares."
 msgstr ""
 "Dekigoto "
-"はクラウドベースの日記サービスです。日記から自動でグラフを作成することで、生活向上のためのフィードバックが得られます。日記を書くのにアプリのインストールは不要です。Google"
-" Chromeがあればどのデバイスからも作成が可能です。"
+"はクラウドベースの日記サービスです。日記が自動でグラフを作成することで、生活向上のためのフィードバックが得られます。日記を書くのにアプリのインストールは不要です。Google"
+" Chromeがあればどのデバイスでも日記が作れます。"
 
 #: app/templates/anonymous.html:23
 msgid "Cloud based service"
@@ -135,12 +135,12 @@ msgstr ""
 msgid "Categorized diaries"
 msgstr "カテゴリ分けの日記"
 
-#: app/templates/anonymous.html:29
+#: app/templates/anonymous.html:29 app/templates/usage.html:18
 msgid ""
 "Diaries in Dekigoto consist of several categories. This categorized "
 "approach has the purpose that you can easily continue taking diaries as "
 "your habit."
-msgstr "Dekigoto の日記はいくつかのカテゴリに分かれます。カテゴリ分けにより日記を書くことがより継続しやすくなるはずです。"
+msgstr "Dekigoto の日記はいくつかのカテゴリに分かれます。カテゴリ分けにより、日記がより継続しやすくなるはずです。"
 
 #: app/templates/anonymous.html:31 app/templates/plot/plot_free.html:3
 msgid "Free diary"
@@ -154,7 +154,7 @@ msgstr "睡眠日記"
 msgid "Visualization"
 msgstr "グラフによる可視化"
 
-#: app/templates/anonymous.html:40
+#: app/templates/anonymous.html:40 app/templates/usage.html:27
 msgid ""
 "Dekigoto automaticaly creates summary charts based on the categorized "
 "diaries which you provided. From these charts, you can see trends of your"
@@ -177,11 +177,15 @@ msgstr "登録"
 msgid "Plot"
 msgstr "グラフ"
 
-#: app/templates/base.html:73
+#: app/templates/base.html:72 app/templates/usage.html:15
+msgid "Usage"
+msgstr "使い方"
+
+#: app/templates/base.html:74
 msgid "Logout"
 msgstr "ログアウト"
 
-#: app/templates/base.html:75
+#: app/templates/base.html:76
 msgid "Login"
 msgstr "ログイン"
 
@@ -192,6 +196,73 @@ msgstr "Googleアカウントでログインする"
 #: app/templates/login.html:18
 msgid "Login with Twitter"
 msgstr "Twitterアカウントでログインする"
+
+#: app/templates/usage.html:17
+msgid "Create diaries"
+msgstr "日記の作成"
+
+#: app/templates/usage.html:20
+msgid "Choose the category of diary to create"
+msgstr "作成する日記のカテゴリを選びます"
+
+#: app/templates/usage.html:21 app/templates/usage.html:30
+#: app/templates/usage.html:39
+msgid "The following is the case of free diary"
+msgstr "下記はフリー日記の例です"
+
+#: app/templates/usage.html:23
+msgid "Edit diary and submit"
+msgstr "日記を編集し登録します"
+
+#: app/templates/usage.html:26
+msgid "Visualize diaries"
+msgstr "グラフによる日記の可視化"
+
+#: app/templates/usage.html:29
+msgid "Choose the category of diary to plot"
+msgstr "グラフにするカテゴリを選びます"
+
+#: app/templates/usage.html:32
+msgid "See the summary charts of your diaries"
+msgstr "日記がグラフ化されます"
+
+#: app/templates/usage.html:35
+msgid "Change views"
+msgstr "ビューの変更"
+
+#: app/templates/usage.html:36
+msgid ""
+"Dekigoto has multiple views by categories. The dafault view includes all "
+"categories."
+msgstr "Dekigoto は日記をカテゴリ分けしビュー表示できます。初期表示はすべてのカテゴリが表示されます。"
+
+#: app/templates/usage.html:38
+msgid "Choose the category of diary to change"
+msgstr "変更したい日記のカテゴリを選びます"
+
+#: app/templates/usage.html:41
+msgid "See the changed view"
+msgstr "変更後のビュー表示です"
+
+#: app/templates/usage.html:44
+msgid "Recommended browser"
+msgstr "推奨ブラウザ"
+
+#: app/templates/usage.html:45
+msgid ""
+"The recommended browser is Google Chrome. If you hava trouble with using,"
+" change the browser to Google Chrome."
+msgstr "推奨ブラウザは Google Chrome です。もし表示が正しくない場合はまずはブラウザを Google Chrome に変更してください。"
+
+#: app/templates/usage.html:47
+msgid ""
+"For the example of Safari on mac, date fields seem not to be working fine"
+" because the format of these are somethng wrong and date pickers are lost"
+msgstr "Mac版Safariの例ですが、日付項目のフォーマットが変で、日付選択も不可です"
+
+#: app/templates/usage.html:49
+msgid "Change the browser to Chrome and it works well"
+msgstr "ブラウザを Chrome に変更すると正常に動きます"
 
 #: app/templates/diary/diary_drink_edit.html:3
 msgid "Edit Drinking Diary"
