@@ -28,12 +28,13 @@ def plot_read():
                 )
             ],
             layout=dict(
-                title=_('Entries by month'),
+                title=_('The number of diaries by month'),
                 xaxis=dict(
                     dtick='M1',
                 ),
                 yaxis=dict(
                     dtick='1',
+                    title=_('The number of diaries'),
                 ),
             ),
         )

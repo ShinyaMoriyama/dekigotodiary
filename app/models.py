@@ -8,8 +8,8 @@ class Category:
     READ = 4
 
 class SleepCondition:
-    OK = 0
-    NG = 1
+    OK = 1
+    NG = 0
 
 class Diary(db.Model):
     __tablename__ = 'Diary'

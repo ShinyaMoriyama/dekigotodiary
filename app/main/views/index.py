@@ -89,9 +89,9 @@ def diary2event(diary):
         d['backgroundColor'] = Config.BC_FREE
     if diary.category == Category.SLEEP:
         if diary.sleep_condition == 0:
-            d['title'] = 'OK'
-        else:
             d['title'] = 'NG'
+        else:
+            d['title'] = 'OK'
         d['url'] = 'diary_sleep_edit/' + str(diary.id)
         d['backgroundColor'] = Config.BC_SLEEP
     if diary.category == Category.DRINK:

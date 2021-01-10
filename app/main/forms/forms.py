@@ -18,7 +18,7 @@ class FreeDiaryForm(FlaskForm):
 class SleepDiaryForm(FlaskForm):
     start = DateTimeLocalField(_l('Start'), format='%Y-%m-%dT%H:%M')
     end = DateTimeLocalField(_l('End'), format='%Y-%m-%dT%H:%M')
-    sleep_condition = SelectField(_l('Sleep Condition'), choices=[(0, 'OK'), (1, 'NG')])
+    sleep_condition = SelectField(_l('Sleep Condition'), choices=[(0, 'NG'), (1, 'OK')], coerce=int)
     note = TextAreaField(_l('Note'))
     submit = SubmitField(_l('Submit'))
     delete = SubmitField(_l('Delete'))
