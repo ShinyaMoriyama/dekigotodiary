@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-11 07:36+0900\n"
+"POT-Creation-Date: 2021-01-15 05:46+0900\n"
 "PO-Revision-Date: 2021-01-06 06:07+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -183,6 +183,16 @@ msgid ""
 " habits and may get feedback to improve your life."
 msgstr "Dekigoto は自動でカテゴリごとのグラフを作成します。グラフであなたの行動の傾向を把握し、生活向上のためのヒントとしましょう。"
 
+#: app/templates/anonymous.html:48 app/templates/login.html:16
+#: app/templates/usage.html:57
+msgid "Terms and conditions"
+msgstr "利用規約"
+
+#: app/templates/anonymous.html:49 app/templates/login.html:17
+#: app/templates/usage.html:58
+msgid "Privacy Policy"
+msgstr "プライバシーポリシー"
+
 #: app/templates/base.html:45
 msgid "View"
 msgstr "ビュー"
@@ -211,11 +221,15 @@ msgstr "ログアウト"
 msgid "Login"
 msgstr "ログイン"
 
-#: app/templates/login.html:15
+#: app/templates/login.html:14
+msgid "By logging in, you agree to the following documents:"
+msgstr "私は本サービスにログインすることで以下に同意します:"
+
+#: app/templates/login.html:20
 msgid "Login with Google"
 msgstr "Googleアカウントでログインする"
 
-#: app/templates/login.html:18
+#: app/templates/login.html:23
 msgid "Login with Twitter"
 msgstr "Twitterアカウントでログインする"
 

@@ -11,6 +11,11 @@
 {% block content %}
 <div class="container">
     <div class="form-signin">
+        <p>{{ _('By logging in, you agree to the following documents:') }}</p>
+        <ul>
+            <li><a href="{{ url_for('.terms_conditions') }}", target="_blank">{{ _('Terms and conditions') }}</a></li>
+            <li><a href="{{ url_for('.privacy_policy') }}", target="_blank">{{ _('Privacy Policy') }}</a></li>
+        </ul>
         <button class="google sns-btn" onclick="window.location='{{ url_for('google.login') }}';">
             <i class="fab fa-google"></i> {{ _('Login with Google') }}
         </button>

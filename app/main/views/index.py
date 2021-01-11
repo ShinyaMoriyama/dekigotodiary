@@ -151,6 +151,20 @@ def logged_in(blueprint, token):
 def usage():
     return render_template('usage.html')
 
+@main.route('/terms_conditions', methods=['GET'])
+def terms_conditions():
+    if g.locale == 'ja':
+        return render_template('legal/terms_and_conditions_ja.html')
+    else:
+        return render_template('legal/terms_and_conditions_en.html')
+
+@main.route('/privacy_policy', methods=['GET'])
+def privacy_policy():
+    if g.locale == 'ja':
+        return render_template('legal/privacy_policy_ja.html')
+    else:
+        return render_template('legal/privacy_policy_en.html')
+
 @main.before_app_request
 def before_request():
     '''
@@ -170,6 +184,8 @@ def before_request():
         'google.authorized',
         'twitter.authorized',
         'main.usage',
+        'main.terms_conditions',
+        'main.privacy_policy',
         ]:
         return
     if current_user.is_authenticated:

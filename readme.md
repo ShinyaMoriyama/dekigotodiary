@@ -35,7 +35,7 @@ heroku logs -t
 
 # Useful commands and reference pages
 
-### Check SSL redirect
+## Check SSL redirect
 ```
 http https://dekigoto.herokuapp.com
 http http://dekigoto.herokuapp.com
@@ -79,3 +79,17 @@ flask translate update
 flask translate compile
 ```
   make sure to update /app/translations/ja/LC_MESSAGES/messages.mo
+
+## Favicon
+
+[favicon.io](https://favicon.io/)
+
+## Free images
+
+[Adobe Stock](https://stock.adobe.com/)
+
+## Legal documents
+
+[Terms and conditions](https://www.termsandconditionsgenerator.com/live.php?token=CcU4nZarxfTNRPxbtVBqPrCSQgRv0CPM)
+
+[Privacy policies](https://www.privacypolicygenerator.info/live.php?token=Z7wXCepBT1BYQurT4JRTcGASnY8UrhAV)
