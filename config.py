@@ -15,6 +15,7 @@ class Config:
     BC_DRINK = 'MediumOrchid'
     BC_READ = 'RoyalBlue'
     LANGUAGES = ['en', 'ja']
+    PERIOD_FREE_TRIAL = 60,
     
     @staticmethod
     def init_app(app):

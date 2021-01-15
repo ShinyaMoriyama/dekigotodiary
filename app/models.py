@@ -35,7 +35,9 @@ class User(UserMixin, db.Model):
     __tablename__ = 'User'
     id = db.Column(db.Integer, primary_key=True)
     account_id = db.Column(db.String(64), unique=True, index=True)
+    account_provider = db.Column(db.Integer)
     account_info = db.Column(db.Text)
+    first_login = db.Column(db.DateTime)
     last_login = db.Column(db.DateTime)
     diary = db.relationship('Diary', backref='user')
 

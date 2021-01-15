@@ -1,5 +1,6 @@
 from config import Config
 import datetime
+import ast
 from oauthlib.oauth2.rfc6749.errors import InvalidGrantError, TokenExpiredError
 from flask import render_template, redirect, url_for, current_app, session, request
 from flask_dance.contrib.google import google
@@ -8,7 +9,7 @@ from flask_login import current_user, login_user, logout_user
 from flask import g
 from flask_babel import get_locale
 from .. import main
-from ...models import Category, Diary, User
+from ...models import Category, Diary, User, Provider
 from ... import db
 
 @main.route('/', methods=['GET', 'POST'])
@@ -114,6 +115,8 @@ def logged_in(blueprint, token):
     current_app.logger.info('blueprint.name.capitalize()= %s', blueprint.name.capitalize())
     current_app.logger.info('token= %s', token)
     
+    account_info_json = None
+    account_provider = None
     if google.authorized:
         # workaround by https://github.com/singingwolfboy/flask-dance/issues/35
         try:
@@ -122,6 +125,7 @@ def logged_in(blueprint, token):
             return redirect(url_for("google.login"))
         if account_info.ok:
             account_info_json = account_info.json()
+            account_provider = Provider.GOOGLE
             current_app.logger.info('email= %s', account_info_json['email'])
             current_app.logger.info('account_info= %s', account_info_json)
             current_app.logger.info('access_token= %s', current_app.blueprints['google'].token)  # can not get .token["access_token"] at the time
@@ -129,6 +133,7 @@ def logged_in(blueprint, token):
         account_info = twitter.get("account/verify_credentials.json")
         if account_info.ok:
             account_info_json = account_info.json()
+            account_provider = Provider.TWITTER
             current_app.logger.info('screen_name= %s', account_info_json['screen_name'])
             current_app.logger.info('account_info= %s', account_info_json)
             current_app.logger.info('oauth_token= %s', current_app.blueprints['twitter'].token) # can not get .token['oauth_token'] at the time
@@ -136,13 +141,19 @@ def logged_in(blueprint, token):
     if user is None:
         user_add = User(
             account_id=account_info_json['id'],
+            account_provider=account_provider,
             account_info=str(account_info_json),
+            first_login=datetime.datetime.now(),
             last_login=datetime.datetime.now())
         db.session.add(user_add)
         db.session.commit()
         login_user(user_add, remember=True)
     else:
+        if user.account_provider is None: # for table change
+            user.account_provider=account_provider    
         user.account_info=str(account_info_json)
+        if user.first_login is None: # for table change
+            user.first_login=datetime.datetime.now()    
         user.last_login=datetime.datetime.now()
         db.session.commit()
         login_user(user, remember=True)
@@ -164,6 +175,34 @@ def privacy_policy():
         return render_template('legal/privacy_policy_ja.html')
     else:
         return render_template('legal/privacy_policy_en.html')
+
+class UserInfo:
+    def __init__(self, *, name, status):
+        self.name = name
+        self.status = status
+
+@main.route('/account', methods=['GET'])
+def account():
+    user=current_user._get_current_object()
+    account_provider = user.account_provider
+    account_info = ast.literal_eval(user.account_info)
+    first_login = user.first_login
+    now = datetime.datetime.now()
+    remain = Config.PERIOD_FREE_TRIAL[0] - (now - first_login).days
+    status = 'Your free trial expires in ' + str(remain) + ' days.' 
+    if account_provider == Provider.GOOGLE:
+        name_0 = account_info.get('email', '')
+        name_1 = account_info.get('name', '')
+        name = name_0 + ' - ' + name_1
+    else:
+        name_0 = account_info.get('screen_name', '')
+        name_1 = account_info.get('name', '')
+        name = name_0 + ' - ' + name_1
+    userinfo = UserInfo(
+        name = name,
+        status = status,
+    )
+    return render_template('account.html', userinfo=userinfo)
 
 @main.before_app_request
 def before_request():

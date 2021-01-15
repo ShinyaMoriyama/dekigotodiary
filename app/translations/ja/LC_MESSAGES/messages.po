@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-15 05:46+0900\n"
+"POT-Creation-Date: 2021-01-17 07:56+0900\n"
 "PO-Revision-Date: 2021-01-06 06:07+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -125,6 +125,18 @@ msgstr "日記を削除します"
 msgid "Are you sure to delete the entry?"
 msgstr "本当に削除しますか?"
 
+#: app/templates/account.html:11
+msgid "Account information"
+msgstr "アカウント情報"
+
+#: app/templates/account.html:13 app/templates/base.html:77
+msgid "Account"
+msgstr "アカウント"
+
+#: app/templates/account.html:15
+msgid "Status"
+msgstr "ステータス"
+
 #: app/templates/anonymous.html:13 app/templates/usage.html:11
 msgid "Review your life with diary"
 msgstr "日記で生活を見直しましょう"
@@ -183,12 +195,16 @@ msgid ""
 " habits and may get feedback to improve your life."
 msgstr "Dekigoto は自動でカテゴリごとのグラフを作成します。グラフであなたの行動の傾向を把握し、生活向上のためのヒントとしましょう。"
 
-#: app/templates/anonymous.html:48 app/templates/login.html:16
+#: app/templates/anonymous.html:43
+msgid "Start your 60-day free trial"
+msgstr "60日間無料体験を開始する"
+
+#: app/templates/anonymous.html:49 app/templates/login.html:16
 #: app/templates/usage.html:57
 msgid "Terms and conditions"
 msgstr "利用規約"
 
-#: app/templates/anonymous.html:49 app/templates/login.html:17
+#: app/templates/anonymous.html:50 app/templates/login.html:17
 #: app/templates/usage.html:58
 msgid "Privacy Policy"
 msgstr "プライバシーポリシー"
@@ -213,11 +229,11 @@ msgstr "グラフ"
 msgid "Usage"
 msgstr "使い方"
 
-#: app/templates/base.html:77
+#: app/templates/base.html:78
 msgid "Logout"
 msgstr "ログアウト"
 
-#: app/templates/base.html:79
+#: app/templates/base.html:80
 msgid "Login"
 msgstr "ログイン"
 
@@ -225,11 +241,15 @@ msgstr "ログイン"
 msgid "By logging in, you agree to the following documents:"
 msgstr "私は本サービスにログインすることで以下に同意します:"
 
-#: app/templates/login.html:20
+#: app/templates/login.html:19
+msgid "Your 60-day free tiral is applied automatically from the first logging in."
+msgstr "60日間無料体験は初回ログイン時から自動で適用されます"
+
+#: app/templates/login.html:21
 msgid "Login with Google"
 msgstr "Googleアカウントでログインする"
 
-#: app/templates/login.html:23
+#: app/templates/login.html:24
 msgid "Login with Twitter"
 msgstr "Twitterアカウントでログインする"
 

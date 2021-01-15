@@ -16,6 +16,7 @@
             <li><a href="{{ url_for('.terms_conditions') }}", target="_blank">{{ _('Terms and conditions') }}</a></li>
             <li><a href="{{ url_for('.privacy_policy') }}", target="_blank">{{ _('Privacy Policy') }}</a></li>
         </ul>
+        <p>{{ _('Your 60-day free tiral is applied automatically from the first logging in.') }}</p>
         <button class="google sns-btn" onclick="window.location='{{ url_for('google.login') }}';">
             <i class="fab fa-google"></i> {{ _('Login with Google') }}
         </button>
