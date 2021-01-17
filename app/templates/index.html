@@ -22,8 +22,10 @@
         }
       },
       events: {{ event_list|safe }}
-
     });
+    if (window.innerWidth < 768) {
+      calendar.setOption('contentHeight', 'auto');
+    };
     calendar.render();
   });
 
