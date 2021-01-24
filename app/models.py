@@ -39,6 +39,8 @@ class User(UserMixin, db.Model):
     account_info = db.Column(db.Text)
     first_login = db.Column(db.DateTime)
     last_login = db.Column(db.DateTime)
+    stripe_customer = db.Column(db.String(64))
+    stripe_status = db.Column(db.String(32))
     diary = db.relationship('Diary', backref='user')
 
 @login_manager.user_loader

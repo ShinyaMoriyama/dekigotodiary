@@ -39,3 +39,6 @@ class ReadDiaryForm(FlaskForm):
     note = TextAreaField(_l('Note'))
     submit = SubmitField(_l('Submit'))
     delete = SubmitField(_l('Delete'))
+
+class AccountForm(FlaskForm):
+    submit = SubmitField(_l('Payment information'))

@@ -4,17 +4,60 @@
 {{ super() }}
 <!-- BootStrap -->
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jumbotron.css') }}">
+<!-- Stripe -->
+<script src="https://js.stripe.com/v3/"></script>
+<script src="{{ url_for('static', filename='stripe/script.js') }}" defer></script>
 {% endblock %}
 
 {% block content %}
 <div class="container">
-    <h3>{{ _('Account information') }}</h3>
-    <dl>
-        <dt>{{ _('Account') }}</dt>
-        <dd>{{ userinfo.name }}</dd>
-        <dt>{{ _('Status') }}</dt>
-        <dd>{{ userinfo.status }}</dd>
-    </dl>
+    <form action="" method="post" novalidate>
+        <div>
+            {{ form.hidden_tag()}}
+            <h3>{{ _('Account information') }}</h3>
+            <dl>
+                <dt>{{ _('Account') }}</dt>
+                <dd>{{ userinfo.name }}</dd>
+                <dt>{{ _('Status') }}</dt>
+                <dd>{{ userinfo.status }}</dd>
+            </dl>
+            {% if userinfo.payinfo %}
+                {{ wtf.form_field(form.submit)}}                
+            {% else %}
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">{{ _('Add paymant information') }}</button>
+            {% endif %}
+        </div>    
+    </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">{{ _('Payment information') }}</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{ _('You add payment information and finish free trial.') }}</p>
+                <p>{{ _('If you live in Japan, consumption tax will be added.') }}</p>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" id="live_outside_of_japan">
+                      <p>I live <strong>outside</strong> of Japan.</p>
+                    </label>
+                  </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                
+                <button type="button" class="btn btn-primary" id="add_card_info">{{ _('Proceed') }}</button>
+                <div id="error-message" class="error-message"></div>
+    
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 

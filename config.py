@@ -16,7 +16,21 @@ class Config:
     BC_READ = 'RoyalBlue'
     LANGUAGES = ['en', 'ja']
     PERIOD_FREE_TRIAL = 60,
-    
+
+    # Stripe keys
+    STRIPE_API_VERSION='2020-08-27'
+    STRIPE_PUBLISHABLE_KEY='pk_test_51IAtx3DiY6soNfkvKoMpJzdUUk2x95EeuqdMvn9jFxPvHN0Fb9SUrwWV3bdSlAGNi3voY3JwIzZGuyhx7ZVGg7US00fRs4FMNB'
+    STRIPE_SECRET_KEY='sk_test_51IAtx3DiY6soNfkvT2rglxj8lfGI9fjW7JomMVwpXoNVeOl63euxjdbXjq7XrH6waUfk1GEuya3SXaIbjYVoDc3G00zhIfqasX'
+
+    # Required to run webhook
+    # See README on how to use the Stripe CLI to setup
+    STRIPE_WEBHOOK_SECRET=os.environ.get('STRIPE_WEBHOOK_SECRET') or 'whsec_sm04TvOznnMo594Qqiajju1wf55XGDrw'
+                           
+    # Stripe subscription data
+    JPY_PRICE_ID='price_1IBRRXDiY6soNfkvvbWBOI3e'
+    USD_PRICE_ID='price_1IBRRXDiY6soNfkvk4YwoI6n'
+    TAX_RATE_ID='txr_1ICBo5DiY6soNfkvIVjzJK1I'
+
     @staticmethod
     def init_app(app):
         pass
@@ -37,6 +51,7 @@ class HerokuConfig(Config):
     SSL_REDIRECT = True if os.environ.get('DYNO') else False
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+    STRIPE_WEBHOOK_SECRET='whsec_sm04TvOznnMo594Qqiajju1wf55XGDrw' # override
 
     @classmethod
     def init_app(cls, app):

@@ -17,7 +17,6 @@ def plot_drink():
     df = df.set_index(df['date'])
     df_1 = df.drop(columns=['date', 'id', 'user_id']).resample(rule='MS').count()
     df_2 = df.drop(columns=['date', 'id', 'user_id'])['amt_of_drink'].sort_index()[:30]
-    print(df_2)
 
     graphs = [
         dict(

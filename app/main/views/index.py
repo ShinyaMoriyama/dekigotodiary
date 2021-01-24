@@ -9,6 +9,7 @@ from flask_login import current_user, login_user, logout_user
 from flask import g
 from flask_babel import get_locale
 from .. import main
+from ..forms.forms import AccountForm
 from ...models import Category, Diary, User, Provider
 from ... import db
 
@@ -177,19 +178,27 @@ def privacy_policy():
         return render_template('legal/privacy_policy_en.html')
 
 class UserInfo:
-    def __init__(self, *, name, status):
+    def __init__(self, *, name, status, payinfo):
         self.name = name
         self.status = status
+        self.payinfo = payinfo
 
-@main.route('/account', methods=['GET'])
+@main.route('/account', methods=['GET', 'POST'])
 def account():
+    form = AccountForm()
+
     user=current_user._get_current_object()
     account_provider = user.account_provider
     account_info = ast.literal_eval(user.account_info)
     first_login = user.first_login
     now = datetime.datetime.now()
-    remain = Config.PERIOD_FREE_TRIAL[0] - (now - first_login).days
-    status = 'Your free trial expires in ' + str(remain) + ' days.' 
+    if user.stripe_customer is None:
+        remain = Config.PERIOD_FREE_TRIAL[0] - (now - first_login).days
+        status = 'Your free trial expires in ' + str(remain) + ' days.'
+        payinfo = False
+    else:
+        status = user.stripe_status
+        payinfo = True
     if account_provider == Provider.GOOGLE:
         name_0 = account_info.get('email', '')
         name_1 = account_info.get('name', '')
@@ -201,8 +210,16 @@ def account():
     userinfo = UserInfo(
         name = name,
         status = status,
+        payinfo = payinfo,
     )
-    return render_template('account.html', userinfo=userinfo)
+
+    if form.is_submitted() and form.submit.data:
+        return redirect(url_for('.customer_portal'))
+
+    return render_template(
+        'account.html',
+        userinfo=userinfo,
+        form=form)
 
 @main.before_app_request
 def before_request():
@@ -225,6 +242,7 @@ def before_request():
         'main.usage',
         'main.terms_conditions',
         'main.privacy_policy',
+        'main.webhook_received',
         ]:
         return
     if current_user.is_authenticated:
