@@ -226,8 +226,7 @@ def before_request():
     '''
     triggered before executing all view functions
     '''
-    current_app.logger.info('request.endpoint= %s', request.endpoint)
-    
+
     g.locale = str(get_locale())
 
     if request.endpoint in [

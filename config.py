@@ -41,7 +41,6 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
 
-
 class TestingConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or \
@@ -51,7 +50,6 @@ class HerokuConfig(Config):
     SSL_REDIRECT = True if os.environ.get('DYNO') else False
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'data.sqlite')
-    STRIPE_WEBHOOK_SECRET='whsec_sm04TvOznnMo594Qqiajju1wf55XGDrw' # override
 
     @classmethod
     def init_app(cls, app):
@@ -64,10 +62,17 @@ class HerokuConfig(Config):
 
         # log to stderr
         import logging
-        from logging import StreamHandler
-        file_handler = StreamHandler()
-        file_handler.setLevel(logging.INFO)
-        app.logger.addHandler(file_handler)
+        app.logger.setLevel(logging.DEBUG) # change level from WARNING to DEBUG
+
+        from flask import logging as flog
+        flog.default_handler.setFormatter(logging.Formatter("%(levelname)s in %(module)s: %(message)s"))
+
+        # from logging import StreamHandler
+        # file_handler = StreamHandler()
+        # file_handler.setLevel(logging.INFO)
+        # formatter = logging.Formatter('%(levelname)s in %(module)s: %(message)s')
+        # file_handler.setFormatter(formatter)
+        # app.logger.addHandler(file_handler)
 
 config = {
     'development': DevelopmentConfig,
