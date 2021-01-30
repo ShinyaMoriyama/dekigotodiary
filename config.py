@@ -3,7 +3,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
+    SECRET_KEY = os.environ.get('CSRF_SECRET_KEY') or 'hard to guess string'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID')
     GOOGLE_CLIENT_SECRET = os.environ.get('GOOGLE_CLIENT_SECRET')
@@ -17,19 +17,27 @@ class Config:
     LANGUAGES = ['en', 'ja']
     PERIOD_FREE_TRIAL = 60,
 
-    # Stripe keys
-    STRIPE_API_VERSION='2020-08-27'
-    STRIPE_PUBLISHABLE_KEY='pk_test_51IAtx3DiY6soNfkvKoMpJzdUUk2x95EeuqdMvn9jFxPvHN0Fb9SUrwWV3bdSlAGNi3voY3JwIzZGuyhx7ZVGg7US00fRs4FMNB'
-    STRIPE_SECRET_KEY='sk_test_51IAtx3DiY6soNfkvT2rglxj8lfGI9fjW7JomMVwpXoNVeOl63euxjdbXjq7XrH6waUfk1GEuya3SXaIbjYVoDc3G00zhIfqasX'
-
-    # Required to run webhook
-    # See README on how to use the Stripe CLI to setup
-    STRIPE_WEBHOOK_SECRET=os.environ.get('STRIPE_WEBHOOK_SECRET') or 'whsec_sm04TvOznnMo594Qqiajju1wf55XGDrw'
-                           
-    # Stripe subscription data
-    JPY_PRICE_ID='price_1IBRRXDiY6soNfkvvbWBOI3e'
-    USD_PRICE_ID='price_1IBRRXDiY6soNfkvk4YwoI6n'
-    TAX_RATE_ID='txr_1ICBo5DiY6soNfkvIVjzJK1I'
+    STRIPE_LIVE = os.environ.get('STRIPE_LIVE')
+    STRIPE_API_VERSION=os.environ.get('STRIPE_API_VERSION')
+    if os.environ.get('STRIPE_LIVE') == '1':
+        STRIPE_WEBHOOK_SECRET = os.environ.get('LIVE_STRIPE_WEBHOOK_SECRET')
+        STRIPE_SECRET_KEY = os.environ.get('LIVE_STRIPE_SECRET_KEY')
+        STRIPE_PUBLISHABLE_KEY = os.environ.get('LIVE_PUBLISHABLE_KEY')
+        STRIPE_SECRET_KEY = os.environ.get('LIVE_STRIPE_SECRET_KEY')
+        JPY_PRICE_ID = os.environ.get('LIVE_JPY_PRICE_ID')
+        USD_PRICE_ID = os.environ.get('LIVE_USD_PRICE_ID')
+        TAX_RATE_ID = os.environ.get('LIVE_TAX_RATE_ID')
+    else:
+        if os.environ.get('STRIPE_WEBHOOK_CLI') == '1':
+            STRIPE_WEBHOOK_SECRET = os.environ.get('TEST_STRIPE_WEBHOOK_SECRET_CLI')
+        else:
+            STRIPE_WEBHOOK_SECRET = os.environ.get('TEST_STRIPE_WEBHOOK_SECRET')
+        STRIPE_SECRET_KEY = os.environ.get('TEST_LOCAL_STRIPE_SECRET_KEY')
+        STRIPE_PUBLISHABLE_KEY = os.environ.get('TEST_STRIPE_PUBLISHABLE_KEY')
+        STRIPE_SECRET_KEY = os.environ.get('TEST_STRIPE_SECRET_KEY')
+        JPY_PRICE_ID = os.environ.get('TEST_JPY_PRICE_ID')
+        USD_PRICE_ID = os.environ.get('TEST_USD_PRICE_ID')
+        TAX_RATE_ID = os.environ.get('TEST_TAX_RATE_ID')
 
     @staticmethod
     def init_app(app):

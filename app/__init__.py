@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_dance.contrib.google import make_google_blueprint
@@ -16,6 +17,12 @@ def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
+    
+    app.logger.info('FLASK_CONFIG %s', os.getenv('FLASK_CONFIG'))
+    app.logger.info('FLASK_DEBUG %s', os.getenv('FLASK_DEBUG'))
+
+    stripe_mode = 'LIVE!!' if app.config['STRIPE_LIVE'] == '1' else 'TEST'
+    app.logger.info('@@@ Stripe mode @@@ is %s', stripe_mode)
 
     bootstrap.init_app(app)
     db.init_app(app)

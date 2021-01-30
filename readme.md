@@ -7,15 +7,24 @@ heroku config
 ```
 ### Make sure that the variables are like below:
 ```
-DATABASE_URL:          (omitted)
-FLASK_APP:             mydiary.py
-FLASK_CONFIG:          heroku
-FLASK_DEBUG:           0
-GOOGLE_CLIENT_ID:      (omitted)
-GOOGLE_CLIENT_SECRET:  (omitted)
-TWITTER_API_KEY:       (omitted)
-TWITTER_API_SECRET:    (omitted)
-STRIPE_WEBHOOK_SECRET: (omitted)
+CSRF_SECRET_KEY:              (omitted)
+DATABASE_URL:                 (omitted)
+FLASK_APP:                    mydiary.py
+FLASK_CONFIG:                 heroku
+FLASK_DEBUG:                  0
+GOOGLE_CLIENT_ID:             (omitted)
+GOOGLE_CLIENT_SECRET:         (omitted)
+HEROKU_STRIPE_WEBHOOK_SECRET: (omitted)
+LIVE_JPY_PRICE_ID:            (omitted)
+LIVE_STRIPE_PUBLISHABLE_KEY:  (omitted)
+LIVE_STRIPE_SECRET_KEY:       (omitted)
+LIVE_STRIPE_WEBHOOK_SECRET:   (omitted)
+LIVE_TAX_RATE_ID:             (omitted)
+LIVE_USD_PRICE_ID:            (omitted)
+STRIPE_API_VERSION:           (omitted)
+STRIPE_LIVE:                  1
+TWITTER_API_KEY:              (omitted)
+TWITTER_API_SECRET:           (omitted)
 ```
 If you add or change the variable, set it as below:
 ```
