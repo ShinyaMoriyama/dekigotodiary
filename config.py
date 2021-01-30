@@ -22,8 +22,7 @@ class Config:
     if os.environ.get('STRIPE_LIVE') == '1':
         STRIPE_WEBHOOK_SECRET = os.environ.get('LIVE_STRIPE_WEBHOOK_SECRET')
         STRIPE_SECRET_KEY = os.environ.get('LIVE_STRIPE_SECRET_KEY')
-        STRIPE_PUBLISHABLE_KEY = os.environ.get('LIVE_PUBLISHABLE_KEY')
-        STRIPE_SECRET_KEY = os.environ.get('LIVE_STRIPE_SECRET_KEY')
+        STRIPE_PUBLISHABLE_KEY = os.environ.get('LIVE_STRIPE_PUBLISHABLE_KEY')
         JPY_PRICE_ID = os.environ.get('LIVE_JPY_PRICE_ID')
         USD_PRICE_ID = os.environ.get('LIVE_USD_PRICE_ID')
         TAX_RATE_ID = os.environ.get('LIVE_TAX_RATE_ID')
@@ -32,9 +31,8 @@ class Config:
             STRIPE_WEBHOOK_SECRET = os.environ.get('TEST_STRIPE_WEBHOOK_SECRET_CLI')
         else:
             STRIPE_WEBHOOK_SECRET = os.environ.get('TEST_STRIPE_WEBHOOK_SECRET')
-        STRIPE_SECRET_KEY = os.environ.get('TEST_LOCAL_STRIPE_SECRET_KEY')
-        STRIPE_PUBLISHABLE_KEY = os.environ.get('TEST_STRIPE_PUBLISHABLE_KEY')
         STRIPE_SECRET_KEY = os.environ.get('TEST_STRIPE_SECRET_KEY')
+        STRIPE_PUBLISHABLE_KEY = os.environ.get('TEST_STRIPE_PUBLISHABLE_KEY')
         JPY_PRICE_ID = os.environ.get('TEST_JPY_PRICE_ID')
         USD_PRICE_ID = os.environ.get('TEST_USD_PRICE_ID')
         TAX_RATE_ID = os.environ.get('TEST_TAX_RATE_ID')
