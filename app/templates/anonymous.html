@@ -46,7 +46,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <p><a class="btn btn-default btn-lg btn-block" href="{{ url_for('.usage') }}" role="button">Learn more &raquo;</a></p>
+            <p><a class="btn btn-default btn-lg btn-block" href="{{ url_for('.usage') }}" role="button">{{ _('Learn more') }} &raquo;</a></p>
             <p><a class="btn btn-primary btn-lg btn-block" href="{{ url_for('.login') }}" role="button">{{ _('Start your 60-day free trial') }}</a></p>
         </div>
         <div class="col-md-4"></div>    
@@ -56,6 +56,7 @@
     
     <footer>
         <p>&copy; 2020 Shinya Moriyama</p>
+        <p>{{ _('Contact information') }}: spt.dekigoto@gmail.com</p>
         <p><a href="{{ url_for('.terms_conditions') }}">{{ _('Terms and conditions') }}</a></p>
         <p><a href="{{ url_for('.privacy_policy') }}">{{ _('Privacy Policy') }}</a></p>
     </footer>

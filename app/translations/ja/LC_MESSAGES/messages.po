@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-17 07:56+0900\n"
+"POT-Creation-Date: 2021-01-31 11:10+0900\n"
 "PO-Revision-Date: 2021-01-06 06:07+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -32,13 +32,13 @@ msgstr "フリー日記"
 msgid "Sleep Diary"
 msgstr "睡眠日記"
 
-#: app/main/forms/forms.py:9 app/templates/anonymous.html:33
+#: app/main/forms/forms.py:9 app/templates/anonymous.html:34
 #: app/templates/base.html:50 app/templates/base.html:59
 #: app/templates/base.html:68
 msgid "Drinking Diary"
 msgstr "飲酒日記"
 
-#: app/main/forms/forms.py:9 app/templates/anonymous.html:34
+#: app/main/forms/forms.py:9 app/templates/anonymous.html:35
 #: app/templates/base.html:51 app/templates/base.html:60
 #: app/templates/base.html:69
 msgid "Reading Diary"
@@ -78,8 +78,8 @@ msgstr "終了"
 msgid "Sleep Condition"
 msgstr "睡眠の質"
 
-#: app/main/forms/forms.py:28 app/main/views/plot/plot_drink.py:53
-#: app/main/views/plot/plot_drink.py:55
+#: app/main/forms/forms.py:28 app/main/views/plot/plot_drink.py:52
+#: app/main/views/plot/plot_drink.py:54
 msgid "The amount of pure alcohol (g)"
 msgstr "純アルコール量 (g)"
 
@@ -91,17 +91,21 @@ msgstr "タイトル取得"
 msgid "Title"
 msgstr "タイトル"
 
-#: app/main/views/plot/plot_drink.py:33 app/main/views/plot/plot_free.py:31
+#: app/main/forms/forms.py:44
+msgid "Payment information (Stripe)"
+msgstr "支払情報を参照する(Stripe)"
+
+#: app/main/views/plot/plot_drink.py:32 app/main/views/plot/plot_free.py:31
 #: app/main/views/plot/plot_read.py:31 app/main/views/plot/plot_sleep.py:32
 msgid "The number of diaries by month"
 msgstr "月ごとの日記の数"
 
-#: app/main/views/plot/plot_drink.py:39 app/main/views/plot/plot_free.py:37
+#: app/main/views/plot/plot_drink.py:38 app/main/views/plot/plot_free.py:37
 #: app/main/views/plot/plot_read.py:37 app/main/views/plot/plot_sleep.py:38
 msgid "The number of diaries"
 msgstr "日記の数"
 
-#: app/main/views/plot/plot_drink.py:53
+#: app/main/views/plot/plot_drink.py:52
 msgid "How much alcohol do you drink these days?"
 msgstr "最近どれくらいアルコールを摂取しているか?"
 
@@ -125,17 +129,55 @@ msgstr "日記を削除します"
 msgid "Are you sure to delete the entry?"
 msgstr "本当に削除しますか?"
 
-#: app/templates/account.html:11
+#: app/templates/_delete_diary.html:17 app/templates/account.html:61
+msgid "Cancel"
+msgstr "戻る"
+
+#: app/templates/account.html:17
 msgid "Account information"
 msgstr "アカウント情報"
 
-#: app/templates/account.html:13 app/templates/base.html:77
+#: app/templates/account.html:19 app/templates/base.html:77
 msgid "Account"
 msgstr "アカウント"
 
-#: app/templates/account.html:15
+#: app/templates/account.html:21
 msgid "Status"
 msgstr "ステータス"
+
+#: app/templates/account.html:25
+msgid "Your free trial expires in "
+msgstr "無料体験は残り "
+
+#: app/templates/account.html:25
+msgid " days"
+msgstr " 日間です"
+
+#: app/templates/account.html:31 app/templates/account.html:44
+msgid "Add paymant information"
+msgstr "支払情報の登録"
+
+#: app/templates/account.html:47
+msgid "You add payment information and finish free trial."
+msgstr "支払情報を登録し無料体験を終了します。"
+
+#: app/templates/account.html:48
+msgid ""
+"Your payment information is collected by Stripe, the payment platform "
+"service. Dekigoto does not store the information you provide to Stripe."
+msgstr "支払情報は決済サービスStripeが収集し、入力された情報をDekigotoが保管することはありません。"
+
+#: app/templates/account.html:49
+msgid "If you live in Japan, consumption tax will be added."
+msgstr "日本に在住の場合、消費税が適用されます。"
+
+#: app/templates/account.html:53
+msgid "I live <strong>outside</strong> of Japan."
+msgstr "私は日本<strong>以外</strong>に住んでいます"
+
+#: app/templates/account.html:63
+msgid "Proceed"
+msgstr "進む"
 
 #: app/templates/anonymous.html:13 app/templates/usage.html:11
 msgid "Review your life with diary"
@@ -165,47 +207,55 @@ msgstr ""
 "Dekigoto "
 "はクラウドベースの日記サービスです。SNSのアカウントでログインできるため、煩わしいユーザー情報登録は不要でどのデバイスからも利用できます。"
 
-#: app/templates/anonymous.html:27
+#: app/templates/anonymous.html:28
 msgid "Categorized diaries"
 msgstr "カテゴリ分けの日記"
 
-#: app/templates/anonymous.html:29 app/templates/usage.html:18
+#: app/templates/anonymous.html:30 app/templates/usage.html:18
 msgid ""
 "Diaries in Dekigoto consist of several categories. This categorized "
 "approach has the purpose that you can easily continue taking diaries as "
 "your habit."
 msgstr "Dekigoto の日記はいくつかのカテゴリに分かれます。カテゴリ分けにより、日記がより継続しやすくなるはずです。"
 
-#: app/templates/anonymous.html:31 app/templates/plot/plot_free.html:3
+#: app/templates/anonymous.html:32 app/templates/plot/plot_free.html:3
 msgid "Free diary"
 msgstr "フリー日記"
 
-#: app/templates/anonymous.html:32 app/templates/plot/plot_sleep.html:3
+#: app/templates/anonymous.html:33 app/templates/plot/plot_sleep.html:3
 msgid "Sleep diary"
 msgstr "睡眠日記"
 
-#: app/templates/anonymous.html:38
+#: app/templates/anonymous.html:40
 msgid "Visualization"
 msgstr "グラフによる可視化"
 
-#: app/templates/anonymous.html:40 app/templates/usage.html:27
+#: app/templates/anonymous.html:42 app/templates/usage.html:27
 msgid ""
 "Dekigoto automaticaly creates summary charts based on the categorized "
 "diaries which you provided. From these charts, you can see trends of your"
 " habits and may get feedback to improve your life."
 msgstr "Dekigoto は自動でカテゴリごとのグラフを作成します。グラフであなたの行動の傾向を把握し、生活向上のためのヒントとしましょう。"
 
-#: app/templates/anonymous.html:43
+#: app/templates/anonymous.html:49
+msgid "Learn more"
+msgstr "くわしく見る"
+
+#: app/templates/anonymous.html:50
 msgid "Start your 60-day free trial"
 msgstr "60日間無料体験を開始する"
 
-#: app/templates/anonymous.html:49 app/templates/login.html:16
-#: app/templates/usage.html:57
-msgid "Terms and conditions"
-msgstr "利用規約"
+#: app/templates/anonymous.html:59 app/templates/usage.html:57
+msgid "Contact information"
+msgstr "問い合わせ連絡先"
 
-#: app/templates/anonymous.html:50 app/templates/login.html:17
+#: app/templates/anonymous.html:60 app/templates/login.html:16
 #: app/templates/usage.html:58
+msgid "Terms and conditions"
+msgstr "利用規約および特定商取引法に基づく表記"
+
+#: app/templates/anonymous.html:61 app/templates/login.html:17
+#: app/templates/usage.html:59
 msgid "Privacy Policy"
 msgstr "プライバシーポリシー"
 

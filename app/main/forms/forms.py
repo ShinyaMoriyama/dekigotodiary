@@ -41,4 +41,4 @@ class ReadDiaryForm(FlaskForm):
     delete = SubmitField(_l('Delete'))
 
 class AccountForm(FlaskForm):
-    submit = SubmitField(_l('Payment information'))
+    submit = SubmitField(_l('Payment information (Stripe)'))

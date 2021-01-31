@@ -194,7 +194,7 @@ def account():
     now = datetime.datetime.now()
     if user.stripe_customer is None:
         remain = Config.PERIOD_FREE_TRIAL[0] - (now - first_login).days
-        status = 'Your free trial expires in ' + str(remain) + ' days.'
+        status = str(remain)
         payinfo = False
     else:
         status = user.stripe_status

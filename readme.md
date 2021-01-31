@@ -108,3 +108,9 @@ flask translate compile
 [Terms and conditions](https://www.termsandconditionsgenerator.com/live.php?token=CcU4nZarxfTNRPxbtVBqPrCSQgRv0CPM)
 
 [Privacy policies](https://www.privacypolicygenerator.info/live.php?token=Z7wXCepBT1BYQurT4JRTcGASnY8UrhAV)
+
+[Webサイトの利用規約](https://kiyaku.jp/)
+
+## Keep application running on Heroku
+
+[UptimeRobot](https://uptimerobot.com/)
