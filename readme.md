@@ -114,3 +114,11 @@ flask translate compile
 ## Keep application running on Heroku
 
 [UptimeRobot](https://uptimerobot.com/)
+
+## Web scraping
+
+[Choose the Best Python Web Scraping Library for Your Application](https://towardsdatascience.com/choose-the-best-python-web-scraping-library-for-your-application-91a68bc81c4f)
+
+## Flask logger
+
+[Change the format of default_handler in Flask](https://stackoverflow.com/questions/55357513/how-to-change-flask-logging-debug-screen-output-format)
