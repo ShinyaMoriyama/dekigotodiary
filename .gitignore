@@ -12,3 +12,7 @@ venv
 
 # DS file
 .DS_Store
+
+# SQLite database file
+data-dev.sqlite
+data.sqlite
