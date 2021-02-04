@@ -1,8 +1,38 @@
-# Deploy to Heroku remote
+# Run locally
+Clone repository in your work directory
+```
+git clone https://github.com/ShinyaMoriyama/dekigotodiary
+```
+Create .env file and edit it to set environment valiables by running app
+```
+cp .env.example .env
+```
+Create virtual environment so that you can install packages by repository 
+```
+python3 -m venv venv
+source venv/bin/activate
+```
+Install packages
+```
+pip install -r requirements/common.txt
+```
+Export environment varialbes which are needed to run flask
+```
+export FLASK_APP=mydiary.py
+```
+Run application
+```
+flask run
+```
+Check the URL if the top page shows correctly
+
+http://127.0.0.1:5000/
+
+# Deploy to Heroku
 
 ### Check heroku variables by cli
 ```
-cd mydiary
+cd dekigotodiary
 heroku config
 ```
 ### Make sure that the variables are like below:
@@ -111,14 +141,22 @@ flask translate compile
 
 [Webサイトの利用規約](https://kiyaku.jp/)
 
+[特定商取引法ガイド ](https://www.no-trouble.caa.go.jp/what/mailorder/)
+
 ## Keep application running on Heroku
 
 [UptimeRobot](https://uptimerobot.com/)
 
-## Web scraping
-
-[Choose the Best Python Web Scraping Library for Your Application](https://towardsdatascience.com/choose-the-best-python-web-scraping-library-for-your-application-91a68bc81c4f)
-
 ## Flask logger
 
 [Change the format of default_handler in Flask](https://stackoverflow.com/questions/55357513/how-to-change-flask-logging-debug-screen-output-format)
+
+## Stripe
+
+[Create subscriptions with Checkout](https://stripe.com/docs/billing/subscriptions/checkout)
+
+[GitHub](https://github.com/stripe-samples/checkout-single-subscription)
+
+## Share the URL with Twitter
+
+[Cards with Twitter](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started)
