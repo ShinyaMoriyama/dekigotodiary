@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<!-- BootStrap -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jumbotron.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h3>{{ _('Pricing') }}</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-info">
+                        <div class=panel-heading>
+                            <h3 class=panel-title>{{ _('60-day Free Trial') }}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>{{ _('No payment information is required') }}</li>
+                                <li>{{ _('All features are available') }}</li>
+                                <li>{{ _('You can try for free in 60 days') }}</li>
+                            </ul>
+                            <p class="text-center"><strong>{{ _('Free') }}</strong> {{ _('for 60 days') }}</p>
+                        </div>
+                    </div>    
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-primary">
+                        <div class=panel-heading>
+                            <h3 class=panel-title>{{ _('Standard Plan') }}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>{{ _('Adding payment information finishes 60-day Free Trial at the moment') }}</li>
+                                <li>{{ _('All features are available') }}</li>
+                                <li>{{ _('You can keep diaries with no limitations') }}</li>
+                            </ul>                            
+                            <p class="text-center"><strong>{{ _('2.99') }}</strong>{{ _('$ /mo.') }}</p>
+                            <ul>
+                                <p>{{ _('If you live in Japan, consumption tax will be added.') }}</p>
+                            </ul>
+                        </div>
+                    </div>    
+                </div>
+                {% if current_user.is_authenticated %}
+                {% else %}
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <p><a class="btn btn-primary btn-lg btn-block" href="{{ url_for('.login') }}" role="button">{{ _('Start your 60-day free trial') }}</a></p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2020 Shinya Moriyama</p>
+        <p>{{ _('Contact information') }}: spt.dekigoto@gmail.com</p>
+        <p><a href="{{ url_for('.terms_conditions') }}">{{ _('Terms and conditions') }}</a></p>
+        <p><a href="{{ url_for('.privacy_policy') }}">{{ _('Privacy Policy') }}</a></p>
+    </footer>
+
+</div>
+{% endblock %}
+

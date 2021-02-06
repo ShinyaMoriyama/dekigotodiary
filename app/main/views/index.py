@@ -163,6 +163,10 @@ def logged_in(blueprint, token):
 def usage():
     return render_template('usage.html')
 
+@main.route('/pricing', methods=['GET'])
+def pricing():
+    return render_template('pricing.html')
+
 @main.route('/terms_conditions', methods=['GET'])
 def terms_conditions():
     if g.locale == 'ja':
@@ -239,6 +243,7 @@ def before_request():
         'google.authorized',
         'twitter.authorized',
         'main.usage',
+        'main.pricing',
         'main.terms_conditions',
         'main.privacy_policy',
         'main.webhook_received',

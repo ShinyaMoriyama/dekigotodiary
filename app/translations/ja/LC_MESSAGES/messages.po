@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-31 11:10+0900\n"
+"POT-Creation-Date: 2021-02-06 11:12+0900\n"
 "PO-Revision-Date: 2021-01-06 06:07+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -22,25 +22,25 @@ msgstr ""
 msgid "Category"
 msgstr "カテゴリ"
 
-#: app/main/forms/forms.py:9 app/templates/base.html:48
-#: app/templates/base.html:57 app/templates/base.html:66
+#: app/main/forms/forms.py:9 app/templates/base.html:52
+#: app/templates/base.html:61 app/templates/base.html:70
 msgid "Free Diary"
 msgstr "フリー日記"
 
-#: app/main/forms/forms.py:9 app/templates/base.html:49
-#: app/templates/base.html:58 app/templates/base.html:67
+#: app/main/forms/forms.py:9 app/templates/base.html:53
+#: app/templates/base.html:62 app/templates/base.html:71
 msgid "Sleep Diary"
 msgstr "睡眠日記"
 
 #: app/main/forms/forms.py:9 app/templates/anonymous.html:34
-#: app/templates/base.html:50 app/templates/base.html:59
-#: app/templates/base.html:68
+#: app/templates/base.html:54 app/templates/base.html:63
+#: app/templates/base.html:72
 msgid "Drinking Diary"
 msgstr "飲酒日記"
 
 #: app/main/forms/forms.py:9 app/templates/anonymous.html:35
-#: app/templates/base.html:51 app/templates/base.html:60
-#: app/templates/base.html:69
+#: app/templates/base.html:55 app/templates/base.html:64
+#: app/templates/base.html:73
 msgid "Reading Diary"
 msgstr "読書日記"
 
@@ -137,7 +137,7 @@ msgstr "戻る"
 msgid "Account information"
 msgstr "アカウント情報"
 
-#: app/templates/account.html:19 app/templates/base.html:77
+#: app/templates/account.html:19 app/templates/base.html:85
 msgid "Account"
 msgstr "アカウント"
 
@@ -167,7 +167,7 @@ msgid ""
 "service. Dekigoto does not store the information you provide to Stripe."
 msgstr "支払情報は決済サービスStripeが収集し、入力された情報をDekigotoが保管することはありません。"
 
-#: app/templates/account.html:49
+#: app/templates/account.html:49 app/templates/pricing.html:46
 msgid "If you live in Japan, consumption tax will be added."
 msgstr "日本に在住の場合、消費税が適用されます。"
 
@@ -237,53 +237,59 @@ msgid ""
 " habits and may get feedback to improve your life."
 msgstr "Dekigoto は自動でカテゴリごとのグラフを作成します。グラフであなたの行動の傾向を把握し、生活向上のためのヒントとしましょう。"
 
-#: app/templates/anonymous.html:49
+#: app/templates/anonymous.html:48
 msgid "Learn more"
 msgstr "くわしく見る"
 
-#: app/templates/anonymous.html:50
+#: app/templates/anonymous.html:49 app/templates/base.html:81
+#: app/templates/pricing.html:12
+msgid "Pricing"
+msgstr "利用料金"
+
+#: app/templates/anonymous.html:50 app/templates/pricing.html:55
 msgid "Start your 60-day free trial"
 msgstr "60日間無料体験を開始する"
 
-#: app/templates/anonymous.html:59 app/templates/usage.html:57
+#: app/templates/anonymous.html:58 app/templates/pricing.html:65
+#: app/templates/usage.html:57
 msgid "Contact information"
 msgstr "問い合わせ連絡先"
 
-#: app/templates/anonymous.html:60 app/templates/login.html:16
-#: app/templates/usage.html:58
+#: app/templates/anonymous.html:59 app/templates/login.html:16
+#: app/templates/pricing.html:66 app/templates/usage.html:58
 msgid "Terms and conditions"
 msgstr "利用規約および特定商取引法に基づく表記"
 
-#: app/templates/anonymous.html:61 app/templates/login.html:17
-#: app/templates/usage.html:59
+#: app/templates/anonymous.html:60 app/templates/login.html:17
+#: app/templates/pricing.html:67 app/templates/usage.html:59
 msgid "Privacy Policy"
 msgstr "プライバシーポリシー"
 
-#: app/templates/base.html:45
+#: app/templates/base.html:49
 msgid "View"
 msgstr "ビュー"
 
-#: app/templates/base.html:47
+#: app/templates/base.html:51
 msgid "All"
 msgstr "すべて"
 
-#: app/templates/base.html:55
+#: app/templates/base.html:59
 msgid "Entry"
 msgstr "登録"
 
-#: app/templates/base.html:64
+#: app/templates/base.html:68
 msgid "Plot"
 msgstr "グラフ"
 
-#: app/templates/base.html:75 app/templates/usage.html:15
+#: app/templates/base.html:83 app/templates/usage.html:15
 msgid "Usage"
 msgstr "使い方"
 
-#: app/templates/base.html:78
+#: app/templates/base.html:86
 msgid "Logout"
 msgstr "ログアウト"
 
-#: app/templates/base.html:80
+#: app/templates/base.html:88
 msgid "Login"
 msgstr "ログイン"
 
@@ -302,6 +308,50 @@ msgstr "Googleアカウントでログインする"
 #: app/templates/login.html:24
 msgid "Login with Twitter"
 msgstr "Twitterアカウントでログインする"
+
+#: app/templates/pricing.html:21
+msgid "60-day Free Trial"
+msgstr "60日間無料体験"
+
+#: app/templates/pricing.html:25
+msgid "No payment information is required"
+msgstr "支払情報の登録は不要です"
+
+#: app/templates/pricing.html:26 app/templates/pricing.html:41
+msgid "All features are available"
+msgstr "すべての機能が利用できます"
+
+#: app/templates/pricing.html:27
+msgid "You can try for free in 60 days"
+msgstr "60日間無料で体験できます"
+
+#: app/templates/pricing.html:29
+msgid "Free"
+msgstr "無料"
+
+#: app/templates/pricing.html:29
+msgid "for 60 days"
+msgstr " /60日間"
+
+#: app/templates/pricing.html:36
+msgid "Standard Plan"
+msgstr "スタンダードプラン"
+
+#: app/templates/pricing.html:40
+msgid "Adding payment information finishes 60-day Free Trial at the moment"
+msgstr "支払情報を登録した時点で無料体験は終了します"
+
+#: app/templates/pricing.html:42
+msgid "You can keep diaries with no limitations"
+msgstr "制限なしで日記を続けられます"
+
+#: app/templates/pricing.html:44
+msgid "2.99"
+msgstr "290"
+
+#: app/templates/pricing.html:44
+msgid "$ /mo."
+msgstr "円 /月"
 
 #: app/templates/usage.html:17
 msgid "Create diaries"
@@ -402,4 +452,40 @@ msgstr "読書日記"
 
 #~ msgid "%d/%m/%Y"
 #~ msgstr "%Y-%m-%d"
+
+#~ msgid "Payment information is required when finishing the plan"
+#~ msgstr "支払情報を登録し無料体験を終了します。"
+
+#~ msgid "60-day Free Trial"
+#~ msgstr "60日間無料体験"
+
+#~ msgid "No payment information is required"
+#~ msgstr "支払情報の登録は不要です"
+
+#~ msgid "All features are available"
+#~ msgstr "すべての機能が利用可能です"
+
+#~ msgid "You can try for free in 60 days"
+#~ msgstr "60日間無料で体験できます"
+
+#~ msgid "Free"
+#~ msgstr "無料"
+
+#~ msgid "for 60 days"
+#~ msgstr " /60日間"
+
+#~ msgid "Standard Plan"
+#~ msgstr "スタンダードプラン"
+
+#~ msgid "Adding payment information finishes 60-day Free Trial at the moment"
+#~ msgstr "支払情報を登録した時点で無料体験は終了します"
+
+#~ msgid "You can keep diaries with no limitations"
+#~ msgstr "制限なしで日記を続けられます"
+
+#~ msgid "2.99"
+#~ msgstr "290"
+
+#~ msgid "$ /mo."
+#~ msgstr "円 /月"
 
