@@ -40,7 +40,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url_for('.index') }}">Dekigoto</a>
+            <a class="navbar-brand" href="{{ url_for('.index') }}" onclick="return stopIfChangeValue()">Dekigoto</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             {% if current_user.is_authenticated %}
@@ -49,28 +49,28 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ _('View') }}</a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url_for('.index') }}">{{ _('All') }}</a></li>
-                        <li><a href="{{ url_for('.index', view='FREE') }}">{{ _('Free Diary') }}</a></li>
-                        <li><a href="{{ url_for('.index', view='SLEEP') }}">{{ _('Sleep Diary') }}</a></li>
-                        <li><a href="{{ url_for('.index', view='DRINK') }}">{{ _('Drinking Diary') }}</a></li>
-                        <li><a href="{{ url_for('.index', view='READ') }}">{{ _('Reading Diary') }}</a></li>
+                        <li><a href="{{ url_for('.index', view='FREE') }}" onclick="return stopIfChangeValue()">{{ _('Free Diary') }}</a></li>
+                        <li><a href="{{ url_for('.index', view='SLEEP') }}" onclick="return stopIfChangeValue()">{{ _('Sleep Diary') }}</a></li>
+                        <li><a href="{{ url_for('.index', view='DRINK') }}" onclick="return stopIfChangeValue()">{{ _('Drinking Diary') }}</a></li>
+                        <li><a href="{{ url_for('.index', view='READ') }}" onclick="return stopIfChangeValue()">{{ _('Reading Diary') }}</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ _('Entry') }}</a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('.diary_free_new') }}">{{ _('Free Diary') }}</a></li>
-                        <li><a href="{{ url_for('.diary_sleep_new') }}">{{ _('Sleep Diary') }}</a></li>
-                        <li><a href="{{ url_for('.diary_drink_new') }}">{{ _('Drinking Diary') }}</a></li>
-                        <li><a href="{{ url_for('.diary_read_new') }}">{{ _('Reading Diary') }}</a></li>
+                        <li><a href="{{ url_for('.diary_free_new') }}" onclick="return stopIfChangeValue()">{{ _('Free Diary') }}</a></li>
+                        <li><a href="{{ url_for('.diary_sleep_new') }}" onclick="return stopIfChangeValue()">{{ _('Sleep Diary') }}</a></li>
+                        <li><a href="{{ url_for('.diary_drink_new') }}" onclick="return stopIfChangeValue()">{{ _('Drinking Diary') }}</a></li>
+                        <li><a href="{{ url_for('.diary_read_new') }}" onclick="return stopIfChangeValue()">{{ _('Reading Diary') }}</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ _('Plot') }}</a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('.plot_free') }}">{{ _('Free Diary') }}</a></li>
-                        <li><a href="{{ url_for('.plot_sleep') }}">{{ _('Sleep Diary') }}</a></li>
-                        <li><a href="{{ url_for('.plot_drink') }}">{{ _('Drinking Diary') }}</a></li>
-                        <li><a href="{{ url_for('.plot_read') }}">{{ _('Reading Diary') }}</a></li>
+                        <li><a href="{{ url_for('.plot_free') }}" onclick="return stopIfChangeValue()">{{ _('Free Diary') }}</a></li>
+                        <li><a href="{{ url_for('.plot_sleep') }}" onclick="return stopIfChangeValue()">{{ _('Sleep Diary') }}</a></li>
+                        <li><a href="{{ url_for('.plot_drink') }}" onclick="return stopIfChangeValue()">{{ _('Drinking Diary') }}</a></li>
+                        <li><a href="{{ url_for('.plot_read') }}" onclick="return stopIfChangeValue()">{{ _('Reading Diary') }}</a></li>
                     </ul>
                 </li>
             </ul>
@@ -78,17 +78,67 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated and current_user.stripe_customer %}
                 {% else %}
-                    <li><a href="{{ url_for('.pricing') }}">{{ _('Pricing') }}</a></li>
+                    <li><a href="{{ url_for('.pricing') }}" onclick="return stopIfChangeValue()">{{ _('Pricing') }}</a></li>
                 {% endif %}                
-                <li><a href="{{ url_for('.usage') }}">{{ _('Usage') }}</a></li>
+                <li><a href="{{ url_for('.usage') }}" onclick="return stopIfChangeValue()">{{ _('Usage') }}</a></li>
                 {% if current_user.is_authenticated %}
-                    <li><a href="{{ url_for('.account') }}">{{ _('Account') }}</a></li>
-                    <li><a href="{{ url_for('.logout') }}">{{ _('Logout') }}</a></li>
+                    <li><a href="{{ url_for('.account') }}" onclick="return stopIfChangeValue()">{{ _('Account') }}</a></li>
+                    <li><a href="{{ url_for('.logout') }}" onclick="return stopIfChangeValue()">{{ _('Logout') }}</a></li>
                 {% else %}
-                    <li><a href="{{ url_for('.login') }}">{{ _('Login') }}</a></li>
+                    <li><a href="{{ url_for('.login') }}" onclick="return stopIfChangeValue()">{{ _('Login') }}</a></li>
                 {% endif %}
             </ul>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript">
+
+    function stopIfChangeValue() {
+        var elements = [];
+        var elementsInput = document.getElementsByTagName("input");
+        elements.push(elementsInput);
+        var elementsTextarea = document.getElementsByTagName("textarea");
+        elements.push(elementsTextarea);
+        var elementsSelect = document.getElementsByTagName("select");
+        elements.push(elementsSelect);
+        
+        var changed = false;
+
+        for (var i=0; i < elements.length; i++){
+            changed = _changeValue(elements[i]);
+            if (changed == true){
+                break;
+            }
+        }
+        if (changed == true){
+            var confMsg = "{{ _('Your inputs will be deleted. Are you sure you want to proceed?') }}";
+            return confirm(confMsg);
+        }
+        return true;
+    }
+
+    function _changeValue(elements){
+        for (var ii=0; ii < elements.length; ii++) {
+            var defaultValue = elements[ii].defaultValue;
+            var inputValue = elements[ii].value;
+            if (['submit', 'hidden'].includes(elements[ii].type)) {
+                continue;
+            }
+            if (elements[ii].tagName == 'SELECT'){
+                return !elements[ii].options[elements[ii].selectedIndex].defaultSelected;
+            }
+            if ( defaultValue == inputValue) {
+                continue;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
+
+</script>
 {% endblock %}

@@ -61,13 +61,10 @@ If you add or change the variable, set it as below:
 heroku config:set FLASK_APP=flasky.py
 ```
 
-### Push the codes to heroku repository
-```
-git push heroku master
-```
-### Deploy
+### Push the codes to heroku repository and deploy
 ```
 heroku maintenance:on
+git push heroku master
 heroku run flask deploy
 heroku restart
 heroku maintenance:off

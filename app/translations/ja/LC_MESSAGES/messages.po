@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-06 11:12+0900\n"
+"POT-Creation-Date: 2021-02-10 17:04+0900\n"
 "PO-Revision-Date: 2021-01-06 06:07+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -167,7 +167,7 @@ msgid ""
 "service. Dekigoto does not store the information you provide to Stripe."
 msgstr "支払情報は決済サービスStripeが収集し、入力された情報をDekigotoが保管することはありません。"
 
-#: app/templates/account.html:49 app/templates/pricing.html:46
+#: app/templates/account.html:49 app/templates/pricing.html:55
 msgid "If you live in Japan, consumption tax will be added."
 msgstr "日本に在住の場合、消費税が適用されます。"
 
@@ -242,26 +242,26 @@ msgid "Learn more"
 msgstr "くわしく見る"
 
 #: app/templates/anonymous.html:49 app/templates/base.html:81
-#: app/templates/pricing.html:12
+#: app/templates/pricing.html:13
 msgid "Pricing"
 msgstr "利用料金"
 
-#: app/templates/anonymous.html:50 app/templates/pricing.html:55
+#: app/templates/anonymous.html:50 app/templates/pricing.html:68
 msgid "Start your 60-day free trial"
 msgstr "60日間無料体験を開始する"
 
-#: app/templates/anonymous.html:58 app/templates/pricing.html:65
+#: app/templates/anonymous.html:58 app/templates/pricing.html:75
 #: app/templates/usage.html:57
 msgid "Contact information"
 msgstr "問い合わせ連絡先"
 
 #: app/templates/anonymous.html:59 app/templates/login.html:16
-#: app/templates/pricing.html:66 app/templates/usage.html:58
+#: app/templates/pricing.html:76 app/templates/usage.html:58
 msgid "Terms and conditions"
 msgstr "利用規約および特定商取引法に基づく表記"
 
 #: app/templates/anonymous.html:60 app/templates/login.html:17
-#: app/templates/pricing.html:67 app/templates/usage.html:59
+#: app/templates/pricing.html:77 app/templates/usage.html:59
 msgid "Privacy Policy"
 msgstr "プライバシーポリシー"
 
@@ -293,6 +293,10 @@ msgstr "ログアウト"
 msgid "Login"
 msgstr "ログイン"
 
+#: app/templates/base.html:118
+msgid "Your inputs will be deleted. Are you sure you want to proceed?"
+msgstr "入力内容は破棄されます。他の画面に移動しても良いでしょうか?"
+
 #: app/templates/login.html:14
 msgid "By logging in, you agree to the following documents:"
 msgstr "私は本サービスにログインすることで以下に同意します:"
@@ -309,47 +313,47 @@ msgstr "Googleアカウントでログインする"
 msgid "Login with Twitter"
 msgstr "Twitterアカウントでログインする"
 
-#: app/templates/pricing.html:21
+#: app/templates/pricing.html:26
 msgid "60-day Free Trial"
 msgstr "60日間無料体験"
 
-#: app/templates/pricing.html:25
+#: app/templates/pricing.html:30
 msgid "No payment information is required"
 msgstr "支払情報の登録は不要です"
 
-#: app/templates/pricing.html:26 app/templates/pricing.html:41
+#: app/templates/pricing.html:31 app/templates/pricing.html:50
 msgid "All features are available"
 msgstr "すべての機能が利用できます"
 
-#: app/templates/pricing.html:27
+#: app/templates/pricing.html:32
 msgid "You can try for free in 60 days"
 msgstr "60日間無料で体験できます"
 
-#: app/templates/pricing.html:29
+#: app/templates/pricing.html:34
 msgid "Free"
 msgstr "無料"
 
-#: app/templates/pricing.html:29
+#: app/templates/pricing.html:34
 msgid "for 60 days"
 msgstr " /60日間"
 
-#: app/templates/pricing.html:36
+#: app/templates/pricing.html:45
 msgid "Standard Plan"
 msgstr "スタンダードプラン"
 
-#: app/templates/pricing.html:40
+#: app/templates/pricing.html:49
 msgid "Adding payment information finishes 60-day Free Trial at the moment"
 msgstr "支払情報を登録した時点で無料体験は終了します"
 
-#: app/templates/pricing.html:42
+#: app/templates/pricing.html:51
 msgid "You can keep diaries with no limitations"
 msgstr "制限なしで日記を続けられます"
 
-#: app/templates/pricing.html:44
+#: app/templates/pricing.html:53
 msgid "2.99"
 msgstr "290"
 
-#: app/templates/pricing.html:44
+#: app/templates/pricing.html:53
 msgid "$ /mo."
 msgstr "円 /月"
 
