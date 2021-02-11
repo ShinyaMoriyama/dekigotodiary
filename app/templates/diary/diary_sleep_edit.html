@@ -7,9 +7,17 @@
     <div>
         {{ form.hidden_tag()}}
         <div class="row">
-            <div class="col-md-4">{{ wtf.form_field(form.start)}}</div>
-            <div class="col-md-4">{{ wtf.form_field(form.end)}}</div>
-            <div class="col-md-4">{{ wtf.form_field(form.sleep_condition)}}</div>
+            <div class="col-md-3">{{ wtf.form_field(form.allday) }}</div>
+        </div>
+        <div class="row">
+            <fieldset id="field_date">
+                <div class="col-md-3">{{ wtf.form_field(form.date) }}</div>
+            </fieldset>
+            <fieldset id="filed_starttoend">
+                <div class="col-md-3">{{ wtf.form_field(form.start) }}</div>
+                <div class="col-md-3">{{ wtf.form_field(form.end) }}</div>
+            </fieldset>
+            <div class="col-md-3">{{ wtf.form_field(form.sleep_condition) }}</div>
         </div>
         {{ wtf.form_field(form.note, rows="3")}}
         {{ wtf.form_field(form.submit)}}
@@ -18,4 +26,29 @@
         {% endif %}
     </div>    
 </form>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript">
+
+window.addEventListener('load', _changeAttr);
+document.getElementById("allday").addEventListener("click", _changeAttr);
+
+function _changeAttr(){
+    if (document.getElementById("allday").checked == true){
+            document.getElementById('date').readOnly = false;
+            document.getElementById('start').readOnly = true;
+            document.getElementById('end').readOnly = true;
+            document.getElementById('field_date').classList.remove('hidden');
+            document.getElementById('filed_starttoend').classList.add('hidden');
+        }else{
+            document.getElementById('date').readOnly = true;
+            document.getElementById('start').readOnly = false;
+            document.getElementById('end').readOnly = false;
+            document.getElementById('field_date').classList.add('hidden');
+            document.getElementById('filed_starttoend').classList.remove('hidden');
+        }
+}
+</script>
 {% endblock %}

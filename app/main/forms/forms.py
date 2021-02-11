@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, TextAreaField, SelectField, IntegerField, StringField, HiddenField
+from wtforms import SubmitField, TextAreaField, SelectField, IntegerField, StringField, HiddenField, BooleanField
 from wtforms.fields.html5 import DateField, DateTimeLocalField, URLField
 from wtforms.validators import DataRequired, NumberRange
 from flask_babel import _, lazy_gettext as _l
@@ -16,6 +16,8 @@ class FreeDiaryForm(FlaskForm):
     delete = SubmitField(_l('Delete'))
 
 class SleepDiaryForm(FlaskForm):
+    allday = BooleanField(_l('All-day'))
+    date = DateField(_l('Date'), format='%Y-%m-%d')
     start = DateTimeLocalField(_l('Start'), format='%Y-%m-%dT%H:%M')
     end = DateTimeLocalField(_l('End'), format='%Y-%m-%dT%H:%M')
     sleep_condition = SelectField(_l('Sleep Condition'), choices=[(0, 'NG'), (1, 'OK')], coerce=int, default=1)

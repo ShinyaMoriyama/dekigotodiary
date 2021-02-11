@@ -11,10 +11,16 @@ def diary_sleep_new():
     form = SleepDiaryForm()
 
     if form.validate_on_submit():
-        start = form.start.data
-        end = form.end.data
-        date = start.date()
-        sleep_time = end - start
+        if form.allday.data == True:
+            start = None
+            end = None
+            date = form.date.data
+            sleep_time = None
+        else:
+            start = form.start.data
+            end = form.end.data
+            date = start.date()
+            sleep_time = end - start
         sleep_condition = form.sleep_condition.data
         note = form.note.data
         diary = Diary(
@@ -34,6 +40,7 @@ def diary_sleep_new():
 
     form.start.data = datetime.date.today() - datetime.timedelta(days=1)
     form.end.data = datetime.date.today()
+    form.date.data = form.start.data
 
     return render_template(
         'diary/diary_sleep_edit.html',
@@ -48,10 +55,20 @@ def diary_sleep_edit(id):
     data = Diary.query.get(id)
 
     if form.is_submitted() and form.submit.data and form.validate_on_submit():
-        data.start = form.start.data
-        data.end = form.end.data
-        data.date = data.start.date()
-        data.sleep_time = data.end - data.start
+        if form.allday.data == True:
+            start = None
+            end = None
+            date = form.date.data
+            sleep_time = None
+        else:
+            start = form.start.data
+            end = form.end.data
+            date = start.date()
+            sleep_time = end - start
+        data.start = start
+        data.end = end
+        data.date = date
+        data.sleep_time = sleep_time
         data.sleep_condition = form.sleep_condition.data
         data.note = form.note.data
         db.session.commit()
@@ -64,8 +81,16 @@ def diary_sleep_edit(id):
 
         return redirect(url_for('.index'))
 
-    form.start.data = data.start
-    form.end.data = data.end
+    if data.end is None:
+        form.allday.data = True
+        form.start.data = data.date
+        form.end.data = data.date + datetime.timedelta(days=1)
+        form.date.data = data.date
+    else:
+        form.allday.data = False
+        form.start.data = data.start
+        form.end.data = data.end
+        form.date.data = data.start
     form.sleep_condition.data = data.sleep_condition
     form.note.data = data.note
 
