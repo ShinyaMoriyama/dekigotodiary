@@ -1,7 +1,7 @@
 import requests
 import datetime
 import json
-from flask import redirect, url_for, render_template, current_app, flash
+from flask import redirect, url_for, render_template, current_app, flash, request
 from flask_login import current_user
 from wtforms.validators import URL, ValidationError
 from bs4 import BeautifulSoup
@@ -106,8 +106,12 @@ def diary_read_new():
 
         return redirect(url_for('.index'))
 
-    form.date.data = datetime.date.today()
-
+    date = request.args.get('date')
+    if date:
+        form.date.data = datetime.datetime.strptime(date, '%Y-%m-%d')
+    else:
+        form.date.data = datetime.date.today()
+        
     return render_template(
         'diary/diary_read_edit.html',
         form = form,

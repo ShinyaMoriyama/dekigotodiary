@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-10 17:04+0900\n"
+"POT-Creation-Date: 2021-02-14 06:57+0900\n"
 "PO-Revision-Date: 2021-01-06 06:07+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -44,54 +44,58 @@ msgstr "飲酒日記"
 msgid "Reading Diary"
 msgstr "読書日記"
 
-#: app/main/forms/forms.py:10 app/main/forms/forms.py:15
-#: app/main/forms/forms.py:23 app/main/forms/forms.py:30
-#: app/main/forms/forms.py:40
+#: app/main/forms/forms.py:11 app/main/forms/forms.py:16
+#: app/main/forms/forms.py:26 app/main/forms/forms.py:33
+#: app/main/forms/forms.py:43
 msgid "Submit"
 msgstr "登録"
 
-#: app/main/forms/forms.py:13 app/main/forms/forms.py:27
-#: app/main/forms/forms.py:34
+#: app/main/forms/forms.py:14 app/main/forms/forms.py:21
+#: app/main/forms/forms.py:30 app/main/forms/forms.py:37
 msgid "Date"
 msgstr "日付"
 
-#: app/main/forms/forms.py:14 app/main/forms/forms.py:22
-#: app/main/forms/forms.py:29 app/main/forms/forms.py:39
+#: app/main/forms/forms.py:15 app/main/forms/forms.py:25
+#: app/main/forms/forms.py:32 app/main/forms/forms.py:42
 msgid "Note"
 msgstr "記述"
 
-#: app/main/forms/forms.py:16 app/main/forms/forms.py:24
-#: app/main/forms/forms.py:31 app/main/forms/forms.py:41
+#: app/main/forms/forms.py:17 app/main/forms/forms.py:27
+#: app/main/forms/forms.py:34 app/main/forms/forms.py:44
 #: app/templates/_delete_diary.html:2
 msgid "Delete"
 msgstr "削除"
 
-#: app/main/forms/forms.py:19
+#: app/main/forms/forms.py:20
+msgid "All-day"
+msgstr "終日"
+
+#: app/main/forms/forms.py:22
 msgid "Start"
 msgstr "開始"
 
-#: app/main/forms/forms.py:20
+#: app/main/forms/forms.py:23
 msgid "End"
 msgstr "終了"
 
-#: app/main/forms/forms.py:21
+#: app/main/forms/forms.py:24
 msgid "Sleep Condition"
 msgstr "睡眠の質"
 
-#: app/main/forms/forms.py:28 app/main/views/plot/plot_drink.py:52
+#: app/main/forms/forms.py:31 app/main/views/plot/plot_drink.py:52
 #: app/main/views/plot/plot_drink.py:54
 msgid "The amount of pure alcohol (g)"
 msgstr "純アルコール量 (g)"
 
-#: app/main/forms/forms.py:36
+#: app/main/forms/forms.py:39
 msgid "Get Title"
 msgstr "タイトル取得"
 
-#: app/main/forms/forms.py:37
+#: app/main/forms/forms.py:40
 msgid "Title"
 msgstr "タイトル"
 
-#: app/main/forms/forms.py:44
+#: app/main/forms/forms.py:47
 msgid "Payment information (Stripe)"
 msgstr "支払情報を参照する(Stripe)"
 
@@ -423,6 +427,10 @@ msgstr "Mac版Safariの例ですが、日付項目のフォーマットが変で
 #: app/templates/usage.html:49
 msgid "Change the browser to Chrome and it works well"
 msgstr "ブラウザを Chrome に変更すると正常に動きます"
+
+#: app/templates/diary/diary_common.html:3
+msgid "Choose to Edit"
+msgstr "日記のカテゴリを選んでください"
 
 #: app/templates/diary/diary_drink_edit.html:3
 msgid "Edit Drinking Diary"

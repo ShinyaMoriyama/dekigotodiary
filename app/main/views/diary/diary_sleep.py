@@ -1,5 +1,5 @@
 import datetime
-from flask import redirect, url_for, render_template
+from flask import redirect, url_for, render_template, request
 from flask_login import current_user
 from ... import main
 from .... import db
@@ -38,8 +38,12 @@ def diary_sleep_new():
 
         return redirect(url_for('.index'))
 
-    form.start.data = datetime.date.today() - datetime.timedelta(days=1)
-    form.end.data = datetime.date.today()
+    date = request.args.get('date')
+    if date:
+        form.start.data = datetime.datetime.strptime(date, '%Y-%m-%d')
+    else:
+        form.start.data = datetime.date.today() - datetime.timedelta(days=1)
+    form.end.data = form.start.data + datetime.timedelta(days=1)
     form.date.data = form.start.data
 
     return render_template(

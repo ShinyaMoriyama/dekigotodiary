@@ -6,7 +6,8 @@ from flask_babel import _, lazy_gettext as _l
 
 class DiaryCommonForm(FlaskForm):
     category = SelectField(_l('Category'), choices=[
-        ('', ''), (1, _l('Free Diary')), (2, _l('Sleep Diary')), (3, _l('Drinking Diary')), (4, _l('Reading Diary'))])
+        ('', ''), (1, _l('Free Diary')), (2, _l('Sleep Diary')), (3, _l('Drinking Diary')), (4, _l('Reading Diary'))],
+        default='')
     submit = SubmitField(_l('Submit'))
 
 class FreeDiaryForm(FlaskForm):

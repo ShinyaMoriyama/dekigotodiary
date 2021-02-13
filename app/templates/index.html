@@ -21,6 +21,9 @@
           window.location.href = eventObj.url;
         }
       },
+      dateClick: function(info) {
+        window.location.href = 'diary_common/' + info.dateStr;
+      },
       events: {{ event_list|safe }}
     });
     if (window.innerWidth < 768) {
