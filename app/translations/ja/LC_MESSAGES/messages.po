@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-14 06:57+0900\n"
+"POT-Creation-Date: 2021-02-20 09:39+0900\n"
 "PO-Revision-Date: 2021-01-06 06:07+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -46,7 +46,7 @@ msgstr "読書日記"
 
 #: app/main/forms/forms.py:11 app/main/forms/forms.py:16
 #: app/main/forms/forms.py:26 app/main/forms/forms.py:33
-#: app/main/forms/forms.py:43
+#: app/main/forms/forms.py:46
 msgid "Submit"
 msgstr "登録"
 
@@ -56,12 +56,12 @@ msgid "Date"
 msgstr "日付"
 
 #: app/main/forms/forms.py:15 app/main/forms/forms.py:25
-#: app/main/forms/forms.py:32 app/main/forms/forms.py:42
+#: app/main/forms/forms.py:32 app/main/forms/forms.py:45
 msgid "Note"
 msgstr "記述"
 
 #: app/main/forms/forms.py:17 app/main/forms/forms.py:27
-#: app/main/forms/forms.py:34 app/main/forms/forms.py:44
+#: app/main/forms/forms.py:34 app/main/forms/forms.py:47
 #: app/templates/_delete_diary.html:2
 msgid "Delete"
 msgstr "削除"
@@ -88,16 +88,28 @@ msgid "The amount of pure alcohol (g)"
 msgstr "純アルコール量 (g)"
 
 #: app/main/forms/forms.py:39
-msgid "Get Title"
-msgstr "タイトル取得"
+msgid "Book Info"
+msgstr "書籍情報"
 
 #: app/main/forms/forms.py:40
 msgid "Title"
 msgstr "タイトル"
 
-#: app/main/forms/forms.py:47
+#: app/main/forms/forms.py:41
+msgid "Subtitle"
+msgstr "サブタイトル"
+
+#: app/main/forms/forms.py:43
+msgid "Author"
+msgstr "著者"
+
+#: app/main/forms/forms.py:50
 msgid "Payment information (Stripe)"
 msgstr "支払情報を参照する(Stripe)"
+
+#: app/main/views/diary/diary_read.py:34
+msgid "Can not get book info. Confirm the input and try again."
+msgstr "書籍情報を取得できません。入力値を確認し再操作してください。"
 
 #: app/main/views/plot/plot_drink.py:32 app/main/views/plot/plot_free.py:31
 #: app/main/views/plot/plot_read.py:31 app/main/views/plot/plot_sleep.py:32
@@ -500,4 +512,10 @@ msgstr "読書日記"
 
 #~ msgid "$ /mo."
 #~ msgstr "円 /月"
+
+#~ msgid "Get Title"
+#~ msgstr "タイトル取得"
+
+#~ msgid "ISBN"
+#~ msgstr ""
 

@@ -7,14 +7,30 @@
     <div>
         {{ form.hidden_tag()}}
         <div class="row">
-            <div class="col-md-4">{{ wtf.form_field(form.date)}}</div>
+            <div class="col-md-4">
+                {{ wtf.form_field(form.date)}}
+                {{ wtf.form_field(form.book_isbn) }}
+            </div>
         </div>
-        {{ wtf.form_field(form.book_url) }}
-        <!-- {{ wtf.form_field(form.get_info) }}
-        {% if form.book_img_src.data %}
-        <img src={{ form.book_img_src.data }} alt="Girl in a jacket" width="144" height="144" class="img-responsive">
-        {% endif %} -->
+        <div class="form-group">
+            {{ wtf.form_field(form.get_info) }}
+        </div>
         {{ wtf.form_field(form.book_title) }}
+        {% if form.book_img_src.data %}
+        <a href="{{ form.book_url.data }}", target="_blank">
+            <img src={{ form.book_img_src.data }} alt="book_img" width="144" height="144" class="img-responsive">
+        </a>
+        <br>
+        {% endif %}
+
+        {% if form.book_subtitle.data %}
+        {{ wtf.form_field(form.book_subtitle, readonly=true) }}
+        {% endif %}
+
+        {% if form.book_subtitle.data %}
+        {{ wtf.form_field(form.book_author, readonly=true) }}
+        {% endif %}
+
         {{ wtf.form_field(form.note, rows="9") }}
         {{ wtf.form_field(form.submit) }}
         {% if is_edit %}

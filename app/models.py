@@ -22,9 +22,12 @@ class Diary(db.Model):
     sleep_time = db.Column(db.Interval)
     sleep_condition = db.Column(db.Integer)
     amt_of_drink = db.Column(db.Integer)
+    book_isbn = db.Column(db.String(32))
     book_title = db.Column(db.String(256))
-    book_url = db.Column(db.String(1024))
+    book_subtitle = db.Column(db.String(256))
     book_img_src = db.Column(db.String(1024))
+    book_author = db.Column(db.String(256))
+    book_url = db.Column(db.String(1024))
     user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
 
 class Provider:

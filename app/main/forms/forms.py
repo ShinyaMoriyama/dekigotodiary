@@ -35,10 +35,13 @@ class DrinkDiaryForm(FlaskForm):
 
 class ReadDiaryForm(FlaskForm):
     date = DateField(_l('Date'), format='%Y-%m-%d', validators=[DataRequired()])
-    book_url = URLField('URL')
-    get_info = SubmitField(_l('Get Title'))
+    book_isbn = StringField('ISBN')
+    get_info = SubmitField(_l('Book Info'))
     book_title = StringField(_l('Title'), validators=[DataRequired()])
+    book_subtitle = StringField(_l('Subtitle'))
     book_img_src = HiddenField('Image Src')
+    book_author = StringField(_l('Author'))
+    book_url = HiddenField('book url')
     note = TextAreaField(_l('Note'))
     submit = SubmitField(_l('Submit'))
     delete = SubmitField(_l('Delete'))
