@@ -1,8 +1,10 @@
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, TextAreaField, SelectField, IntegerField, StringField, HiddenField, BooleanField
-from wtforms.fields.html5 import DateField, DateTimeLocalField, URLField
+from wtforms.fields.html5 import DateField, DateTimeLocalField
 from wtforms.validators import DataRequired, NumberRange
 from flask_babel import _, lazy_gettext as _l
+from wtforms_components import ColorField
+from wtforms_components.fields import color
 
 class DiaryCommonForm(FlaskForm):
     category = SelectField(_l('Category'), choices=[
@@ -48,3 +50,11 @@ class ReadDiaryForm(FlaskForm):
 
 class AccountForm(FlaskForm):
     submit = SubmitField(_l('Payment information (Stripe)'))
+
+class OptionalCategoryForm(FlaskForm):
+    add = SubmitField(_l('Add category'))
+    name = StringField(_l('Name'), validators=[DataRequired()])
+    color = ColorField(_l('Color'), validators=[DataRequired()])
+    template = TextAreaField(_l('Template'))
+    submit = SubmitField(_l('Submit'))
+    delete = SubmitField(_l('Delete'))

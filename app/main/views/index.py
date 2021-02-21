@@ -10,8 +10,17 @@ from flask import g
 from flask_babel import get_locale
 from .. import main
 from ..forms.forms import AccountForm
-from ...models import Category, Diary, User, Provider
+from ...models import Category, Diary, OptionalCategory, User, Provider
 from ... import db
+
+def set_optional_category_list_into_global():
+    query_result_list = OptionalCategory.query.filter_by(
+        user=current_user._get_current_object()).order_by(
+            OptionalCategory.optional_category.asc()).all()
+    optional_category_list = [(
+        cate.optional_category, cate.name, cate.color, cate.template
+        ) for cate in query_result_list ]
+    g.optional_category_list = optional_category_list
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
@@ -25,12 +34,23 @@ def index():
     if current_user.is_authenticated:
         if view:
             cate = getattr(Category, view)
-            diary_list = Diary.query.filter_by(user=current_user._get_current_object(), category=cate).all()
+            if cate == Category.OPTION:
+                optional_category = request.args.get('optional_category')
+                diary_list = Diary.query.filter_by(
+                    user=current_user._get_current_object(),
+                    category=cate,
+                    optional_category=optional_category).all()
+            else:
+                diary_list = Diary.query.filter_by(
+                    user=current_user._get_current_object(),
+                    category=cate).all()
         else:
             diary_list = Diary.query.filter_by(user=current_user._get_current_object()).all()
         event_list = create_events(diary_list)
 
-        return render_template('index.html', event_list=event_list,)
+        return render_template(
+            'index.html',
+            event_list=event_list,)
     else:
         return render_template('anonymous.html')
 
@@ -104,6 +124,17 @@ def diary2event(diary):
         d['title'] = diary.book_title
         d['url'] = 'diary_read_edit/' + str(diary.id)
         d['backgroundColor'] = Config.BC_READ
+    if diary.category == Category.OPTION:
+        d['title'] = diary.note
+        d['url'] = 'diary_option_edit/' + str(diary.id)
+        color = None
+        for optional_category in g.optional_category_list:
+            if optional_category[0] == diary.optional_category:
+                color = optional_category[2]
+                break
+        if color:
+            d['backgroundColor'] = color
+        
     return d
 
 from flask_dance.consumer import oauth_authorized
@@ -248,8 +279,13 @@ def before_request():
         'main.privacy_policy',
         'main.webhook_received',
         ]:
+        if current_user.is_authenticated:
+            set_optional_category_list_into_global()
+
         return
+
     if current_user.is_authenticated:
     # if google.authorized or twitter.authorized:
+        set_optional_category_list_into_global()
         return
     return redirect(url_for('main.login'))

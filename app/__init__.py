@@ -24,6 +24,8 @@ def create_app(config_name):
     stripe_mode = 'LIVE!!' if app.config['STRIPE_LIVE'] == '1' else 'TEST'
     app.logger.info('@@@ Stripe mode @@@ is %s', stripe_mode)
 
+    app.jinja_env.globals.update(len=len)
+
     bootstrap.init_app(app)
     db.init_app(app)
     login_manager.init_app(app)

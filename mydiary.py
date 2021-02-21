@@ -4,13 +4,13 @@ from flask import request
 from flask_migrate import Migrate, upgrade
 from flask_babel import Babel
 from app import create_app, db
-from app.models import Diary, User
+from app.models import Diary, OptionalCategory, User
 from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
-migrate = Migrate(app, db, render_as_batch=True)
+migrate = Migrate(app, db, render_as_batch=False)
 babel = Babel(app)
 
 @babel.localeselector
@@ -19,7 +19,7 @@ def get_locale():
 
 @app.shell_context_processor
 def make_shell_context():
-    return dict(db=db, Diary=Diary, User=User)
+    return dict(db=db, Diary=Diary, User=User, OptionalCategory=OptionalCategory)
 
 @app.cli.command()
 def deploy():

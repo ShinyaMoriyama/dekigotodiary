@@ -5,7 +5,7 @@
 
 {% block metas %}
 {{ super() }}
-<meta name="description" content="Dekigoto is a cloud based diary service which automaticaly generates categorized summary charts as feedback for your future improvement." />
+<meta name="description" content="Dekigoto is a cloud based diary service which automatically generates categorized summary charts as feedback for your future improvement." />
 <meta property="og:title" content="Dekigoto | Cloud based personal journal and diary"/>
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="Dekigoto | Cloud based personal journal and diary" />
@@ -53,6 +53,9 @@
                         <li><a href="{{ url_for('.index', view='SLEEP') }}" onclick="return stopIfChangeValue()">{{ _('Sleep Diary') }}</a></li>
                         <li><a href="{{ url_for('.index', view='DRINK') }}" onclick="return stopIfChangeValue()">{{ _('Drinking Diary') }}</a></li>
                         <li><a href="{{ url_for('.index', view='READ') }}" onclick="return stopIfChangeValue()">{{ _('Reading Diary') }}</a></li>
+                        {% for optional_category in g.optional_category_list %}
+                            <li><a href="{{ url_for('.index', view='OPTION', optional_category=optional_category[0]) }}" onclick="return stopIfChangeValue()">{{ optional_category[1] }}</a></li>
+                        {% endfor %}
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -62,6 +65,9 @@
                         <li><a href="{{ url_for('.diary_sleep_new') }}" onclick="return stopIfChangeValue()">{{ _('Sleep Diary') }}</a></li>
                         <li><a href="{{ url_for('.diary_drink_new') }}" onclick="return stopIfChangeValue()">{{ _('Drinking Diary') }}</a></li>
                         <li><a href="{{ url_for('.diary_read_new') }}" onclick="return stopIfChangeValue()">{{ _('Reading Diary') }}</a></li>
+                        {% for optional_category in g.optional_category_list %}
+                            <li><a href="{{ url_for('.diary_option_new', optional_category=optional_category[0]) }}" onclick="return stopIfChangeValue()">{{ optional_category[1] }}</a></li>
+                        {% endfor %}
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -71,8 +77,12 @@
                         <li><a href="{{ url_for('.plot_sleep') }}" onclick="return stopIfChangeValue()">{{ _('Sleep Diary') }}</a></li>
                         <li><a href="{{ url_for('.plot_drink') }}" onclick="return stopIfChangeValue()">{{ _('Drinking Diary') }}</a></li>
                         <li><a href="{{ url_for('.plot_read') }}" onclick="return stopIfChangeValue()">{{ _('Reading Diary') }}</a></li>
+                        {% for optional_category in g.optional_category_list %}
+                            <li><a href="{{ url_for('.plot_option', optional_category=optional_category[0]) }}" onclick="return stopIfChangeValue()">{{ optional_category[1] }}</a></li>
+                        {% endfor %}
                     </ul>
                 </li>
+                <li><a href="{{ url_for('.optional_category_list') }}" onclick="return stopIfChangeValue()">{{ _('Category') }}</a></li>
             </ul>
             {% endif %}
             <ul class="nav navbar-nav navbar-right">
@@ -125,7 +135,7 @@ function _changeValue(elements){
     for (var ii=0; ii < elements.length; ii++) {
         var defaultValue = elements[ii].defaultValue;
         var inputValue = elements[ii].value;
-        if (['submit', 'hidden'].includes(elements[ii].type)) {
+        if (['submit', 'hidden', 'color'].includes(elements[ii].type)) {
             continue;
         }
         if (elements[ii].tagName == 'SELECT'){

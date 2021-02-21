@@ -1,0 +1,49 @@
+{% extends 'base_diary.html' %}
+
+{% block page_header %}{{ _('Optional Category') }}{% endblock %}
+
+{% block page_content %}
+<br>
+<div class="panel panel-info">
+    <div class=panel-heading>
+        <h3 class=panel-title>{{ _('What is Optional Category?') }}</h3>
+    </div>
+    <div class="panel-body">
+        <p>{{ _('With Optional Category, you can take diaries as your own category.') }}</p>
+        <p>{{ _('The diaries that you can take with Optional Category are simple, but it would be convenient for tracking the habits or daily routines.') }}</p>
+    </div>
+</div>    
+
+<form action="" method="post" novalidate>
+    <div>
+        {{ form.hidden_tag()}}
+        {{ wtf.form_field(form.add) }}
+    </div>    
+</form>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>{{ _('Name') }}</th>
+            <th>{{ _('Color') }}</th>
+            <th>{{ _('Template') }}</th>
+            <th>{{ _('Action') }}</th>
+        </tr>
+    </thead>
+    {% for optional_category in g.optional_category_list %}
+    <tbody>
+        <tr>
+            <td>{{ optional_category[1] }}</td>
+            <td><input class="form-control" type="color" value="{{ optional_category[2] }}" disabled></td>
+            <td>{{ optional_category[3][:16] + '..' if len(optional_category[3]) > 18 else optional_category[3] }}</td>
+            <td>
+                <a href="{{ url_for('.optional_category_edit', id=optional_category[0]) }}">
+                    <button type="button" class="btn btn-default">
+                        {{ _('Edit') }}
+                    </button>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock %}

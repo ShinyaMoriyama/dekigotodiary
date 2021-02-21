@@ -1,3 +1,4 @@
+from re import template
 from flask_login import UserMixin
 from . import db, login_manager
 
@@ -6,6 +7,7 @@ class Category:
     SLEEP = 2
     DRINK = 3
     READ = 4
+    OPTION = 9
 
 class SleepCondition:
     OK = 1
@@ -29,6 +31,7 @@ class Diary(db.Model):
     book_author = db.Column(db.String(256))
     book_url = db.Column(db.String(1024))
     user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
+    optional_category = db.Column(db.Integer)
 
 class Provider:
     GOOGLE = 1
@@ -45,6 +48,15 @@ class User(UserMixin, db.Model):
     stripe_customer = db.Column(db.String(64))
     stripe_status = db.Column(db.String(32))
     diary = db.relationship('Diary', backref='user')
+    optional_category = db.relationship('OptionalCategory', backref='user')
+
+class OptionalCategory(db.Model):
+    __tablename__ = 'OptionalCategory'
+    user_id = db.Column(db.Integer, db.ForeignKey('User.id'), primary_key=True)
+    optional_category = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(128))
+    color = db.Column(db.String(12))
+    template = db.Column(db.Text)
 
 @login_manager.user_loader
 def load_user(user_id):

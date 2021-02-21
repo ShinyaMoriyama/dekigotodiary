@@ -1,0 +1,25 @@
+{% extends 'base_diary.html' %}
+
+{% block page_header %}{{ _('Edit Your Own Category') }}{% endblock %}
+
+{% block page_content %}
+<form action="" method="post" novalidate>
+    <div>
+        {{ form.hidden_tag()}}
+        <div class="row">
+            <div class="col-md-4">{{ wtf.form_field(form.name)}}</div>
+            <div class="col-md-4">
+                {{ wtf.form_field(form.color)}}
+                <span class="help-block">{{ _('Used as the background of diaries at the calendar pages.') }}</span>
+            </div>
+            
+        </div>
+        {{ wtf.form_field(form.template, rows="3")}}
+        <span class="help-block">{{ _('When taking a new diary, this will automatically fill in the notes.') }}</span>
+        {{ wtf.form_field(form.submit)}}
+        {% if is_edit %}
+        {% include '_delete_category.html' %}            
+        {% endif %}
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base_diary.html' %}
+
+{% block page_header %}{{ optional_category_name }}{% endblock %}
+
+{% block page_content %}
+<form action="" method="post" novalidate>
+    <div>
+        {{ form.hidden_tag()}}
+        <div class="row">
+            <div class="col-md-4">{{ wtf.form_field(form.date)}}</div>
+        </div>
+        {{ wtf.form_field(form.note, rows="9")}}
+        {{ wtf.form_field(form.submit)}}
+        {% if is_edit %}
+        {% include '_delete_diary.html' %}            
+        {% endif %}
+    </div>
+</form>
+{% endblock %}
