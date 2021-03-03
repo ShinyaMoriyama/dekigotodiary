@@ -10,7 +10,7 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-        <h1>{{ _('Review your life with diary') }}</h1>
+        <h1>{{ _('Review Your Life with Diary') }}</h1>
         <p>{{ _('Dekigoto is a cloud based diary service which automatically generates categorized summary charts as feedback for your future improvement. You can write in any devices via Google Chrome without any installing softwares.') }}</p>
     </div>
 </div>
@@ -19,18 +19,18 @@
     <!-- Example row of columns -->
     <div class="row">
         <div class="col-md-4">
-            <h2>{{ _('Cloud based service') }}</h2>
+            <h2>{{ _('Cloud Based Service') }}</h2>
             <p><img src="{{ url_for('static', filename='images/AdobeStock_305437413.png') }}" alt="diary_category.png"  width="280" height="280" class="img-responsive center-block img-circle"></p>
             <p>{{ _('Dekigoto is a cloud based diary service. You can sign in with your SNS accounts so that you do not need to remember specific username and password. Only with SNS accounts, you can write whenever in any devices.') }}</p>
             <p><img src="{{ url_for('static', filename='images/anonymous_0.jpg') }}" alt="anonymous_0.jpg"  width="280" height="280" class="img-responsive center-block img-rounded"></p>
         </div>
         <div class="col-md-4">
-            <h2>{{ _('Categorized diaries') }}</h2>
+            <h2>{{ _('Categorized Diaries') }}</h2>
             <p><img src="{{ url_for('static', filename='images/AdobeStock_318818529.png') }}" alt="diary_category.png"  width="280" height="280" class="img-responsive center-block"></p>
             <p>{{ _('Diaries in Dekigoto consist of several categories. This categorized approach has the purpose that you can easily continue taking diaries as your habit.') }}</p>
             <ul>
-                <li>{{ _('Free diary') }}</li>
-                <li>{{ _('Sleep diary') }}</li>
+                <li>{{ _('Free Diary') }}</li>
+                <li>{{ _('Sleep Diary') }}</li>
                 <li>{{ _('Drinking Diary') }}</li>
                 <li>{{ _('Reading Diary') }}</li>
             </ul>
@@ -39,15 +39,17 @@
         <div class="col-md-4">
             <h2>{{ _('Visualization') }}</h2>
             <p><img src="{{ url_for('static', filename='images/AdobeStock_313613092.png') }}" alt="diary_category.png"  width="280" height="280" class="img-responsive center-block"></p>
-            <p>{{ _('Dekigoto automatically creates summary charts based on the categorized diaries which you provided. From these charts, you can see trends of your habits and may get feedback to improve your life.') }}</p>
+            <p>{{ _('Dekigoto automatically creates summary charts based on the categorized diaries which you provided.') }}</p>
+            <p>{{ _('From these charts, you can see the trends of your habits or routine works. You also might realize what improves your life or what helps to achieve your goals.') }}</p>        
             <p><img src="{{ url_for('static', filename='images/' + g.locale + '/anonymous_2.png') }}" alt="anonymous_2.png"  width="280" height="280" class="img-responsive center-block img-rounded"></p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <p><a class="btn btn-default btn-lg btn-block" href="{{ url_for('.usage') }}" role="button">{{ _('Learn more') }} &raquo;</a></p>
+            <p><a class="btn btn-default btn-lg btn-block" href="{{ url_for('.usage') }}" role="button">{{ _('Learn More') }} &raquo;</a></p>
             <p><a class="btn btn-default btn-lg btn-block" href="{{ url_for('.pricing') }}" role="button">{{ _('Pricing') }} &raquo;</a></p>
-            <p><a class="btn btn-primary btn-lg btn-block" href="{{ url_for('.login') }}" role="button">{{ _('Start your 60-day free trial') }}</a></p>
+            <p><a class="btn btn-primary btn-lg btn-block" href="{{ url_for('.login') }}" role="button">{{ _('Start Your 60-day Free Trial') }}</a></p>
+            <p class="text-center">{{ _('No payment information is required within free trial.') }}</p>
         </div>
     </div>
     

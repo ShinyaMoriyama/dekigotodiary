@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-28 10:43+0900\n"
+"POT-Creation-Date: 2021-03-07 07:18+0900\n"
 "PO-Revision-Date: 2021-01-06 06:07+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -22,25 +22,27 @@ msgstr ""
 msgid "Category"
 msgstr "カテゴリ"
 
-#: app/main/forms/forms.py:11 app/templates/base.html:52
-#: app/templates/base.html:64 app/templates/base.html:76
+#: app/main/forms/forms.py:11 app/templates/anonymous.html:32
+#: app/templates/base.html:52 app/templates/base.html:64
+#: app/templates/base.html:76 app/templates/plot/plot_free.html:3
 msgid "Free Diary"
 msgstr "フリー日記"
 
-#: app/main/forms/forms.py:11 app/templates/base.html:53
-#: app/templates/base.html:65 app/templates/base.html:77
+#: app/main/forms/forms.py:11 app/templates/anonymous.html:33
+#: app/templates/base.html:53 app/templates/base.html:65
+#: app/templates/base.html:77 app/templates/plot/plot_sleep.html:3
 msgid "Sleep Diary"
 msgstr "睡眠日記"
 
 #: app/main/forms/forms.py:11 app/templates/anonymous.html:34
 #: app/templates/base.html:54 app/templates/base.html:66
-#: app/templates/base.html:78
+#: app/templates/base.html:78 app/templates/plot/plot_drink.html:3
 msgid "Drinking Diary"
 msgstr "飲酒日記"
 
 #: app/main/forms/forms.py:11 app/templates/anonymous.html:35
 #: app/templates/base.html:55 app/templates/base.html:67
-#: app/templates/base.html:79
+#: app/templates/base.html:79 app/templates/plot/plot_read.html:3
 msgid "Reading Diary"
 msgstr "読書日記"
 
@@ -105,11 +107,11 @@ msgid "Author"
 msgstr "著者"
 
 #: app/main/forms/forms.py:52
-msgid "Payment information (Stripe)"
+msgid "Payment Information (Stripe)"
 msgstr "支払情報を参照する(Stripe)"
 
 #: app/main/forms/forms.py:55
-msgid "Add category"
+msgid "Add Category"
 msgstr "カテゴリを追加"
 
 #: app/main/forms/forms.py:56 app/templates/optional_category_list.html:26
@@ -157,7 +159,7 @@ msgid "The percentage of good sleep (%)"
 msgstr "よく眠れた割合 (%)"
 
 #: app/templates/_delete_category.html:11
-msgid "Delete category"
+msgid "Delete Category"
 msgstr "カテゴリを削除します"
 
 #: app/templates/_delete_category.html:14
@@ -174,7 +176,7 @@ msgid "Cancel"
 msgstr "戻る"
 
 #: app/templates/_delete_diary.html:11
-msgid "Delete diary"
+msgid "Delete Diary"
 msgstr "日記を削除します"
 
 #: app/templates/_delete_diary.html:14
@@ -182,7 +184,7 @@ msgid "Are you sure to delete the entry?"
 msgstr "本当に削除しますか?"
 
 #: app/templates/account.html:17
-msgid "Account information"
+msgid "Account Information"
 msgstr "アカウント情報"
 
 #: app/templates/account.html:19 app/templates/base.html:95
@@ -202,7 +204,7 @@ msgid " days"
 msgstr " 日間です"
 
 #: app/templates/account.html:31 app/templates/account.html:44
-msgid "Add paymant information"
+msgid "Add Paymant Information"
 msgstr "支払情報の登録"
 
 #: app/templates/account.html:47
@@ -228,7 +230,7 @@ msgid "Proceed"
 msgstr "進む"
 
 #: app/templates/anonymous.html:13 app/templates/usage.html:11
-msgid "Review your life with diary"
+msgid "Review Your Life with Diary"
 msgstr "日記で生活を見直しましょう"
 
 #: app/templates/anonymous.html:14 app/templates/usage.html:12
@@ -243,7 +245,7 @@ msgstr ""
 " Chromeがあればどのデバイスでも日記が作れます。"
 
 #: app/templates/anonymous.html:22
-msgid "Cloud based service"
+msgid "Cloud Based Service"
 msgstr "クラウドベースのサービス"
 
 #: app/templates/anonymous.html:24
@@ -256,60 +258,62 @@ msgstr ""
 "はクラウドベースの日記サービスです。SNSのアカウントでログインできるため、煩わしいユーザー情報登録は不要でどのデバイスからも利用できます。"
 
 #: app/templates/anonymous.html:28
-msgid "Categorized diaries"
+msgid "Categorized Diaries"
 msgstr "カテゴリ分けの日記"
 
-#: app/templates/anonymous.html:30 app/templates/usage.html:18
+#: app/templates/anonymous.html:30 app/templates/usage.html:19
 msgid ""
 "Diaries in Dekigoto consist of several categories. This categorized "
 "approach has the purpose that you can easily continue taking diaries as "
 "your habit."
 msgstr "Dekigoto の日記はいくつかのカテゴリに分かれます。カテゴリ分けにより、日記がより継続しやすくなるはずです。"
 
-#: app/templates/anonymous.html:32 app/templates/plot/plot_free.html:3
-msgid "Free diary"
-msgstr "フリー日記"
-
-#: app/templates/anonymous.html:33 app/templates/plot/plot_sleep.html:3
-msgid "Sleep diary"
-msgstr "睡眠日記"
-
 #: app/templates/anonymous.html:40
 msgid "Visualization"
 msgstr "グラフによる可視化"
 
-#: app/templates/anonymous.html:42 app/templates/usage.html:27
+#: app/templates/anonymous.html:42 app/templates/usage.html:34
 msgid ""
 "Dekigoto automatically creates summary charts based on the categorized "
-"diaries which you provided. From these charts, you can see trends of your"
-" habits and may get feedback to improve your life."
-msgstr "Dekigoto は自動でカテゴリごとのグラフを作成します。グラフであなたの行動の傾向を把握し、生活向上のためのヒントとしましょう。"
+"diaries which you provided."
+msgstr "Dekigoto は自動でカテゴリごとのグラフを作成します。"
 
-#: app/templates/anonymous.html:48
-msgid "Learn more"
+#: app/templates/anonymous.html:43 app/templates/usage.html:35
+msgid ""
+"From these charts, you can see the trends of your habits or routine "
+"works. You also might realize what improves your life or what helps to "
+"achieve your goals."
+msgstr "グラフであなたの行動の傾向を把握し、生活向上のためのヒントとしましょう。"
+
+#: app/templates/anonymous.html:49
+msgid "Learn More"
 msgstr "くわしく見る"
 
-#: app/templates/anonymous.html:49 app/templates/base.html:91
+#: app/templates/anonymous.html:50 app/templates/base.html:91
 #: app/templates/pricing.html:13
 msgid "Pricing"
 msgstr "利用料金"
 
-#: app/templates/anonymous.html:50 app/templates/pricing.html:68
-msgid "Start your 60-day free trial"
+#: app/templates/anonymous.html:51 app/templates/pricing.html:68
+msgid "Start Your 60-day Free Trial"
 msgstr "60日間無料体験を開始する"
 
-#: app/templates/anonymous.html:58 app/templates/pricing.html:75
-#: app/templates/usage.html:57
+#: app/templates/anonymous.html:52
+msgid "No payment information is required within free trial."
+msgstr "無料体験期間中は支払情報の登録は不要です"
+
+#: app/templates/anonymous.html:60 app/templates/pricing.html:75
+#: app/templates/usage.html:83
 msgid "Contact information"
 msgstr "問い合わせ連絡先"
 
-#: app/templates/anonymous.html:59 app/templates/login.html:16
-#: app/templates/pricing.html:76 app/templates/usage.html:58
+#: app/templates/anonymous.html:61 app/templates/login.html:16
+#: app/templates/pricing.html:76 app/templates/usage.html:84
 msgid "Terms and conditions"
 msgstr "利用規約および特定商取引法に基づく表記"
 
-#: app/templates/anonymous.html:60 app/templates/login.html:17
-#: app/templates/pricing.html:77 app/templates/usage.html:59
+#: app/templates/anonymous.html:62 app/templates/login.html:17
+#: app/templates/pricing.html:77 app/templates/usage.html:85
 msgid "Privacy Policy"
 msgstr "プライバシーポリシー"
 
@@ -373,7 +377,7 @@ msgstr "カレンダーページの日記の背景色として使用されます
 msgid "When taking a new diary, this will automatically fill in the notes."
 msgstr "日記を作成する際、テンプレートが自動入力されます"
 
-#: app/templates/optional_category_list.html:3
+#: app/templates/optional_category_list.html:3 app/templates/usage.html:52
 msgid "Optional Category"
 msgstr "オリジナルカテゴリ"
 
@@ -381,11 +385,11 @@ msgstr "オリジナルカテゴリ"
 msgid "What is Optional Category?"
 msgstr "オリジナルカテゴリとは?"
 
-#: app/templates/optional_category_list.html:12
+#: app/templates/optional_category_list.html:12 app/templates/usage.html:53
 msgid "With Optional Category, you can take diaries as your own category."
 msgstr "オリジナルカテゴリを登録すれば、あなた独自のカテゴリで日記が作成できます。"
 
-#: app/templates/optional_category_list.html:13
+#: app/templates/optional_category_list.html:13 app/templates/usage.html:54
 msgid ""
 "The diaries that you can take with Optional Category are simple, but it "
 "would be convenient for tracking the habits or daily routines."
@@ -444,69 +448,120 @@ msgid "$ /mo."
 msgstr "円 /月"
 
 #: app/templates/usage.html:17
-msgid "Create diaries"
+msgid ""
+"The following usage is for desktop computer, but it would be a reference "
+"to use other devices such as smartphones and tablets."
+msgstr "以下の使い方はデスクトップコンピュータ向けですが、スマートフォンやタブレット向けにも参考となります。"
+
+#: app/templates/usage.html:18
+msgid "Create Diaries"
 msgstr "日記の作成"
 
-#: app/templates/usage.html:20
+#: app/templates/usage.html:21
+msgid "Click the date of calendar"
+msgstr "カレンダーの日付をクリックします"
+
+#: app/templates/usage.html:22
+msgid "The following is the case of Reading Diary"
+msgstr "下記は読書日記の例です"
+
+#: app/templates/usage.html:24
 msgid "Choose the category of diary to create"
 msgstr "作成する日記のカテゴリを選びます"
 
-#: app/templates/usage.html:21 app/templates/usage.html:30
-#: app/templates/usage.html:39
-msgid "The following is the case of free diary"
-msgstr "下記はフリー日記の例です"
-
-#: app/templates/usage.html:23
+#: app/templates/usage.html:26
 msgid "Edit diary and submit"
 msgstr "日記を編集し登録します"
 
-#: app/templates/usage.html:26
-msgid "Visualize diaries"
+#: app/templates/usage.html:28
+msgid "Then you can see the entry at the calendar page"
+msgstr "すると登録内容をカレンダーページで確認できます"
+
+#: app/templates/usage.html:30
+msgid "Note that you can also create diaries by clicking the menu link."
+msgstr "なお、日記はメニューリンクをクリックすることでも作成できます"
+
+#: app/templates/usage.html:33
+msgid "Visualize Diaries"
 msgstr "グラフによる日記の可視化"
 
-#: app/templates/usage.html:29
+#: app/templates/usage.html:37
 msgid "Choose the category of diary to plot"
 msgstr "グラフにするカテゴリを選びます"
 
-#: app/templates/usage.html:32
+#: app/templates/usage.html:38 app/templates/usage.html:47
+msgid "The following is the case of Sleep Diary"
+msgstr "下記は睡眠日記の例です"
+
+#: app/templates/usage.html:40
 msgid "See the summary charts of your diaries"
 msgstr "日記がグラフ化されます"
 
-#: app/templates/usage.html:35
-msgid "Change views"
+#: app/templates/usage.html:43
+msgid "Change Views"
 msgstr "ビューの変更"
 
-#: app/templates/usage.html:36
+#: app/templates/usage.html:44
 msgid ""
 "Dekigoto has multiple views by categories. The dafault view includes all "
 "categories."
-msgstr "Dekigoto は日記をカテゴリ分けしビュー表示できます。初期表示はすべてのカテゴリが表示されます。"
+msgstr "Dekigoto は日記をカテゴリごとにビュー表示できます。初期表示はすべてのカテゴリが表示されます。"
 
-#: app/templates/usage.html:38
+#: app/templates/usage.html:46
 msgid "Choose the category of diary to change"
 msgstr "変更したい日記のカテゴリを選びます"
 
-#: app/templates/usage.html:41
+#: app/templates/usage.html:49
 msgid "See the changed view"
 msgstr "変更後のビュー表示です"
 
-#: app/templates/usage.html:44
-msgid "Recommended browser"
+#: app/templates/usage.html:55
+msgid "The following shows how to add an category."
+msgstr "以下はカテゴリーの追加方法です。"
+
+#: app/templates/usage.html:57
+msgid "Click Category from the menus"
+msgstr "メニューからカテゴリをクリックします"
+
+#: app/templates/usage.html:59
+msgid "Click Add Category button"
+msgstr "カテゴリー追加ボタンをクリックします"
+
+#: app/templates/usage.html:61
+msgid "Edit the category to create and click Submit button"
+msgstr "カテゴリ内容を入力し登録ボタンをクリックします"
+
+#: app/templates/usage.html:63
+msgid "Then you can see the category on your list"
+msgstr "登録したカテゴリが一覧に表示されます"
+
+#: app/templates/usage.html:65
+msgid ""
+"The next time you take a diary, you can choose the category that you "
+"created"
+msgstr "次に日記を作成する際、作成したカテゴリーを選択できます"
+
+#: app/templates/usage.html:67
+msgid "The diary looks like the following at the calendar page if taking"
+msgstr "作成した日記は以下のようにカレンダーページに表示されます"
+
+#: app/templates/usage.html:70
+msgid "Recommended Browser"
 msgstr "推奨ブラウザ"
 
-#: app/templates/usage.html:45
+#: app/templates/usage.html:71
 msgid ""
-"The recommended browser is Google Chrome. If you hava trouble with using,"
-" change the browser to Google Chrome."
+"The recommended browser is Google Chrome. If you have trouble with using "
+"it, change the browser to Google Chrome."
 msgstr "推奨ブラウザは Google Chrome です。もし表示が正しくない場合はまずはブラウザを Google Chrome に変更してください。"
 
-#: app/templates/usage.html:47
+#: app/templates/usage.html:73
 msgid ""
 "For the example of Safari on mac, date fields seem not to be working fine"
 " because the format of these are somethng wrong and date pickers are lost"
 msgstr "Mac版Safariの例ですが、日付項目のフォーマットが変で、日付選択も不可です"
 
-#: app/templates/usage.html:49
+#: app/templates/usage.html:75
 msgid "Change the browser to Chrome and it works well"
 msgstr "ブラウザを Chrome に変更すると正常に動きます"
 
@@ -529,14 +584,6 @@ msgstr "読書日記を登録します"
 #: app/templates/diary/diary_sleep_edit.html:3
 msgid "Edit Sleep Diary"
 msgstr "睡眠日記を登録します"
-
-#: app/templates/plot/plot_drink.html:3
-msgid "Drinking diary"
-msgstr "飲酒日記"
-
-#: app/templates/plot/plot_read.html:3
-msgid "Reading diary"
-msgstr "読書日記"
 
 #~ msgid "URL"
 #~ msgstr ""
@@ -591,4 +638,25 @@ msgstr "読書日記"
 
 #~ msgid "Manage your own category"
 #~ msgstr "オリジナルカテゴリを管理します"
+
+#~ msgid "Free diary"
+#~ msgstr "フリー日記"
+
+#~ msgid "Sleep diary"
+#~ msgstr "睡眠日記"
+
+#~ msgid "Drinking diary"
+#~ msgstr "飲酒日記"
+
+#~ msgid "Reading diary"
+#~ msgstr "読書日記"
+
+#~ msgid "Note that within free trial, no payment information required."
+#~ msgstr "無料体験期間中は支払情報の登録は不要です。"
+
+#~ msgid "Start your 60-day free trial"
+#~ msgstr "60日間無料体験を開始する"
+
+#~ msgid "The following is the case of Free Diary"
+#~ msgstr "下記はフリー日記の例です"
 

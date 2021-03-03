@@ -49,10 +49,10 @@ class ReadDiaryForm(FlaskForm):
     delete = SubmitField(_l('Delete'))
 
 class AccountForm(FlaskForm):
-    submit = SubmitField(_l('Payment information (Stripe)'))
+    submit = SubmitField(_l('Payment Information (Stripe)'))
 
 class OptionalCategoryForm(FlaskForm):
-    add = SubmitField(_l('Add category'))
+    add = SubmitField(_l('Add Category'))
     name = StringField(_l('Name'), validators=[DataRequired()])
     color = ColorField(_l('Color'), validators=[DataRequired()])
     template = TextAreaField(_l('Template'))

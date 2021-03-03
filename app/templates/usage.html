@@ -8,46 +8,72 @@
 
 {% block content %}
 <div class="container">
-    <h3>{{ _('Review your life with diary') }}</h3>
+    <h3>{{ _('Review Your Life with Diary') }}</h3>
     <p class="lead">{{ _('Dekigoto is a cloud based diary service which automatically generates categorized summary charts as feedback for your future improvement. You can write in any devices via Google Chrome without any installing softwares.') }}</p>
 
     <div class="page-header">
         <h3>{{ _('Usage') }}</h3>
     </div>
-    <h3>{{ _('Create diaries') }}</h3>
+    <p>{{ _('The following usage is for desktop computer, but it would be a reference to use other devices such as smartphones and tablets.') }}</p>
+    <h3>{{ _('Create Diaries') }}</h3>
     <p>{{ _('Diaries in Dekigoto consist of several categories. This categorized approach has the purpose that you can easily continue taking diaries as your habit.') }}</p>
     <ol>
+        <li>{{ _('Click the date of calendar') }}</li>
+        <p>{{ _('The following is the case of Reading Diary') }}</p>
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_menu.png') }}" alt="diary_diary_menu.png"  width="360" class="img-responsive">
         <li>{{ _('Choose the category of diary to create') }}</li>
-        <p>{{ _('The following is the case of free diary') }}</p>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_category.png') }}" alt="diary_category.png"  width="360" height="270" class="img-responsive">            
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_category.png') }}" alt="diary_category.png"  width="360" class="img-responsive">
         <li>{{ _('Edit diary and submit') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_edit.png') }}" alt="diary_edit.png" width="360" height="270" class="img-responsive">
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_edit.png') }}" alt="diary_edit.png" width="480" class="img-responsive">
+        <li>{{ _('Then you can see the entry at the calendar page') }}</li>
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_done.png') }}" alt="diary_done.png" width="360" class="img-responsive">
+        <li>{{ _('Note that you can also create diaries by clicking the menu link.') }}</li>
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_other.png') }}" alt="diary_other.png" width="360" class="img-responsive">
     </ol>
-    <h3>{{ _('Visualize diaries') }}</h3>
-    <p>{{ _('Dekigoto automatically creates summary charts based on the categorized diaries which you provided. From these charts, you can see trends of your habits and may get feedback to improve your life.') }}</p>
+    <h3>{{ _('Visualize Diaries') }}</h3>
+    <p>{{ _('Dekigoto automatically creates summary charts based on the categorized diaries which you provided.') }}</p>
+    <p>{{ _('From these charts, you can see the trends of your habits or routine works. You also might realize what improves your life or what helps to achieve your goals.') }}</p>
     <ol>
         <li>{{ _('Choose the category of diary to plot') }}</li>
-        <p>{{ _('The following is the case of free diary') }}</p>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/plot_category.png') }}" alt="plot_category.png" width="360" height="270" class="img-responsive">
+        <p>{{ _('The following is the case of Sleep Diary') }}</p>
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/plot_category.png') }}" alt="plot_category.png" width="360"　class="img-responsive">
         <li>{{ _('See the summary charts of your diaries') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/plot_charts.png') }}" alt="plot_charts.png" width="400" height="300" class="img-responsive">
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/plot_charts.png') }}" alt="plot_charts.png" width="600" class="img-responsive">
     </ol>
-    <h3>{{ _('Change views') }}</h3>
+    <h3>{{ _('Change Views') }}</h3>
     <p>{{ _('Dekigoto has multiple views by categories. The dafault view includes all categories.') }}</p>
     <ol>
         <li>{{ _('Choose the category of diary to change') }}</li>
-        <p>{{ _('The following is the case of free diary') }}</p>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/view_category.png') }}" alt="view_category.png" width="360" height="270" class="img-responsive">
+        <p>{{ _('The following is the case of Sleep Diary') }}</p>
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/view_category.png') }}" alt="view_category.png" width="600" class="img-responsive">
         <li>{{ _('See the changed view') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/view_view.png') }}" alt="view_view.png" width="440" height="330" class="img-responsive">
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/view_view.png') }}" alt="view_view.png" width="600" class="img-responsive">
     </ol>
-    <h3>{{ _('Recommended browser') }}</h3>
-    <p>{{ _('The recommended browser is Google Chrome. If you hava trouble with using, change the browser to Google Chrome.') }}</p>
+    <h3>{{ _('Optional Category') }}</h3>
+    <p>{{ _('With Optional Category, you can take diaries as your own category.') }}</p>
+    <p>{{ _('The diaries that you can take with Optional Category are simple, but it would be convenient for tracking the habits or daily routines.') }}</p>
+    <p>{{ _('The following shows how to add an category.') }}</p>
+    <ol>
+        <li>{{ _('Click Category from the menus') }}</li>
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/category_menu.png') }}" alt="category_menu.png" width="360" class="img-responsive">
+        <li>{{ _('Click Add Category button') }}</li>
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/category_add.png') }}" alt="category_add.png" width="360" class="img-responsive">
+        <li>{{ _('Edit the category to create and click Submit button') }}</li>
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/category_edit.png') }}" alt="category_edit.png" width="480" class="img-responsive">
+        <li>{{ _('Then you can see the category on your list') }}</li>
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/category_list.png') }}" alt="category_list.png" width="480" class="img-responsive">
+        <li>{{ _('The next time you take a diary, you can choose the category that you created') }}</li>
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/category_new.png') }}" alt="category_new.png" width="360" class="img-responsive">
+        <li>{{ _('The diary looks like the following at the calendar page if taking') }}</li>
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/category_calendar.png') }}" alt="category_calendar.png" width="360" class="img-responsive">
+    </ol>    
+    <h3>{{ _('Recommended Browser') }}</h3>
+    <p>{{ _('The recommended browser is Google Chrome. If you have trouble with using it, change the browser to Google Chrome.') }}</p>
     <ol>
         <li>{{ _('For the example of Safari on mac, date fields seem not to be working fine because the format of these are somethng wrong and date pickers are lost') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/browser_safari.png') }}" alt="browser_safari.png" width="360" height="270" class="img-responsive">
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/browser_safari.png') }}" alt="browser_safari.png" width="360" class="img-responsive">
         <li>{{ _('Change the browser to Chrome and it works well') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/browser_chrome.png') }}" alt="browser_chrome.png" width="360" height="270" class="img-responsive">
+        <img src="{{ url_for('static', filename='images/' + g.locale + '/browser_chrome.png') }}" alt="browser_chrome.png" width="360" class="img-responsive">
     </ol>
 
     <hr>
