@@ -20,15 +20,25 @@
     <ol>
         <li>{{ _('Click the date of calendar') }}</li>
         <p>{{ _('The following is the case of Reading Diary') }}</p>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_menu.png') }}" alt="diary_diary_menu.png"  width="360" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_menu.png') }}" alt="diary_diary_menu.png"  width="360" class="img-responsive img-thumbnail">
+        </p>
         <li>{{ _('Choose the category of diary to create') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_category.png') }}" alt="diary_category.png"  width="360" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_category.png') }}" alt="diary_category.png"  width="360" class="img-responsive img-thumbnail">
+        </p>
         <li>{{ _('Edit diary and submit') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_edit.png') }}" alt="diary_edit.png" width="480" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_edit.png') }}" alt="diary_edit.png" width="480" class="img-responsive img-thumbnail">
+        </p>
         <li>{{ _('Then you can see the entry at the calendar page') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_done.png') }}" alt="diary_done.png" width="360" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_done.png') }}" alt="diary_done.png" width="360" class="img-responsive img-thumbnail">
+        </p>
         <li>{{ _('Note that you can also create diaries by clicking the menu link.') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_other.png') }}" alt="diary_other.png" width="360" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/diary_other.png') }}" alt="diary_other.png" width="360" class="img-responsive img-thumbnail">
+        </p>
     </ol>
     <h3>{{ _('Visualize Diaries') }}</h3>
     <p>{{ _('Dekigoto automatically creates summary charts based on the categorized diaries which you provided.') }}</p>
@@ -36,18 +46,26 @@
     <ol>
         <li>{{ _('Choose the category of diary to plot') }}</li>
         <p>{{ _('The following is the case of Sleep Diary') }}</p>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/plot_category.png') }}" alt="plot_category.png" width="360"　class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/plot_category.png') }}" alt="plot_category.png" width="360" class="img-responsive img-thumbnail">
+        </p>
         <li>{{ _('See the summary charts of your diaries') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/plot_charts.png') }}" alt="plot_charts.png" width="600" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/plot_charts.png') }}" alt="plot_charts.png" width="600" class="img-responsive img-thumbnail">
+        </p>
     </ol>
     <h3>{{ _('Change Views') }}</h3>
     <p>{{ _('Dekigoto has multiple views by categories. The dafault view includes all categories.') }}</p>
     <ol>
         <li>{{ _('Choose the category of diary to change') }}</li>
         <p>{{ _('The following is the case of Sleep Diary') }}</p>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/view_category.png') }}" alt="view_category.png" width="600" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/view_category.png') }}" alt="view_category.png" width="600" class="img-responsive img-thumbnail">
+        </p>
         <li>{{ _('See the changed view') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/view_view.png') }}" alt="view_view.png" width="600" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/view_view.png') }}" alt="view_view.png" width="600" class="img-responsive img-thumbnail">
+        </p>
     </ol>
     <h3>{{ _('Optional Category') }}</h3>
     <p>{{ _('With Optional Category, you can take diaries as your own category.') }}</p>
@@ -55,25 +73,41 @@
     <p>{{ _('The following shows how to add an category.') }}</p>
     <ol>
         <li>{{ _('Click Category from the menus') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/category_menu.png') }}" alt="category_menu.png" width="360" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/category_menu.png') }}" alt="category_menu.png" width="360" class="img-responsive img-thumbnail">
+        </p>
         <li>{{ _('Click Add Category button') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/category_add.png') }}" alt="category_add.png" width="360" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/category_add.png') }}" alt="category_add.png" width="360" class="img-responsive img-thumbnail">
+        </p>
         <li>{{ _('Edit the category to create and click Submit button') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/category_edit.png') }}" alt="category_edit.png" width="480" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/category_edit.png') }}" alt="category_edit.png" width="480" class="img-responsive img-thumbnail">
+        </p>
         <li>{{ _('Then you can see the category on your list') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/category_list.png') }}" alt="category_list.png" width="480" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/category_list.png') }}" alt="category_list.png" width="480" class="img-responsive img-thumbnail">
+        </p>
         <li>{{ _('The next time you take a diary, you can choose the category that you created') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/category_new.png') }}" alt="category_new.png" width="360" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/category_new.png') }}" alt="category_new.png" width="360" class="img-responsive img-thumbnail">
+        </p>
         <li>{{ _('The diary looks like the following at the calendar page if taking') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/category_calendar.png') }}" alt="category_calendar.png" width="360" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/category_calendar.png') }}" alt="category_calendar.png" width="360" class="img-responsive img-thumbnail">
+        </p>
     </ol>    
     <h3>{{ _('Recommended Browser') }}</h3>
     <p>{{ _('The recommended browser is Google Chrome. If you have trouble with using it, change the browser to Google Chrome.') }}</p>
     <ol>
         <li>{{ _('For the example of Safari on mac, date fields seem not to be working fine because the format of these are somethng wrong and date pickers are lost') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/browser_safari.png') }}" alt="browser_safari.png" width="360" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/browser_safari.png') }}" alt="browser_safari.png" width="360" class="img-responsive img-thumbnail">
+        </p>
         <li>{{ _('Change the browser to Chrome and it works well') }}</li>
-        <img src="{{ url_for('static', filename='images/' + g.locale + '/browser_chrome.png') }}" alt="browser_chrome.png" width="360" class="img-responsive">
+        <p>
+            <img src="{{ url_for('static', filename='images/' + g.locale + '/browser_chrome.png') }}" alt="browser_chrome.png" width="360" class="img-responsive img-thumbnail">
+        </p>
     </ol>
 
     <hr>
