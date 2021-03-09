@@ -5,6 +5,7 @@ from flask_login import current_user
 from flask_babel import _, lazy_gettext as _l
 from ... import main
 from .... import db
+from ....common import check_browser
 from ...forms.forms import ReadDiaryForm
 from ....models import Category, Diary
 
@@ -36,6 +37,7 @@ def process_get_book_info(form):
 @main.route('/diary_read_new', methods=['GET', 'POST'])
 def diary_read_new():
     form = ReadDiaryForm()
+    check_browser()
 
     if form.is_submitted() and form.get_info.data:
         process_get_book_info(form)
@@ -86,6 +88,7 @@ def diary_read_new():
 @main.route('/diary_read_edit/<id>', methods=['GET', 'POST'])
 def diary_read_edit(id):
     form = ReadDiaryForm()
+    check_browser()
 
     data = Diary.query.get(id)
 

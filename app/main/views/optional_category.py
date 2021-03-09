@@ -2,6 +2,7 @@ from flask import redirect, url_for, render_template
 from flask_login import current_user
 from .. import main
 from ... import db
+from ...common import check_browser
 from ..forms.forms import OptionalCategoryForm
 from ...models import Diary, OptionalCategory
 
@@ -19,6 +20,7 @@ def optional_category_list():
 @main.route('/optional_category_new', methods=['GET', 'POST'])
 def optional_category_new():
     form = OptionalCategoryForm()
+    check_browser()
 
     query = OptionalCategory.query.filter_by(
         user=current_user._get_current_object())
@@ -57,6 +59,7 @@ def optional_category_new():
 @main.route('/optional_category_edit/<id>', methods=['GET', 'POST'])
 def optional_category_edit(id):
     form = OptionalCategoryForm()
+    check_browser()
 
     record = OptionalCategory.query.get((current_user._get_current_object().id, int(id)))
 

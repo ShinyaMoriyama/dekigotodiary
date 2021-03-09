@@ -2,6 +2,7 @@ import datetime
 from flask import redirect, url_for, render_template, request
 from flask_login import current_user
 from ... import main
+from ....common import check_browser
 from .... import db
 from ...forms.forms import DrinkDiaryForm
 from ....models import Category, Diary
@@ -9,6 +10,7 @@ from ....models import Category, Diary
 @main.route('/diary_drink_new', methods=['GET', 'POST'])
 def diary_drink_new():
     form = DrinkDiaryForm()
+    check_browser()
 
     if form.validate_on_submit():
         date = form.date.data
@@ -41,6 +43,7 @@ def diary_drink_new():
 @main.route('/diary_drink_edit/<id>', methods=['GET', 'POST'])
 def diary_drink_edit(id):
     form = DrinkDiaryForm()
+    check_browser()
 
     data = Diary.query.get(id)
 

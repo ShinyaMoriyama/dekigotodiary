@@ -3,12 +3,14 @@ from flask import redirect, url_for, render_template, request
 from flask_login import current_user
 from ... import main
 from .... import db
+from ....common import check_browser
 from ...forms.forms import SleepDiaryForm
 from ....models import Category, Diary
 
 @main.route('/diary_sleep_new', methods=['GET', 'POST'])
 def diary_sleep_new():
     form = SleepDiaryForm()
+    check_browser()
 
     if form.validate_on_submit():
         if form.allday.data == True:
@@ -55,6 +57,7 @@ def diary_sleep_new():
 @main.route('/diary_sleep_edit/<id>', methods=['GET', 'POST'])
 def diary_sleep_edit(id):
     form = SleepDiaryForm()
+    check_browser()
 
     data = Diary.query.get(id)
 

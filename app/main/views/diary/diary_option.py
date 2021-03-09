@@ -3,12 +3,14 @@ from flask import redirect, url_for, render_template, request, g
 from flask_login import current_user
 from ... import main
 from .... import db
+from ....common import check_browser
 from ...forms.forms import FreeDiaryForm
 from ....models import Category, Diary
 
 @main.route('/diary_option_new', methods=['GET', 'POST'])
 def diary_option_new():
     form = FreeDiaryForm()
+    check_browser()
 
     args_category = int(request.args.get('optional_category'))
     optional_category_name = ''
@@ -53,6 +55,7 @@ def diary_option_new():
 @main.route('/diary_option_edit/<id>', methods=['GET', 'POST'])
 def diary_option_edit(id):
     form = FreeDiaryForm()
+    check_browser()
 
     data = Diary.query.get(id)
     data_category = data.optional_category

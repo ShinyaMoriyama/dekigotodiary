@@ -3,12 +3,14 @@ from flask import redirect, url_for, render_template, request
 from flask_login import current_user
 from ... import main
 from .... import db
+from ....common import check_browser
 from ...forms.forms import FreeDiaryForm
 from ....models import Category, Diary
 
 @main.route('/diary_free_new', methods=['GET', 'POST'])
 def diary_free_new():
     form = FreeDiaryForm()
+    check_browser()
 
     if form.validate_on_submit():
         date = form.date.data
@@ -39,6 +41,7 @@ def diary_free_new():
 @main.route('/diary_free_edit/<id>', methods=['GET', 'POST'])
 def diary_free_edit(id):
     form = FreeDiaryForm()
+    check_browser()
 
     data = Diary.query.get(id)
 
