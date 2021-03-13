@@ -10,8 +10,12 @@ class Category:
     OPTION = 9
 
 class SleepCondition:
-    OK = 1
     NG = 0
+    OK = 1
+
+class DrinkCondition:
+    NOTBAD = 0
+    HUNGOVER = 1
 
 class Diary(db.Model):
     __tablename__ = 'Diary'
@@ -24,6 +28,7 @@ class Diary(db.Model):
     sleep_time = db.Column(db.Interval)
     sleep_condition = db.Column(db.Integer)
     amt_of_drink = db.Column(db.Integer)
+    drink_condition = db.Column(db.Integer)
     book_isbn = db.Column(db.String(32))
     book_title = db.Column(db.String(256))
     book_subtitle = db.Column(db.String(256))

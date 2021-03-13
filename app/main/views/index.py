@@ -117,7 +117,7 @@ def diary2event(diary):
         d['url'] = 'diary_sleep_edit/' + str(diary.id)
         d['backgroundColor'] = Config.BC_SLEEP
     if diary.category == Category.DRINK:
-        d['title'] = str(diary.amt_of_drink)
+        d['title'] = diary.note if diary.amt_of_drink is None else str(diary.amt_of_drink)
         d['url'] = 'diary_drink_edit/' + str(diary.id)
         d['backgroundColor'] = Config.BC_DRINK
     if diary.category == Category.READ:
@@ -263,6 +263,8 @@ def before_request():
     '''
 
     g.locale = str(get_locale())
+
+    print('**** BROWSER ****', request.user_agent.browser)
 
     if request.endpoint in [
         'static',

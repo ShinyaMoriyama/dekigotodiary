@@ -8,9 +8,15 @@
         {{ form.hidden_tag()}}
         <div class="row">
             <div class="col-md-4">{{ wtf.form_field(form.date)}}</div>
-            <div class="col-md-4">{{ wtf.form_field(form.amt_of_drink)}}</div>
+            <div class="col-md-4">{{ wtf.form_field(form.drink_condition)}}</div>
+            <div class="col-md-4">
+                {{ wtf.form_field(form.amt_of_drink)}}
+                <span class="help-block">{{ _('Optional but used for the graph page') }}</span>
+                <span class="help-block">{{ _('Per cup: Volume') }}(ml) &times {{ _('ABV') }}(%) &times 0.8({{ _('Density') }})</span>
+            </div>
         </div>
         {{ wtf.form_field(form.note, rows="3")}}
+        <span class="help-block">{{ _('Optional but used for the graph page') }}</span>
         {{ wtf.form_field(form.submit)}}
         {% if is_edit %}
         {% include '_delete_diary.html' %}            

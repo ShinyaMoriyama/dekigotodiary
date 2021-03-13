@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, TextAreaField, SelectField, IntegerField, StringField, HiddenField, BooleanField
 from wtforms.fields.html5 import DateField, DateTimeLocalField
-from wtforms.validators import DataRequired, NumberRange
+from wtforms.validators import DataRequired, NumberRange, Optional
 from flask_babel import _, lazy_gettext as _l
 from wtforms_components import ColorField
 from wtforms_components.fields import color
@@ -30,7 +30,8 @@ class SleepDiaryForm(FlaskForm):
 
 class DrinkDiaryForm(FlaskForm):
     date = DateField(_l('Date'), format='%Y-%m-%d', validators=[DataRequired()])
-    amt_of_drink = IntegerField(_l('The amount of pure alcohol (g)'), validators=[NumberRange(min=0, max=999)])
+    amt_of_drink = IntegerField(_l('The amount of pure alcohol (g)'), validators=[Optional(), NumberRange(min=0, max=999)])
+    drink_condition = SelectField(_l('Physical Condition'), choices=[(0, _l('Not Bad')), (1, _l('Hungover'))], coerce=int, default=0)
     note = TextAreaField(_l('Note'))
     submit = SubmitField(_l('Submit'))
     delete = SubmitField(_l('Delete'))

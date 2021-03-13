@@ -15,11 +15,13 @@ def diary_drink_new():
     if form.validate_on_submit():
         date = form.date.data
         amt_of_drink = form.amt_of_drink.data
+        drink_condition = form.drink_condition.data
         note = form.note.data
         diary = Diary(
             category=Category.DRINK,
             date=date,
             amt_of_drink=amt_of_drink,
+            drink_condition=drink_condition,
             note=note,
             user=current_user._get_current_object())
 
@@ -50,6 +52,7 @@ def diary_drink_edit(id):
     if form.is_submitted() and form.submit.data and form.validate_on_submit():
         data.date = form.date.data
         data.amt_of_drink = form.amt_of_drink.data
+        data.drink_condition = form.drink_condition.data
         data.note = form.note.data
         db.session.commit()
 
@@ -63,6 +66,7 @@ def diary_drink_edit(id):
 
     form.date.data = data.date
     form.amt_of_drink.data = data.amt_of_drink
+    form.drink_condition.data = data.drink_condition
     form.note.data = data.note
 
     return render_template(

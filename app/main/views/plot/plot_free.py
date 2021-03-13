@@ -33,7 +33,7 @@ def plot_free():
                     dtick='M1',
                 ),
                 yaxis=dict(
-                    dtick='1',
+                    dtick='5',
                     title=_('The number of diaries'),
                 ),
             ),

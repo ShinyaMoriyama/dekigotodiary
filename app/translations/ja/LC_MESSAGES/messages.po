@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-10 07:35+0900\n"
+"POT-Creation-Date: 2021-03-13 10:46+0900\n"
 "PO-Revision-Date: 2021-01-06 06:07+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -25,7 +25,12 @@ msgid ""
 "default\" "
 "onclick=\"window.open('https://www.google.com/chrome/','_blank')\">Link "
 "to Google</button>"
-msgstr "<p>あなたのブラウザはGoogle Chromeではありません。操作性向上のためにインストールを強くおすすめします。</p><br><button class=\"btn btn-default\" onclick=\"window.open('https://www.google.com/chrome/','_blank')\">Link to Google</button>"
+msgstr ""
+"<p>あなたのブラウザはGoogle "
+"Chromeではありません。操作性向上のためにインストールを強くおすすめします。</p><br><button class=\"btn btn-"
+"default\" "
+"onclick=\"window.open('https://www.google.com/chrome/','_blank')\">Link "
+"to Google</button>"
 
 #: app/main/forms/forms.py:10 app/templates/base.html:85
 msgid "Category"
@@ -56,24 +61,26 @@ msgid "Reading Diary"
 msgstr "読書日記"
 
 #: app/main/forms/forms.py:13 app/main/forms/forms.py:18
-#: app/main/forms/forms.py:28 app/main/forms/forms.py:35
-#: app/main/forms/forms.py:48 app/main/forms/forms.py:59
+#: app/main/forms/forms.py:28 app/main/forms/forms.py:36
+#: app/main/forms/forms.py:49 app/main/forms/forms.py:60
 msgid "Submit"
 msgstr "登録"
 
 #: app/main/forms/forms.py:16 app/main/forms/forms.py:23
-#: app/main/forms/forms.py:32 app/main/forms/forms.py:39
+#: app/main/forms/forms.py:32 app/main/forms/forms.py:40
+#: app/main/views/plot/plot_drink.py:82
 msgid "Date"
 msgstr "日付"
 
 #: app/main/forms/forms.py:17 app/main/forms/forms.py:27
-#: app/main/forms/forms.py:34 app/main/forms/forms.py:47
+#: app/main/forms/forms.py:35 app/main/forms/forms.py:48
+#: app/main/views/plot/plot_drink.py:82
 msgid "Note"
 msgstr "記述"
 
 #: app/main/forms/forms.py:19 app/main/forms/forms.py:29
-#: app/main/forms/forms.py:36 app/main/forms/forms.py:49
-#: app/main/forms/forms.py:60 app/templates/_delete_category.html:2
+#: app/main/forms/forms.py:37 app/main/forms/forms.py:50
+#: app/main/forms/forms.py:61 app/templates/_delete_category.html:2
 #: app/templates/_delete_diary.html:2
 msgid "Delete"
 msgstr "削除"
@@ -94,44 +101,57 @@ msgstr "終了"
 msgid "Sleep Condition"
 msgstr "睡眠の質"
 
-#: app/main/forms/forms.py:33 app/main/views/plot/plot_drink.py:52
-#: app/main/views/plot/plot_drink.py:54
+#: app/main/forms/forms.py:33 app/main/views/plot/plot_drink.py:71
+#: app/main/views/plot/plot_drink.py:73
 msgid "The amount of pure alcohol (g)"
 msgstr "純アルコール量 (g)"
 
-#: app/main/forms/forms.py:41
+#: app/main/forms/forms.py:34
+msgid "Physical Condition"
+msgstr "体調"
+
+#: app/main/forms/forms.py:34 app/main/views/plot/plot_drink.py:56
+msgid "Not Bad"
+msgstr "普通"
+
+#: app/main/forms/forms.py:34 app/main/views/plot/plot_drink.py:13
+#: app/main/views/plot/plot_drink.py:64
+msgid "Hungover"
+msgstr "二日酔い"
+
+#: app/main/forms/forms.py:42
 msgid "Book Info"
 msgstr "書籍情報"
 
-#: app/main/forms/forms.py:42
+#: app/main/forms/forms.py:43
 msgid "Title"
 msgstr "タイトル"
 
-#: app/main/forms/forms.py:43
+#: app/main/forms/forms.py:44
 msgid "Subtitle"
 msgstr "サブタイトル"
 
-#: app/main/forms/forms.py:45
+#: app/main/forms/forms.py:46
 msgid "Author"
 msgstr "著者"
 
-#: app/main/forms/forms.py:52
+#: app/main/forms/forms.py:53
 msgid "Payment Information (Stripe)"
 msgstr "支払情報を参照する(Stripe)"
 
-#: app/main/forms/forms.py:55
+#: app/main/forms/forms.py:56
 msgid "Add Category"
 msgstr "カテゴリを追加"
 
-#: app/main/forms/forms.py:56 app/templates/optional_category_list.html:26
+#: app/main/forms/forms.py:57 app/templates/optional_category_list.html:26
 msgid "Name"
 msgstr "名前"
 
-#: app/main/forms/forms.py:57 app/templates/optional_category_list.html:27
+#: app/main/forms/forms.py:58 app/templates/optional_category_list.html:27
 msgid "Color"
 msgstr "配色"
 
-#: app/main/forms/forms.py:58 app/templates/optional_category_list.html:28
+#: app/main/forms/forms.py:59 app/templates/optional_category_list.html:28
 msgid "Template"
 msgstr "テンプレート"
 
@@ -139,21 +159,29 @@ msgstr "テンプレート"
 msgid "Can not get book info. Confirm the input and try again."
 msgstr "書籍情報を取得できません。入力値を確認し再操作してください。"
 
-#: app/main/views/plot/plot_drink.py:32 app/main/views/plot/plot_free.py:31
+#: app/main/views/plot/plot_drink.py:41 app/main/views/plot/plot_free.py:31
 #: app/main/views/plot/plot_option.py:40 app/main/views/plot/plot_read.py:31
 #: app/main/views/plot/plot_sleep.py:32
 msgid "The number of diaries by month"
 msgstr "月ごとの日記の数"
 
-#: app/main/views/plot/plot_drink.py:38 app/main/views/plot/plot_free.py:37
+#: app/main/views/plot/plot_drink.py:47 app/main/views/plot/plot_free.py:37
 #: app/main/views/plot/plot_option.py:46 app/main/views/plot/plot_read.py:37
 #: app/main/views/plot/plot_sleep.py:38
 msgid "The number of diaries"
 msgstr "日記の数"
 
-#: app/main/views/plot/plot_drink.py:52
+#: app/main/views/plot/plot_drink.py:71
 msgid "How much alcohol do you drink these days?"
 msgstr "最近どれくらいアルコールを摂取しているか?"
+
+#: app/main/views/plot/plot_drink.py:82
+msgid "Condition"
+msgstr "体調"
+
+#: app/main/views/plot/plot_drink.py:101
+msgid "The diaries these days"
+msgstr "最近の日記"
 
 #: app/main/views/plot/plot_sleep.py:52
 msgid "7-day moving average"
@@ -582,6 +610,23 @@ msgstr "日記のカテゴリを選んでください"
 msgid "Edit Drinking Diary"
 msgstr "飲酒日記を登録します"
 
+#: app/templates/diary/diary_drink_edit.html:14
+#: app/templates/diary/diary_drink_edit.html:19
+msgid "Optional but used for the graph page"
+msgstr "任意入力ですがグラフページにて使用されます"
+
+#: app/templates/diary/diary_drink_edit.html:15
+msgid "Per cup: Volume"
+msgstr "一杯あたり: 容量"
+
+#: app/templates/diary/diary_drink_edit.html:15
+msgid "ABV"
+msgstr "度数"
+
+#: app/templates/diary/diary_drink_edit.html:15
+msgid "Density"
+msgstr "密度"
+
 #: app/templates/diary/diary_free_edit.html:3
 msgid "Edit Free Diary"
 msgstr "フリー日記を登録します"
@@ -675,5 +720,11 @@ msgstr "睡眠日記を登録します"
 #~ "it:</p><br><button class=\"btn btn-default\" "
 #~ "onclick=\"window.open('https://www.google.com/chrome/','_blank')\">Link"
 #~ " to Google</button>"
+#~ msgstr ""
+
+#~ msgid "The latest diaries"
+#~ msgstr "最近の日記"
+
+#~ msgid "Optional but used for the graph page if hungover"
 #~ msgstr ""
 
