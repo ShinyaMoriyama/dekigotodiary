@@ -13,51 +13,47 @@
         <h3>{{ _('Pricing') }}</h3>
     </div>
 
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="row equal">
-                <div class="col-md-6">
-                    {% if current_user.is_authenticated %}
-                    <div class="panel panel-info">
-                    {% else %}
-                    <div class="panel panel-primary">
-                    {% endif %}
-                        <div class=panel-heading>
-                            <h3 class=panel-title>{{ _('60-day Free Trial') }}</h3>
-                        </div>
-                        <div class="panel-body">
-                            <ul>
-                                <li>{{ _('No payment information is required') }}</li>
-                                <li>{{ _('All features are available') }}</li>
-                                <li>{{ _('You can try for free in 60 days') }}</li>
-                            </ul>
-                            <p class="text-center"><strong>{{ _('Free') }}</strong> {{ _('for 60 days') }}</p>
-                        </div>
-                    </div>    
+    <div class="row equal lead">
+        <div class="col-md-6">
+            {% if current_user.is_authenticated %}
+            <div class="panel panel-info">
+            {% else %}
+            <div class="panel panel-primary">
+            {% endif %}
+                <div class=panel-heading>
+                    <h3 class=panel-title>{{ _('60-day Free Trial') }}</h3>
                 </div>
-                <div class="col-md-6">
-                    {% if current_user.is_authenticated %}
-                    <div class="panel panel-primary">
-                    {% else %}
-                    <div class="panel panel-info">
-                    {% endif %}
-                        <div class=panel-heading>
-                            <h3 class=panel-title>{{ _('Standard Plan') }}</h3>
-                        </div>
-                        <div class="panel-body">
-                            <ul>
-                                <li>{{ _('Adding payment information finishes 60-day Free Trial at the moment') }}</li>
-                                <li>{{ _('All features are available') }}</li>
-                                <li>{{ _('You can keep diaries with no limitations') }}</li>
-                            </ul>                            
-                            <p class="text-center"><strong>{{ _('2.99') }}</strong>{{ _('$ /mo.') }}</p>
-                            <ul>
-                                <p>{{ _('If you live in Japan, consumption tax will be added.') }}</p>
-                            </ul>
-                        </div>
-                    </div>    
+                <div class="panel-body">
+                    <ul>
+                        <li>{{ _('No payment information is required') }}</li>
+                        <li>{{ _('All features are available') }}</li>
+                        <li>{{ _('You can try for free in 60 days') }}</li>
+                    </ul>
+                    <p class="text-center"><strong>{{ _('Free') }}</strong> {{ _('for 60 days') }}</p>
                 </div>
-            </div>
+            </div>    
+        </div>
+        <div class="col-md-6">
+            {% if current_user.is_authenticated %}
+            <div class="panel panel-primary">
+            {% else %}
+            <div class="panel panel-info">
+            {% endif %}
+                <div class=panel-heading>
+                    <h3 class=panel-title>{{ _('Standard Plan') }}</h3>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>{{ _('Adding payment information finishes 60-day Free Trial at the moment') }}</li>
+                        <li>{{ _('All features are available') }}</li>
+                        <li>{{ _('You can keep diaries with no limitations') }}</li>
+                    </ul>                            
+                    <p class="text-center"><strong>{{ _('2.99') }}</strong>{{ _('$ /mo.') }}</p>
+                    <ul>
+                        <p>{{ _('If you live in Japan, consumption tax will be added.') }}</p>
+                    </ul>
+                </div>
+            </div>    
         </div>
     </div>
     <br>
@@ -69,6 +65,8 @@
         </div>
     </div>
     {% endif %}
+
+    <br>
 
     <footer>
         <p>&copy; 2020 Shinya Moriyama</p>

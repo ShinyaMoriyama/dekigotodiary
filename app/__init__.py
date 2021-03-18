@@ -56,8 +56,8 @@ def create_app(config_name):
     )
     app.register_blueprint(twitter_blueprint, url_prefix="/login")
 
-    app.logger.info('url_map= %s', app.url_map)
-    app.logger.info('config= %s', app.config)
+    # app.logger.info('url_map= %s', app.url_map)
+    # app.logger.info('config= %s', app.config)
 
     return app
 

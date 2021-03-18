@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-13 10:46+0900\n"
+"POT-Creation-Date: 2021-03-19 06:47+0900\n"
 "PO-Revision-Date: 2021-01-06 06:07+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -36,27 +36,31 @@ msgstr ""
 msgid "Category"
 msgstr "カテゴリ"
 
-#: app/main/forms/forms.py:11 app/templates/anonymous.html:35
-#: app/templates/base.html:52 app/templates/base.html:64
-#: app/templates/base.html:76 app/templates/plot/plot_free.html:3
+#: app/main/forms/forms.py:11 app/templates/anonymous.html:38
+#: app/templates/anonymous.html:125 app/templates/base.html:52
+#: app/templates/base.html:64 app/templates/base.html:76
+#: app/templates/plot/plot_free.html:3
 msgid "Free Diary"
 msgstr "フリー日記"
 
 #: app/main/forms/forms.py:11 app/templates/anonymous.html:36
-#: app/templates/base.html:53 app/templates/base.html:65
-#: app/templates/base.html:77 app/templates/plot/plot_sleep.html:3
+#: app/templates/anonymous.html:84 app/templates/base.html:53
+#: app/templates/base.html:65 app/templates/base.html:77
+#: app/templates/plot/plot_sleep.html:3
 msgid "Sleep Diary"
 msgstr "睡眠日記"
 
-#: app/main/forms/forms.py:11 app/templates/anonymous.html:37
-#: app/templates/base.html:54 app/templates/base.html:66
-#: app/templates/base.html:78 app/templates/plot/plot_drink.html:3
+#: app/main/forms/forms.py:11 app/templates/anonymous.html:35
+#: app/templates/anonymous.html:63 app/templates/base.html:54
+#: app/templates/base.html:66 app/templates/base.html:78
+#: app/templates/plot/plot_drink.html:3
 msgid "Drinking Diary"
 msgstr "飲酒日記"
 
-#: app/main/forms/forms.py:11 app/templates/anonymous.html:38
-#: app/templates/base.html:55 app/templates/base.html:67
-#: app/templates/base.html:79 app/templates/plot/plot_read.html:3
+#: app/main/forms/forms.py:11 app/templates/anonymous.html:37
+#: app/templates/anonymous.html:105 app/templates/base.html:55
+#: app/templates/base.html:67 app/templates/base.html:79
+#: app/templates/plot/plot_read.html:3
 msgid "Reading Diary"
 msgstr "読書日記"
 
@@ -68,13 +72,13 @@ msgstr "登録"
 
 #: app/main/forms/forms.py:16 app/main/forms/forms.py:23
 #: app/main/forms/forms.py:32 app/main/forms/forms.py:40
-#: app/main/views/plot/plot_drink.py:82
+#: app/main/views/plot/plot_drink.py:81
 msgid "Date"
 msgstr "日付"
 
 #: app/main/forms/forms.py:17 app/main/forms/forms.py:27
 #: app/main/forms/forms.py:35 app/main/forms/forms.py:48
-#: app/main/views/plot/plot_drink.py:82
+#: app/main/views/plot/plot_drink.py:81
 msgid "Note"
 msgstr "記述"
 
@@ -101,8 +105,8 @@ msgstr "終了"
 msgid "Sleep Condition"
 msgstr "睡眠の質"
 
-#: app/main/forms/forms.py:33 app/main/views/plot/plot_drink.py:71
-#: app/main/views/plot/plot_drink.py:73
+#: app/main/forms/forms.py:33 app/main/views/plot/plot_drink.py:70
+#: app/main/views/plot/plot_drink.py:72
 msgid "The amount of pure alcohol (g)"
 msgstr "純アルコール量 (g)"
 
@@ -110,12 +114,12 @@ msgstr "純アルコール量 (g)"
 msgid "Physical Condition"
 msgstr "体調"
 
-#: app/main/forms/forms.py:34 app/main/views/plot/plot_drink.py:56
+#: app/main/forms/forms.py:34 app/main/views/plot/plot_drink.py:55
 msgid "Not Bad"
 msgstr "普通"
 
 #: app/main/forms/forms.py:34 app/main/views/plot/plot_drink.py:13
-#: app/main/views/plot/plot_drink.py:64
+#: app/main/views/plot/plot_drink.py:63
 msgid "Hungover"
 msgstr "二日酔い"
 
@@ -159,27 +163,27 @@ msgstr "テンプレート"
 msgid "Can not get book info. Confirm the input and try again."
 msgstr "書籍情報を取得できません。入力値を確認し再操作してください。"
 
-#: app/main/views/plot/plot_drink.py:41 app/main/views/plot/plot_free.py:31
+#: app/main/views/plot/plot_drink.py:40 app/main/views/plot/plot_free.py:31
 #: app/main/views/plot/plot_option.py:40 app/main/views/plot/plot_read.py:31
 #: app/main/views/plot/plot_sleep.py:32
 msgid "The number of diaries by month"
 msgstr "月ごとの日記の数"
 
-#: app/main/views/plot/plot_drink.py:47 app/main/views/plot/plot_free.py:37
+#: app/main/views/plot/plot_drink.py:46 app/main/views/plot/plot_free.py:37
 #: app/main/views/plot/plot_option.py:46 app/main/views/plot/plot_read.py:37
 #: app/main/views/plot/plot_sleep.py:38
 msgid "The number of diaries"
 msgstr "日記の数"
 
-#: app/main/views/plot/plot_drink.py:71
+#: app/main/views/plot/plot_drink.py:70
 msgid "How much alcohol do you drink these days?"
 msgstr "最近どれくらいアルコールを摂取しているか?"
 
-#: app/main/views/plot/plot_drink.py:82
+#: app/main/views/plot/plot_drink.py:81
 msgid "Condition"
 msgstr "体調"
 
-#: app/main/views/plot/plot_drink.py:101
+#: app/main/views/plot/plot_drink.py:100
 msgid "The diaries these days"
 msgstr "最近の日記"
 
@@ -254,7 +258,7 @@ msgid ""
 "service. Dekigoto does not store the information you provide to Stripe."
 msgstr "支払情報は決済サービスStripeが収集し、入力された情報をDekigotoが保管することはありません。"
 
-#: app/templates/account.html:49 app/templates/pricing.html:55
+#: app/templates/account.html:49 app/templates/pricing.html:53
 msgid "If you live in Japan, consumption tax will be added."
 msgstr "日本に在住の場合、消費税が適用されます。"
 
@@ -322,35 +326,85 @@ msgid ""
 "achieve your goals."
 msgstr "グラフであなたの行動の傾向を把握し、生活向上のためのヒントとしましょう。"
 
-#: app/templates/anonymous.html:58
+#: app/templates/anonymous.html:68
+msgid "Take a diary of the amount of alcohol or what to drink."
+msgstr "アルコール量や何を飲んだかの日記を付けます。"
+
+#: app/templates/anonymous.html:69
+msgid ""
+"By looking at the graph, you should realize how much alcohol will affect "
+"your physical condition."
+msgstr "グラフを見るとどれくらいのアルコールが体調に影響を与えるかがある程度分かるはずです。"
+
+#: app/templates/anonymous.html:70
+msgid "This will help you to decide how to drink to keep in good condition."
+msgstr "これは体調維持するための飲み方を決める手助けとなります。"
+
+#: app/templates/anonymous.html:89
+msgid "Take a diary about how well you sleep after waking up."
+msgstr "起床後にどれくらいよく眠れたかの日記を付けます。"
+
+#: app/templates/anonymous.html:90
+msgid "By looking at the graph, you can realize the trends of your sleep."
+msgstr "グラフを見ると睡眠の傾向が分かります。"
+
+#: app/templates/anonymous.html:91
+msgid ""
+"It is important to take records since your memory is always different "
+"from the actual records."
+msgstr "記録を取ることは重要です。なぜならあなたの記憶はたいてい記録とは異なるからです。"
+
+#: app/templates/anonymous.html:110
+msgid ""
+"Take a record of what you feel and learn about the book as soon as you "
+"finish reading it."
+msgstr "一冊の読書が終わったらすぐに感想や学んだことの記録を残しましょう。"
+
+#: app/templates/anonymous.html:111
+msgid ""
+"By writing down by your hands, it is good effect to memorize what you "
+"read."
+msgstr "手を動かし記録することで、読んだ内容はより覚えやすくなります。"
+
+#: app/templates/anonymous.html:130
+msgid "You can take free diaries about your awareness of your life and work."
+msgstr "あなたの人生や仕事についての気づきをフリー日記に残します。"
+
+#: app/templates/anonymous.html:131
+msgid ""
+"You also create your own categorized diaries that are suitable to "
+"memorize specific activities or track your daily routines."
+msgstr "独自のカテゴリを作り、特定の活動やルーチンワークの記録を残すこともできます。"
+
+#: app/templates/anonymous.html:147
 msgid "Learn More"
 msgstr "くわしく見る"
 
-#: app/templates/anonymous.html:59 app/templates/base.html:91
+#: app/templates/anonymous.html:148 app/templates/base.html:91
 #: app/templates/pricing.html:13
 msgid "Pricing"
 msgstr "利用料金"
 
-#: app/templates/anonymous.html:60 app/templates/pricing.html:68
+#: app/templates/anonymous.html:149 app/templates/pricing.html:64
 msgid "Start Your 60-day Free Trial"
 msgstr "60日間無料体験を開始する"
 
-#: app/templates/anonymous.html:61
+#: app/templates/anonymous.html:153
 msgid "No payment information is required within free trial."
 msgstr "無料体験期間中は支払情報の登録は不要です"
 
-#: app/templates/anonymous.html:69 app/templates/pricing.html:75
+#: app/templates/anonymous.html:160 app/templates/pricing.html:73
 #: app/templates/usage.html:117
 msgid "Contact information"
 msgstr "問い合わせ連絡先"
 
-#: app/templates/anonymous.html:70 app/templates/login.html:16
-#: app/templates/pricing.html:76 app/templates/usage.html:118
+#: app/templates/anonymous.html:161 app/templates/login.html:16
+#: app/templates/pricing.html:74 app/templates/usage.html:118
 msgid "Terms and conditions"
 msgstr "利用規約および特定商取引法に基づく表記"
 
-#: app/templates/anonymous.html:71 app/templates/login.html:17
-#: app/templates/pricing.html:77 app/templates/usage.html:119
+#: app/templates/anonymous.html:162 app/templates/login.html:17
+#: app/templates/pricing.html:75 app/templates/usage.html:119
 msgid "Privacy Policy"
 msgstr "プライバシーポリシー"
 
@@ -440,47 +494,47 @@ msgstr "アクション"
 msgid "Edit"
 msgstr "編集"
 
-#: app/templates/pricing.html:26
+#: app/templates/pricing.html:24
 msgid "60-day Free Trial"
 msgstr "60日間無料体験"
 
-#: app/templates/pricing.html:30
+#: app/templates/pricing.html:28
 msgid "No payment information is required"
 msgstr "支払情報の登録は不要です"
 
-#: app/templates/pricing.html:31 app/templates/pricing.html:50
+#: app/templates/pricing.html:29 app/templates/pricing.html:48
 msgid "All features are available"
 msgstr "すべての機能が利用できます"
 
-#: app/templates/pricing.html:32
+#: app/templates/pricing.html:30
 msgid "You can try for free in 60 days"
 msgstr "60日間無料で体験できます"
 
-#: app/templates/pricing.html:34
+#: app/templates/pricing.html:32
 msgid "Free"
 msgstr "無料"
 
-#: app/templates/pricing.html:34
+#: app/templates/pricing.html:32
 msgid "for 60 days"
 msgstr " /60日間"
 
-#: app/templates/pricing.html:45
+#: app/templates/pricing.html:43
 msgid "Standard Plan"
 msgstr "スタンダードプラン"
 
-#: app/templates/pricing.html:49
+#: app/templates/pricing.html:47
 msgid "Adding payment information finishes 60-day Free Trial at the moment"
 msgstr "支払情報を登録した時点で無料体験は終了します"
 
-#: app/templates/pricing.html:51
+#: app/templates/pricing.html:49
 msgid "You can keep diaries with no limitations"
 msgstr "制限なしで日記を続けられます"
 
-#: app/templates/pricing.html:53
+#: app/templates/pricing.html:51
 msgid "2.99"
 msgstr "290"
 
-#: app/templates/pricing.html:53
+#: app/templates/pricing.html:51
 msgid "$ /mo."
 msgstr "円 /月"
 
@@ -727,4 +781,7 @@ msgstr "睡眠日記を登録します"
 
 #~ msgid "Optional but used for the graph page if hungover"
 #~ msgstr ""
+
+#~ msgid "Take a records of the book as soon as you finish reading."
+#~ msgstr "読書が終わったらすぐに日記を付けましょう。"
 

@@ -14,10 +14,10 @@
     <div class="page-header">
         <h3>{{ _('Usage') }}</h3>
     </div>
-    <p>{{ _('The following usage is for desktop computer, but it would be a reference to use other devices such as smartphones and tablets.') }}</p>
+    <p class="lead">{{ _('The following usage is for desktop computer, but it would be a reference to use other devices such as smartphones and tablets.') }}</p>
     <h3>{{ _('Create Diaries') }}</h3>
-    <p>{{ _('Diaries in Dekigoto consist of several categories. This categorized approach has the purpose that you can easily continue taking diaries as your habit.') }}</p>
-    <ol>
+    <p class="lead">{{ _('Diaries in Dekigoto consist of several categories. This categorized approach has the purpose that you can easily continue taking diaries as your habit.') }}</p>
+    <ol class="lead">
         <li>{{ _('Click the date of calendar') }}</li>
         <p>{{ _('The following is the case of Reading Diary') }}</p>
         <p>
@@ -41,9 +41,9 @@
         </p>
     </ol>
     <h3>{{ _('Visualize Diaries') }}</h3>
-    <p>{{ _('Dekigoto automatically creates summary charts based on the categorized diaries which you provided.') }}</p>
-    <p>{{ _('From these charts, you can see the trends of your habits or routine works. You also might realize what improves your life or what helps to achieve your goals.') }}</p>
-    <ol>
+    <p class="lead">{{ _('Dekigoto automatically creates summary charts based on the categorized diaries which you provided.') }}</p>
+    <p class="lead">{{ _('From these charts, you can see the trends of your habits or routine works. You also might realize what improves your life or what helps to achieve your goals.') }}</p>
+    <ol class="lead">
         <li>{{ _('Choose the category of diary to plot') }}</li>
         <p>{{ _('The following is the case of Sleep Diary') }}</p>
         <p>
@@ -55,8 +55,8 @@
         </p>
     </ol>
     <h3>{{ _('Change Views') }}</h3>
-    <p>{{ _('Dekigoto has multiple views by categories. The dafault view includes all categories.') }}</p>
-    <ol>
+    <p class="lead">{{ _('Dekigoto has multiple views by categories. The dafault view includes all categories.') }}</p>
+    <ol class="lead">
         <li>{{ _('Choose the category of diary to change') }}</li>
         <p>{{ _('The following is the case of Sleep Diary') }}</p>
         <p>
@@ -68,10 +68,10 @@
         </p>
     </ol>
     <h3>{{ _('Optional Category') }}</h3>
-    <p>{{ _('With Optional Category, you can take diaries as your own category.') }}</p>
-    <p>{{ _('The diaries that you can take with Optional Category are simple, but it would be convenient for tracking the habits or daily routines.') }}</p>
-    <p>{{ _('The following shows how to add an category.') }}</p>
-    <ol>
+    <p class="lead">{{ _('With Optional Category, you can take diaries as your own category.') }}</p>
+    <p class="lead">{{ _('The diaries that you can take with Optional Category are simple, but it would be convenient for tracking the habits or daily routines.') }}</p>
+    <p class="lead">{{ _('The following shows how to add an category.') }}</p>
+    <ol class="lead">
         <li>{{ _('Click Category from the menus') }}</li>
         <p>
             <img src="{{ url_for('static', filename='images/' + g.locale + '/category_menu.png') }}" alt="category_menu.png" width="360" class="img-responsive img-thumbnail">
@@ -98,8 +98,8 @@
         </p>
     </ol>    
     <h3>{{ _('Recommended Browser') }}</h3>
-    <p>{{ _('The recommended browser is Google Chrome. If you have trouble with using it, change the browser to Google Chrome.') }}</p>
-    <ol>
+    <p class="lead">{{ _('The recommended browser is Google Chrome. If you have trouble with using it, change the browser to Google Chrome.') }}</p>
+    <ol class="lead">
         <li>{{ _('For the example of Safari on mac, date fields seem not to be working fine because the format of these are somethng wrong and date pickers are lost') }}</li>
         <p>
             <img src="{{ url_for('static', filename='images/' + g.locale + '/browser_safari.png') }}" alt="browser_safari.png" width="360" class="img-responsive img-thumbnail">
@@ -111,14 +111,14 @@
     </ol>
 
     <hr>
-
+    
     <footer>
         <p>&copy; 2020 Shinya Moriyama</p>
         <p>{{ _('Contact information') }}: spt.dekigoto@gmail.com</p>
         <p><a href="{{ url_for('.terms_conditions') }}">{{ _('Terms and conditions') }}</a></p>
         <p><a href="{{ url_for('.privacy_policy') }}">{{ _('Privacy Policy') }}</a></p>
     </footer>
-
 </div>
+
 {% endblock %}
 

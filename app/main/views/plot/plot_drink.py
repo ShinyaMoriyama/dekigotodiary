@@ -26,7 +26,6 @@ def plot_drink():
     df_2_hungover = df_2.loc[df_2['drink_condition'] == DrinkCondition.HUNGOVER, 'amt_of_drink']
     df_2_others = df_2.loc[df_2['drink_condition'] != DrinkCondition.HUNGOVER, 'amt_of_drink']
 
-    print(df_2)
     graphs = [
         dict(
             data=[
