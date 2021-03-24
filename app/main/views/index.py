@@ -264,6 +264,8 @@ def before_request():
 
     g.locale = str(get_locale())
 
+    current_app.logger.info('**** BROWSER **** :%s', request.user_agent.browser)
+    
     if request.endpoint in [
         'static',
         'main.index',
